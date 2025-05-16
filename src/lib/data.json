@@ -13,6 +13,7 @@
       "degree": "B.A.T. in Cybersecurity",
       "institution": "Collin College",
       "location": "Frisco, TX",
+      "honors": "President's List",
       "gpa": "4.0",
       "date": "December 2025"
     },
@@ -43,6 +44,60 @@
     {
       "name": "Offensive Security Certified Professional (OSCP)",
       "date": "Target 2026"
+    }
+  ],
+  "skills": [
+    {
+      "category": "Programming & Scripting",
+      "skills": [
+        "Python",
+        "JavaScript",
+        "TypeScript",
+        "GitHub",
+        "Bash",
+        "PowerShell"
+      ]
+    },
+    {
+      "category": "Security Tools",
+      "skills": [
+        "Wireshark",
+        "Burp Suite",
+        "Nmap",
+        "Metasploit",
+        "OpenVAS"
+      ]
+    },
+    {
+      "category": "Networking",
+      "skills": [
+        "TCP/IP",
+        "OSI Model",
+        "DNS",
+        "DHCP",
+        "Cisco IOS"
+      ]
+    },
+    {
+      "category": "Frameworks",
+      "skills": [
+        "PCI-DSS v4.0",
+        "COBIT 2019",
+        "NIST CSF",
+        "ISO 27001",
+        "CIS Top 18",
+        "ATT&CK"
+      ]
+    },
+    {
+      "category": "Cryptography",
+      "skills": [
+        "Symmetric Key Cryptography",
+        "Asymmetric Key Cryptgraphy",
+        "Hashing Algorithms",
+        "Digital Signatures",
+        "PGP"
+      ]
     }
   ]
 }
