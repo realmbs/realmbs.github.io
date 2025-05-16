@@ -5,6 +5,7 @@
     "email": "placeholder",
     "linkedin": "placeholder",
     "github": "placeholder",
+    "website": "realmbs.github.io",
     "location": "Plano, TX"
   },
   "summary": "Passionate and driven cybersecurity student with an A.A.S. in cybersecurity. Comfortable with networking, front end development, automation, and penetration testing. Actively pursuing Security+, AWS, and OSCP certifications. Eager to learn as I finish up my degree.",
@@ -15,7 +16,8 @@
       "location": "Frisco, TX",
       "honors": "President's List",
       "gpa": "4.0",
-      "date": "December 2025"
+      "startDate": "August 2024",
+      "endDate": "December 2025 (expected)"
     },
     {
       "degree": "A.A.S. in Cybersecurity",
@@ -23,13 +25,16 @@
       "location": "Frisco, TX",
       "honors": "President's List",
       "gpa": "4.0",
-      "date": "2023-2024"
+      "startDate": "August 2023",
+      "endDate": "August 2024"
     }
   ],
   "certifications": [
     {
       "name": "Google Cybersecurity Professional Certificate",
-      "date": "29 Jan 2024"
+      "authority": "Coursera",
+      "date": "29 Jan 2024",
+      "url": "https://coursera.org/verify/professional-cert/Y43LM49KZVZW"
     }
   ],
   "certificationInProgress": [
@@ -97,6 +102,15 @@
         "Hashing Algorithms",
         "Digital Signatures",
         "PGP"
+      ]
+    },
+    {
+      "category": "Soft skills",
+      "skills": [
+        "Concise technical and analytical writing",
+        "Academic research",
+        "Technical and non-technical presentations",
+        "Collaborative teamwork"
       ]
     }
   ]
