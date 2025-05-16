@@ -16,6 +16,11 @@ export interface EducationEntry {
   endDate: string;
 }
 
+export interface ProjectEntry {
+  name: string;
+  description: string;
+}
+
 export interface CertificationEntry {
   name: string;
   authority: string;
@@ -39,7 +44,8 @@ export interface Resume {
   contact: Contact;
   summary: string;
   education: EducationEntry[];
+  projects: ProjectEntry[];
   certifications: CertificationEntry[];
-  certificationsInProgress: CertificationInProgressEntry[];
+  certificationInProgress: CertificationInProgressEntry[];
   skills: SkillEntry[];
 }

@@ -29,6 +29,12 @@
       "endDate": "August 2024"
     }
   ],
+  "projects": [
+    {
+      "name": "PCI-DSS v4.0 / COBIT 2019 Audit",
+      "description": "Led a simulated Level 3 PCI-DSS audit of a 150k revenue mock financial firm. Created 30+ control tests, conducted risk assessments. Delivered technical report, presented findings to faculty."
+    }
+  ],
   "certifications": [
     {
       "name": "Google Cybersecurity Professional Certificate",
