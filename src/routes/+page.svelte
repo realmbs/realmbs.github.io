@@ -39,4 +39,16 @@
         </article>
       {/each}
    </section>
+
+   <section class="space-y-4">
+    <h2 class="text-2xl font-semibold">Certifications</h2>
+      {#each resume.certifications as certification}
+        <article class="border p-4 rounded-x1">
+          <h3 class="font-semibold">{certification.name}</h3>
+          <p class="text-sm text-gray-500">{certification.authority}</p>
+          <p class="text-sm text-gray-500">{certification.date}</p>
+          <a href={certification.url} class="text-blue-500 hover:underline">Validate Certification</a>
+        </article>
+      {/each}
+   </section>
 </main>
