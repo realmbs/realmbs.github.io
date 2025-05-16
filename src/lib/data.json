@@ -1,0 +1,48 @@
+{
+  "name": "Mark A. Blaha II",
+  "headline": "Cybersecurity Student | Penetration Testing Focus",
+  "contact": {
+    "email": "placeholder",
+    "linkedin": "placeholder",
+    "github": "placeholder",
+    "location": "Plano, TX"
+  },
+  "summary": "Passionate and driven cybersecurity student with an A.A.S. in cybersecurity. Comfortable with networking, front end development, automation, and penetration testing. Actively pursuing Security+, AWS, and OSCP certifications. Eager to learn as I finish up my degree.",
+  "education": [
+    {
+      "degree": "B.A.T. in Cybersecurity",
+      "institution": "Collin College",
+      "location": "Frisco, TX",
+      "gpa": "4.0",
+      "date": "December 2025"
+    },
+    {
+      "degree": "A.A.S. in Cybersecurity",
+      "institution": "Collin College",
+      "location": "Frisco, TX",
+      "honors": "President's List",
+      "gpa": "4.0",
+      "date": "2023-2024"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Google Cybersecurity Professional Certificate",
+      "date": "29 Jan 2024"
+    }
+  ],
+  "certificationInProgress": [
+    {
+      "name": "AWS Certified Cloud Practitioner",
+      "date": "Target Sep 2025"
+    },
+    {
+      "name": "CompTIA Security+",
+      "date": "Target Dec 2025"
+    },
+    {
+      "name": "Offensive Security Certified Professional (OSCP)",
+      "date": "Target 2026"
+    }
+  ]
+}
