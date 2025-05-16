@@ -30,7 +30,7 @@
       {/each}
   </section>
 
-   <section class="space-y-4">
+  <section class="space-y-4">
     <h2 class="text-2xl font-semibold">Projects</h2>
       {#each resume.projects as project}
         <article class="border p-4 rounded-x1">
@@ -38,9 +38,9 @@
           <p class="text-sm text-gray-500">{project.description}</p>
         </article>
       {/each}
-   </section>
+  </section>
 
-   <section class="space-y-4">
+  <section class="space-y-4">
     <h2 class="text-2xl font-semibold">Certifications</h2>
       {#each resume.certifications as certification}
         <article class="border p-4 rounded-x1">
@@ -51,4 +51,27 @@
         </article>
       {/each}
    </section>
+
+  <section class="space-y-4">
+    <h2 class="text-2xl font-semibold">Certifications In Progress</h2>
+      {#each resume.certificationInProgress as certificationInProgress}
+        <article class="border p-4 rounded-x1">
+          <h3 class="font-semibold">{certificationInProgress.name}</h3>
+          <p class="text-sm text-gray-500">{certificationInProgress.date}</p>
+        </article>
+      {/each}
+  </section>
+
+  <section class="space-y-4">
+    <h2 class="text-2xl font-semibold">Skills</h2>
+    {#each resume.skills as skill}
+      <article class="border p-4 rounded-x1">
+        <h3 class="font-semibold">{skill.category}</h3>
+        <ul class="list-disc pl-5">
+          {#each skill.skills as item}
+            <li>{item}</li>
+          {/each}
+      </article>
+    {/each}
+  </section>
 </main>
