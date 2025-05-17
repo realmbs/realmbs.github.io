@@ -1,0 +1,24 @@
+:root {
+  --font-family: system-ui, sans-serif;
+  --color-bg: #fff;
+  --color-text: #111;
+  --max-width: 960px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1rem;
+}
