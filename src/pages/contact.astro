@@ -1,0 +1,18 @@
+---
+import '../styles/global.scss';
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import type { SiteData } from '../types';
+import rawData from "../data/data.json";
+const data = rawData as SiteData;
+
+---
+
+<BaseLayout title="Contact" name={data.name} description="Contact page of Mark Blaha II">
+  <section>
+    <h1>Contact</h1>
+    <ul>
+      <li><strong>Location:</strong> {data.location}</li>
+      <li><strong>LinkedIn:</strong> {data.linkedin}</li>
+    </ul>
+  </section>
+</BaseLayout>
