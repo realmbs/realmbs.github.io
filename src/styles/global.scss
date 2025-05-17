@@ -22,3 +22,26 @@ main {
   margin: 0 auto;
   padding: 1rem;
 }
+
+nav {
+  padding: 1rem;
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #ccc;
+
+  ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    text-decoration: none;
+    color: #333;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

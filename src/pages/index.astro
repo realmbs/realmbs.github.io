@@ -1,11 +1,21 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import data from '../data/data.json';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <BaseLayout title="Home">
-	<Welcome />
+	<section>
+		<h1>{data.name}</h1>
+		<h2>{data.title}</h2>
+		<p>{data.summary}</p>
+
+		<h3>Contact</h3>
+		<ul>
+			<li><strong>Location:</strong> {data.location}</li>
+			<li><strong>LinkedIn:</strong> <a href={data.linkedin}>{data.linkedin}</a></li>
+		</ul>
+	</section>
 </BaseLayout>
