@@ -22,14 +22,17 @@ const { title, description, name } = Astro.props as Props;
   <body>
     <nav>
       <ul>
-        <li><a href="/">{name}</a>
-        <li><a href="/projects">Projects</a>
-        <li><a href="/resume">Resume</a>
+        <li><a href="/">{name}</a></li>
+        <li><a href="/resume">Resume</a></li>
+        <li><a href="/projects">Projects</a></li>
         <li><a href="/contact">Contact</a></li>
       </ul>
     </nav>
     <main>
       <slot />
     </main>
+    <footer class="site-footer">
+      <p>&copy; {new Date().getFullYear()} {name}. All rights reserved.</p>
+    </footer>
   </body>
 </html>

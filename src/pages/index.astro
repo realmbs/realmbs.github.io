@@ -10,10 +10,11 @@ const data = rawData as SiteData;
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<BaseLayout title="Home" name="Mark Blaha II" description="Personal website of Mark Blaha II">
+<BaseLayout title="Home" name={data.name} description="Personal website of Mark Blaha II">
 	<section>
 		<h1>{data.name}</h1>
 		<h2>{data.title}</h2>
 		<p>{data.summary}</p>
 	</section>
 </BaseLayout>
+
