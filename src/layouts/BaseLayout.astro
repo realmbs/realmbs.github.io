@@ -4,9 +4,10 @@ import '../styles/global.scss';
 export interface Props {
   title: string;
   description?: string;
+  name: string;
 }
 
-const { title, description } = Astro.props as Props;
+const { title, description, name } = Astro.props as Props;
 ---
 
 <!DOCTYPE html>
@@ -21,7 +22,7 @@ const { title, description } = Astro.props as Props;
   <body>
     <nav>
       <ul>
-        <li><a href="/">Home</a>
+        <li><a href="/">{name}</a>
         <li><a href="/projects">Projects</a>
         <li><a href="/resume">Resume</a>
       </ul>

@@ -1,12 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import data from '../data/data.json';
+import type { SiteData } from '../types';
+import rawData from '../data/data.json';
+const data = rawData as SiteData;
+
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<BaseLayout title="Home">
+<BaseLayout title="Home" name="Mark Blaha II" description="Personal site of Mark Blaha II">
 	<section>
 		<h1>{data.name}</h1>
 		<h2>{data.title}</h2>

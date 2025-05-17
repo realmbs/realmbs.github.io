@@ -1,0 +1,43 @@
+---
+import '../styles/global.scss';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import type { SiteData } from '../types';
+import rawData from '../data/data.json';
+const data = rawData as SiteData;
+
+---
+
+<BaseLayout title="Resume" name={data.name} description="Resume of Mark Blaha II">
+  <section>
+    <h1>Resume</h1>
+    
+    <h2>Education</h2>
+    {data.education.map(edu => (
+      <article>
+        <h3>{edu.degree}</h3>
+        <p>{edu.school}, {edu.location}</p>
+        <p><strong>GPA: </strong>{edu.gpa}, <strong>Honors:</strong>{edu.honors}</p>
+        <p><em>{edu.startDate} - {edu.endDate}</em></p>
+      </article>
+    ))}
+
+    <h2>Certifications</h2>
+    {data.certifications.map(cert => (
+      <li>
+        <strong><a href={cert.url}>{cert.name}</strong></a> - {cert.issuer} ({cert.date})
+      </li>
+    ))}
+
+    <h2>Certifications In Progress</h2>
+    {data.certificationsInProgress.map(cert => (<li><strong>{cert.name}</strong> - {cert.issuer} ({cert.date})</li>))}
+
+    <h2>Skills</h2>
+    {data.skills.map(group => (
+      <div>
+        <h3>{group.category}</h3>
+        <ul>{group.skills.map(skill => (<li>{skill}</li>))}</ul>
+      </div>
+    ))}
+    
+  </section>
+</BaseLayout>

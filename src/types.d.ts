@@ -31,3 +31,16 @@ export interface SkillEntry {
   category: string;
   skills: string[];
 }
+
+export interface SiteData {
+  name: string;
+  title: string;
+  location: string;
+  linkedin: string;
+  summary: string;
+  education: EducationEntry[];
+  projects: ProjectEntry[];
+  certifications: CertificationEntry[];
+  certificationsInProgress: CertificationInProgressEntry[];
+  skills: SkillEntry[];
+}
