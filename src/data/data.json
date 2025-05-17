@@ -62,13 +62,34 @@
     }
   ],
 
-  "skills": {
-    "programming": ["Python", "JavaScript", "TypeScript", "GitHub", "Bash", "PowerShell"],
-    "securityTools": ["Wireshark", "Burp Suite", "Nmap", "Metasploit", "OpenVAS"],
-    "networking": ["TCP/IP & OSI models", "Cisco IOS", "Firewall configuration", "DNS", "DHCP"],
-    "frameworks": ["PCI-DSS v4.0", "COBIT 2019", "NIST CSF", "ISO 27001", "CIS Top 18", "ATT&CK"],
-    "cryptography": ["Symmetric and asymmetric key crypto", "Hashing", "Digital signatures", "PGP"],
-    "grc": ["Risk assessment", "Control testing", "Gap analysis", "Findings documentation"],
-    "softSkills": ["Technical writing", "Academic research", "Presentations"]
-  }
+    "skills": [
+    {
+      "category": "Programming & Scripting",
+      "skills": ["Python", "JavaScript", "TypeScript", "GitHub", "Bash", "PowerShell"]
+    },
+    {
+      "category": "Security Tools",
+      "skills": ["Wireshark", "Burp Suite", "Nmap", "Metasploit", "OpenVAS"]
+    },
+    {
+      "category": "Networking",
+      "skills": ["TCP/IP & OSI models", "Cisco IOS", "Firewall configuration", "DNS", "DHCP"]
+    },
+    {
+      "category": "Frameworks",
+      "skills": ["PCI-DSS v4.0", "COBIT 2019", "NIST CSF", "ISO 27001", "CIS Top 18", "ATT&CK"]
+    },
+    {
+      "category": "Cryptography",
+      "skills": ["Symmetric and asymmetric key cryptography", "Hashing", "Digital signatures", "PGP"]
+    },
+    {
+      "category": "GRC",
+      "skills": ["Risk assessment", "Control testing", "Gap analysis", "Findings documentation"]
+    },
+    {
+      "category": "Soft Skills",
+      "skills": ["Technical writing", "Academic research", "Presentations"]
+    }
+  ]
 }
