@@ -1,0 +1,18 @@
+.footer {
+  background-color: var(--color-text);
+  color: var(--color-bg);
+  padding: 1rem 2rem;
+  position: sticky;
+  bottom: 0;
+  z-index: 1000;
+}
+
+.footer__container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  text-align: center;
+  font-size: 0.875rem;
+}
