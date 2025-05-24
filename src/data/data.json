@@ -69,12 +69,12 @@
 
   "skills": {
     "programming": ["Python", "JavaScript", "TypeScript", "GitHub", "Bash", "PowerShell"],
-    "security": ["Wireshark", "Burp Suite", "Nmap", "Metasploit", "OpenVAS"],
+    "security": ["Wireshark", "Burp Suite", "Nmap", "Metasploit", "Nessus", "OpenVAS"],
     "networking": ["TCP/IP", "OSI model", "Cisco IOS", "Firewall rules", "ACLs", "Firewall configuration", "DNS", "DHCP"],
-    "frameworks": ["PCI-DSS v4.0", "COBIT 2019", "NIST CSF", "ISO 27001", "CIS Top 18", "ATT&CK"],
-    "cryptography": ["Asymmetric key cryptography", "Symmetric key cryptography", "Hashing", "Digital Signatures", "PGP"],
-    "grc": ["Risk Assessment", "Control Testing", "Gap Analysis", "Findings Documentation", "ITAF"],
-    "soft": ["Concise technical and analytical writing", "academic research", "technical presentations"]
+    "frameworks": ["PCI-DSS v4.0", "COBIT 2019", "NIST CSF", "ISO 27001", "CIS Top 18", "ATT&CK", "ITAF"],
+    "cryptography": ["Asymmetric", "Symmetric", "Hashing Algorithms", "Digital Signatures", "PGP", "Key Exchange", "SSL/TLS"],
+    "grc": ["Risk Assessment", "Control Testing", "Gap Analysis", "Compliance Audits", "Policy Development"],
+    "soft": ["Concise technical and analytical writing", "academic research", "technical and non-technical presentations"]
   },
 
   "social": {
