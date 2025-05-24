@@ -1,6 +1,9 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
+    "jsx": "preserve",
+    "jsxImportSource": "astro",
+    "types": ["astro/client"],
     "strict": true,
     "target": "ES2022",
     "module": "ESNext",
