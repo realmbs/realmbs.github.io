@@ -1,20 +1,306 @@
 ---
-import '../styles/global.scss';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import type { SiteData } from '../types';
-import rawData from '../data/data.json';
-const data = rawData as SiteData;
+import '../styles/global.scss';
+import data from '../data/data.json';
 
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const { personal, education, projects, certifications, skills } = data;
 ---
 
-<BaseLayout title="Home" name={data.name} description="Personal website of Mark Blaha II">
-	<section>
-		<h1>{data.name}</h1>
-		<h2>{data.title}</h2>
+<BaseLayout title="Mark A. Blaha II - Cybersecurity Student">
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero__content">
+        <h1 class="hero__title">{personal.name}</h1>
+        <p class="hero__subtitle">{personal.title}</p>
+        <p class="hero__description">{personal.summary}</p>
+        <div class="hero__cta">
+          <a href="#contact" class="btn btn--primary">Get In Touch</a>
+          <a href="/resume.pdf" class="btn btn--secondary" target="_blank">Download Resume</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-	</section>
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-header__title">About Me</h2>
+        <p class="section-header__subtitle">
+          Dedicated cybersecurity student with a passion for offensive security and penetration testing
+        </p>
+      </div>
+      
+      <div class="grid grid--2">
+        <div class="card">
+          <h3>Academic Excellence</h3>
+          <p>Maintaining a perfect 4.0 GPA while pursuing my Bachelor's in Information Systems Cybersecurity. Recognized on the President's List and graduated summa cum laude with my Associate's degree.</p>
+          <div class="skills">
+            <span class="skill-tag">4.0 GPA</span>
+            <span class="skill-tag">President's List</span>
+            <span class="skill-tag">Summa Cum Laude</span>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h3>Technical Focus</h3>
+          <p>Specializing in penetration testing, vulnerability assessment, and offensive security. Experienced with industry-standard tools and frameworks for comprehensive security testing.</p>
+          <div class="skills">
+            <span class="skill-tag">Penetration Testing</span>
+            <span class="skill-tag">Vulnerability Assessment</span>
+            <span class="skill-tag">OSINT</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-header__title">Education</h2>
+        <p class="section-header__subtitle">
+          Strong academic foundation in cybersecurity and information systems
+        </p>
+      </div>
+
+      <div class="grid grid--2">
+        {education.map((edu) => (
+          <div class="card">
+            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+              <div>
+                <h3>{edu.degree}</h3>
+                <p style="color: var(--color-accent-primary); margin-bottom: 0.5rem;">{edu.institution}</p>
+                <p style="color: var(--color-text-muted); margin-bottom: 0;">{edu.location}</p>
+              </div>
+              <div style="text-align: right;">
+                <p style="font-weight: 600; margin-bottom: 0;">{edu.endDate}</p>
+                {edu.status === 'current' && (
+                  <span style="background: var(--color-accent-success); color: white; padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem;">Current</span>
+                )}
+              </div>
+            </div>
+            <div class="skills">
+              <span class="skill-tag">GPA: {edu.gpa}</span>
+              <span class="skill-tag">{edu.honors}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-header__title">Technical Skills</h2>
+        <p class="section-header__subtitle">
+          Comprehensive skill set spanning security tools, programming, and frameworks
+        </p>
+      </div>
+
+      <div class="grid grid--3">
+        <div class="card">
+          <h3>Programming & Scripting</h3>
+          <div class="skills">
+            {skills.programming.map((skill) => (
+              <span class="skill-tag">{skill}</span>
+            ))}
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Security Tools</h3>
+          <div class="skills">
+            {skills.security.map((skill) => (
+              <span class="skill-tag">{skill}</span>
+            ))}
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Networking</h3>
+          <div class="skills">
+            {skills.networking.map((skill) => (
+              <span class="skill-tag">{skill}</span>
+            ))}
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Security Frameworks</h3>
+          <div class="skills">
+            {skills.frameworks.map((skill) => (
+              <span class="skill-tag">{skill}</span>
+            ))}
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Cryptography</h3>
+          <div class="skills">
+            {skills.cryptography.map((skill) => (
+              <span class="skill-tag">{skill}</span>
+            ))}
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>GRC & Compliance</h3>
+          <div class="skills">
+            {skills.grc.map((skill) => (
+              <span class="skill-tag">{skill}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-header__title">Featured Projects</h2>
+        <p class="section-header__subtitle">
+          Hands-on experience with real-world cybersecurity challenges
+        </p>
+      </div>
+
+      <div class="grid grid--2">
+        {projects.map((project) => (
+          <div class="card">
+            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+              <h3>{project.title}</h3>
+              <span style="color: var(--color-text-muted); font-size: var(--font-size-sm);">{project.date}</span>
+            </div>
+            <p>{project.description}</p>
+            <div class="skills">
+              {project.technologies.map((tech) => (
+                <span class="skill-tag">{tech}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+        
+        <!-- Placeholder for future projects -->
+        <div class="card" style="border: 2px dashed var(--color-border); text-align: center; display: flex; flex-direction: column; justify-content: center; min-height: 200px;">
+          <h3 style="color: var(--color-text-muted);">More Projects Coming Soon</h3>
+          <p style="color: var(--color-text-muted);">Currently working on additional cybersecurity projects and challenges</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications Section -->
+  <section id="certifications" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-header__title">Certifications</h2>
+        <p class="section-header__subtitle">
+          Continuous learning and professional development in cybersecurity
+        </p>
+      </div>
+
+      <div class="grid grid--2">
+        <div class="card">
+          <h3>Completed Certifications</h3>
+          {certifications.completed.map((cert) => (
+            <div style="padding: 1rem 0; border-bottom: 1px solid var(--color-border); last-child:border-bottom: none;">
+              <h4 style="margin-bottom: 0.5rem; color: var(--color-accent-success);">{cert.name}</h4>
+              <p style="margin-bottom: 0.25rem; color: var(--color-text-secondary);">{cert.issuer}</p>
+              <p style="margin-bottom: 0; color: var(--color-text-muted); font-size: var(--font-size-sm);">Completed: {cert.date}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="card">
+          <h3>In Progress</h3>
+          {certifications.inProgress.map((cert) => (
+            <div style="padding: 1rem 0; border-bottom: 1px solid var(--color-border); last-child:border-bottom: none;">
+              <h4 style="margin-bottom: 0.5rem; color: var(--color-accent-warning);">{cert.name}</h4>
+              <p style="margin-bottom: 0.25rem; color: var(--color-text-secondary);">Status: {cert.status}</p>
+              <p style="margin-bottom: 0; color: var(--color-text-muted); font-size: var(--font-size-sm);">Expected: {cert.expected}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-header__title">Get In Touch</h2>
+        <p class="section-header__subtitle">
+          Interested in cybersecurity internships, penetration testing opportunities, or collaboration
+        </p>
+      </div>
+
+      <div class="grid grid--3">
+        <div class="card" style="text-align: center;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="var(--color-accent-primary)" style="margin-bottom: 1rem;">
+            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+          <h3>Email</h3>
+          <p>{personal.email}</p>
+          <a href={`mailto:${personal.email}`} class="btn btn--primary">Send Email</a>
+        </div>
+
+        <div class="card" style="text-align: center;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="var(--color-accent-primary)" style="margin-bottom: 1rem;">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+          <h3>Phone</h3>
+          <p>{personal.phone}</p>
+          <a href={`tel:${personal.phone}`} class="btn btn--primary">Call Now</a>
+        </div>
+
+        <div class="card" style="text-align: center;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="var(--color-accent-primary)" style="margin-bottom: 1rem;">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+          <h3>Location</h3>
+          <p>{personal.location}</p>
+          <p style="color: var(--color-text-muted); font-size: var(--font-size-sm);">Available for local & remote opportunities</p>
+        </div>
+      </div>
+
+
+    </div>
+  </section>
 </BaseLayout>
 
+<style>
+  /* Additional page-specific styles */
+  .hero__description {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-2xl);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .nav__link.active {
+    color: var(--color-accent-primary);
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .hero__cta {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .btn {
+      width: 100%;
+      max-width: 250px;
+      justify-content: center;
+    }
+  }
+</style>

@@ -1,5 +1,12 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
+import sass from '@astrojs/sass';
 
-// https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+  integrations: [sass()],
+  site: 'https://realmbs.github.io',
+  base: '/portfolio',
+  output: 'static',
+  build: {
+    assets: 'assets'
+  }
+});
