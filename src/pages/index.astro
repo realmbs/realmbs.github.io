@@ -61,9 +61,9 @@ const { personal, education, projects, certifications, skills } = data;
     <div class="container">
       <div class="section-header">
         <h2 class="section-header__title">Education</h2>
-        <p class="section-header__subtitle">
-          Strong academic foundation in cybersecurity and information systems
-        </p>
+        <!-- <p class="section-header__subtitle">
+          Strong academic foundation in cybersecurity
+        </p> -->
       </div>
 
       <div class="grid grid--2">
@@ -83,8 +83,9 @@ const { personal, education, projects, certifications, skills } = data;
               </div>
             </div>
             <div class="skills">
-              <span class="skill-tag">GPA: {edu.gpa}</span>
-              <span class="skill-tag">{edu.honors}</span>
+              <span class="skill-tag">GPA: {edu.gpa.toFixed(1)}</span>
+							{edu.honors.map ((honor => (
+							<span class="skill-tag">{honor}</span>)))}
             </div>
           </div>
         ))}
@@ -97,9 +98,9 @@ const { personal, education, projects, certifications, skills } = data;
     <div class="container">
       <div class="section-header">
         <h2 class="section-header__title">Technical Skills</h2>
-        <p class="section-header__subtitle">
+        <!-- <p class="section-header__subtitle">
           Comprehensive skill set spanning security tools, programming, and frameworks
-        </p>
+        </p> -->
       </div>
 
       <div class="grid grid--3">
@@ -200,9 +201,9 @@ const { personal, education, projects, certifications, skills } = data;
     <div class="container">
       <div class="section-header">
         <h2 class="section-header__title">Certifications</h2>
-        <p class="section-header__subtitle">
+        <!-- <p class="section-header__subtitle">
           Continuous learning and professional development in cybersecurity
-        </p>
+        </p> -->
       </div>
 
       <div class="grid grid--2">

@@ -4,31 +4,33 @@
     "title": "Cybersecurity Student | Penetration Testing Focus",
     "phone": "placeholder",
     "email": "placeholder@icloud.com",
-    "location": "Plano, TX",
+    "location": "DFW, TX",
     "summary": "Passionate and driven cybersecurity student with an A.A.S. in cybersecurity. Comfortable with networking, front end development, automation, open source intelligence, and offensive security tools. Actively pursuing Security+, AWS, and OSCP certifications."
   },
+
   "education": [
     {
       "institution": "Collin College",
       "location": "Frisco, TX",
       "degree": "B.A.T, Information Systems Cybersecurity",
       "gpa": 4.0,
-      "honors": "President's List",
+      "honors": ["President's List"],
       "startDate": "August 2024",
       "endDate": "December 2025",
-      "status": "inProgress"
+      "status": "current"
     },
     {
       "institution": "Collin College",
       "location": "Frisco, TX",
       "degree": "A.A.S, Information Systems Cybersecurity",
       "gpa": 4.0,
-      "honors": "summa cum laude",
+      "honors": ["summa cum laude","President's List"],
       "startDate": "May 2023",
       "endDate": "August 2024",
       "status": "completed"
     }
   ],
+
   "projects": [
     {
       "title": "PCI-DSS v4.0 / COBIT Audit",
@@ -37,6 +39,7 @@
       "technologies": ["PCI-DSS v4.0", "COBIT 2019", "Risk Assessment", "Technical Documentation"]
     }
   ],
+
   "certifications": {
     "completed": [
       {
@@ -63,15 +66,17 @@
       }
     ]
   },
+
   "skills": {
     "programming": ["Python", "JavaScript", "TypeScript", "GitHub", "Bash", "PowerShell"],
     "security": ["Wireshark", "Burp Suite", "Nmap", "Metasploit", "OpenVAS"],
-    "networking": ["TCP/IP & OSI models", "Cisco IOS", "Firewall rules & configuration", "DNS", "DHCP"],
+    "networking": ["TCP/IP", "OSI model", "Cisco IOS", "Firewall rules", "ACLs", "Firewall configuration", "DNS", "DHCP"],
     "frameworks": ["PCI-DSS v4.0", "COBIT 2019", "NIST CSF", "ISO 27001", "CIS Top 18", "ATT&CK"],
-    "cryptography": ["Asymmetric and symmetric key cryptography", "hashing", "digital signatures", "PGP"],
-    "grc": ["Risk assessment and control testing", "gap analysis", "findings documentation"],
+    "cryptography": ["Asymmetric key cryptography", "Symmetric key cryptography", "Hashing", "Digital Signatures", "PGP"],
+    "grc": ["Risk Assessment", "Control Testing", "Gap Analysis", "Findings Documentation", "ITAF"],
     "soft": ["Concise technical and analytical writing", "academic research", "technical presentations"]
   },
+
   "social": {
     "github": "https://github.com/realmbs",
     "linkedin": "https://linkedin.com/in/placeholder"
