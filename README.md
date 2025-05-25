@@ -1,4 +1,4 @@
-# realmbs@github.io
+# https://realmbs.github.io
 
 A modern and responsive personal website built with Astro, TypeScript, and Sass, deployed using Github Actions
 
