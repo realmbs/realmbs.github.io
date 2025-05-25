@@ -207,16 +207,17 @@ a {
 
 // Mobile navigation (hamburger)
 .nav__mobile {
-  display: none;;
+  display: none;
 }
 
 @media (max-width: 640px) {
-  .nav__links {
-    display: none;;
+  .nav__container > .nav__links {
+    display: none;
   }
 
   .nav__mobile {
     display: block;
+    position: relative;
   }
 
   .nav__mobile summary {
@@ -226,11 +227,22 @@ a {
     color: var(--color-text-primary);
   }
 
+  .nav__mobile .nav__links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: max-content;
+    background: rgba(10, 11, 13, 0.95);
+    padding: var(--space-md) var(--space-lg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    z-index: 999;
+  }
+
   .nav__mobile[open] .nav__links {
     display: flex;
     flex-direction: column;
-    gap: var(--space-lg);
-    margin-top: var(--space-md);
   }
 }
 
