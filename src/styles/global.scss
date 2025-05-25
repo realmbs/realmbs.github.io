@@ -76,7 +76,8 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 16px;
+  // font-size: 16px;
+  font-size: clamp(0.9375rem, 0.9rem + 0.5vw, 1rem);
 }
 
 body {
@@ -204,6 +205,35 @@ a {
   }
 }
 
+// Mobile navigation (hamburger)
+.nav__mobile {
+  display: none;;
+}
+
+@media (max-width: 640px) {
+  .nav__links {
+    display: none;;
+  }
+
+  .nav__mobile {
+    display: block;
+  }
+
+  .nav__mobile summary {
+    list-style: none;
+    cursor: pointer;
+    font-size: var(--font-size-xl);
+    color: var(--color-text-primary);
+  }
+
+  .nav__mobile[open] .nav__links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    margin-top: var(--space-md);
+  }
+}
+
 // Hero Section
 .hero {
   min-height: 100vh;
@@ -305,26 +335,31 @@ a {
 .grid {
   display: grid;
   gap: var(--space-xl);
-  
-  &--2 {
-    grid-template-columns: repeat(2, 1fr);
-    
-    @media (max-width: 768px) {
-      grid-template-columns: 1fr;
-    }
-  }
-  
+
+  &--2,
   &--3 {
-    grid-template-columns: repeat(3, 1fr);
-    
-    @media (max-width: 1024px) {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    
-    @media (max-width: 768px) {
-      grid-template-columns: 1fr;
-    }
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));;
   }
+  
+  // &--2 {
+  //   grid-template-columns: repeat(2, 1fr);
+    
+  //   @media (max-width: 768px) {
+  //     grid-template-columns: 1fr;
+  //   }
+  // }
+  
+  // &--3 {
+  //   grid-template-columns: repeat(3, 1fr);
+    
+  //   @media (max-width: 1024px) {
+  //     grid-template-columns: repeat(2, 1fr);
+  //   }
+    
+  //   @media (max-width: 768px) {
+  //     grid-template-columns: 1fr;
+  //   }
+  // }
 }
 
 // Skills & Tags
