@@ -1,24 +1,23 @@
 # realmbs@github.io
 
-A modern personal website built with Astro, TypeScript, and Sass, deployed using Github Pages
+A modern and responsive personal website built with Astro, TypeScript, and Sass, deployed using Github Actions
+
+## Data Management
+
+The website's content is dynamically managed through src/data/data.json, making it easy to update
 
 ## Project Structure
 ```text
 .
 ├── astro.config.mjs            # Astro config file
-├── package.json
-├── pnpm-lock.yaml
 ├── public
-│   ├── favicon.svg
 │   └── resume.pdf              # Resume
 ├── README.md
 ├── src
 │   ├── assets
-│   │   ├── astro.svg
-│   │   ├── background.svg
+│   │   ├── favicon.svg
 │   ├── data
 │   │   └── data.json           # Resume data in json format
-│   ├── env.d.ts
 │   ├── layouts
 │   │   └── BaseLayout.astro    # Main layout component
 │   ├── pages
@@ -28,7 +27,3 @@ A modern personal website built with Astro, TypeScript, and Sass, deployed using
 │   └── types.d.ts
 └── tsconfig.json
 ```
-
-## Data Management
-
-The website's content is dynamically managed through src/data/data.json, making it easy to update

@@ -43,7 +43,7 @@ const { personal, social } = data;
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <!-- Styles -->
+  <!-- styles -->
   <!-- <link rel="stylesheet" href="/src/styles/main.scss" /> -->
 </head>
 <body>
@@ -66,7 +66,7 @@ const { personal, social } = data;
       </details>
 
       <!-- desktop nav links -->
-       
+
       <ul class="nav__links">
         <li><a href="#about" class="nav__link">About</a></li>
         <li><a href="#education" class="nav__link">Education</a></li>
@@ -81,6 +81,8 @@ const { personal, social } = data;
   <main>
     <slot />
   </main>
+
+<!-- site footer -->
 
   <footer class="footer">
     <div class="container">
@@ -110,7 +112,7 @@ const { personal, social } = data;
   <script>
 import { navigate } from "astro:transitions/client";
 
-    // Smooth scrolling for navigation links
+    // smooth scrolling for navigation links
     document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -127,7 +129,7 @@ import { navigate } from "astro:transitions/client";
       });
     });
 
-    // Add active nav link highlighting
+    // active nav link highlighting
     const sections = document.querySelectorAll<HTMLElement>('section[id]');
     const navLinks = document.querySelectorAll('.nav__link');
 
