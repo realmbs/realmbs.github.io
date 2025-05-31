@@ -84,8 +84,9 @@ const { personal, education, projects, certifications, skills } = data;
             </div>
             <div class="skills">
               <span class="skill-tag">GPA: {edu.gpa.toFixed(1)}</span>
-							{edu.honors.map ((honor => (
-							<span class="skill-tag">{honor}</span>)))}
+              {edu.honors.map((honor) => (
+                <span class="skill-tag">{honor}</span>
+              ))}
             </div>
           </div>
         ))}
