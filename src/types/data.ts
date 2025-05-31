@@ -15,7 +15,7 @@ export interface Education {
   honors: string[];
   startDate: string;
   endDate: string;
-  status: 'current' | 'completed';
+  status: string;
 }
 
 export interface Project {

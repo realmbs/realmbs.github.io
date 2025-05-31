@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/global.scss';
+import type { SiteData } from '../types/data';
 import data from '../data/data.json';
 
-const { personal, education, projects, certifications, skills } = data;
+const { personal, education, projects, certifications, skills, social }: SiteData = data;
 ---
 
 <BaseLayout title="Mark A. Blaha II - Cybersecurity Student">
