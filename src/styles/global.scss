@@ -366,31 +366,117 @@ a {
 .grid {
   display: grid;
   gap: var(--space-xl);
-
-  &--2,
-  &--3 {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));;
+  
+  &--2 {
+    grid-template-columns: repeat(auto-fill, minmax(min(350px, 100%), 1fr));
   }
-  
-  // &--2 {
-  //   grid-template-columns: repeat(2, 1fr);
-    
-  //   @media (max-width: 768px) {
-  //     grid-template-columns: 1fr;
-  //   }
-  // }
-  
-  // &--3 {
-  //   grid-template-columns: repeat(3, 1fr);
-    
-  //   @media (max-width: 1024px) {
-  //     grid-template-columns: repeat(2, 1fr);
-  //   }
-    
-  //   @media (max-width: 768px) {
-  //     grid-template-columns: 1fr;
-  //   }
-  // }
+
+  &--3 {
+    grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+  }
+
+  &--4 {
+    grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
+  }
+
+  &--5 {
+    grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
+  }
+
+  &--2-fit {
+    grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
+  }
+
+  &--3-fit {
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  }
+
+  &--equal-rows {
+    grid-auto-rows: 1fr;
+  }
+
+  &--dense {
+    grid-auto-flow: dense;
+  }
+
+  &--compact {
+    gap: var(--space-md);
+  }
+
+  &--tight {
+    gap: var(--space-sm);
+  }
+
+  &--loose {
+    gap: var(--space-2xl);
+  }
+
+  @media (max-width: 768px) {
+    gap: var(--space-lg);
+
+    &--mobile-single {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    gap: var(--space-md);
+
+    &--4,
+    &--5 {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.grid-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2xl);
+  place-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.grid-contact {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+.grid-certifications {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.grid-item {
+  &--span-2 {
+    grid-column: span 2;
+  }
+
+  &--span-3 {
+    grid-column: span 3;
+  }
+
+  &--span-full {
+    grid-column: 1 / -1;
+  }
+
+  &--feature {
+    grid-column: span 2;
+    grid-row: span 2;
+
+    @media (max-width: 768px) {
+      grid-column: span 1;
+      grid-row: span 1;
+    }
+  }
 }
 
 // Skills & Tags
