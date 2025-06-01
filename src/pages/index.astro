@@ -11,7 +11,7 @@ const { personal, education, projects, certifications, skills, social }: SiteDat
   <!-- Hero Section -->
   <section class="hero">
     <div class="container">
-      <div class="hero__content">
+      <div class="grid-hero">
         <h1 class="hero__title">{personal.name}</h1>
         <p class="hero__subtitle">{personal.title}</p>
         <p class="hero__description">{personal.summary}</p>
@@ -105,7 +105,7 @@ const { personal, education, projects, certifications, skills, social }: SiteDat
         </p> -->
       </div>
 
-      <div class="grid grid--3">
+      <div class="grid grid--3 grid--equal-rows">
         <div class="card">
           <h3>Programming & Scripting</h3>
           <div class="skills">
@@ -208,7 +208,7 @@ const { personal, education, projects, certifications, skills, social }: SiteDat
         </p> -->
       </div>
 
-      <div class="grid grid--2">
+      <div class="grid-certifications">
         <div class="card">
           <h3>Completed Certifications</h3>
           {certifications.completed.map((cert) => (
@@ -246,7 +246,7 @@ const { personal, education, projects, certifications, skills, social }: SiteDat
 
 <!-- Email -->
 
-      <div class="grid grid--3">
+      <div class="grid-contact">
         <div class="card" style="text-align: center;">
           <svg width="48" height="48" viewBox="0 0 24 24" fill="var(--color-accent-primary)" style="margin-bottom: 1rem;">
             <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>

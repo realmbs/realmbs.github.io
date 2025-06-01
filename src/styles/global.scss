@@ -106,6 +106,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding-top: 80px;
 }
 
 // Typography
@@ -267,7 +268,9 @@ a {
 
 // Hero Section
 .hero {
-  min-height: 100vh;
+  min-height: calc(100vh - 80px);
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-2xl);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -435,7 +438,12 @@ a {
   gap: var(--space-2xl);
   place-items: center;
   text-align: center;
-  min-height: 100vh;
+  width: 100%;
+  max-width: 800px;
+
+  @media (max-width: 768px) {
+    gap: var(--space-xl);
+  }
 }
 
 .grid-contact {

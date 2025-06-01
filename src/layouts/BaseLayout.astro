@@ -119,8 +119,8 @@ import { navigate } from "astro:transitions/client";
         const target = document.querySelector<HTMLElement>(this.getAttribute('href') || '');
         if (target) {
           const navElement = document.querySelector<HTMLElement>('.nav');
-          const navHeight = navElement ? navElement.offsetHeight : 0;
-          const targetPosition = target.offsetTop - navHeight - 20;
+          const navHeight = navElement ? navElement.offsetHeight : 80;
+          const targetPosition = target.offsetTop - navHeight - 10;
           window.scrollTo({
             top: targetPosition,
             behavior: 'smooth'
@@ -134,7 +134,7 @@ import { navigate } from "astro:transitions/client";
     const navLinks = document.querySelectorAll('.nav__link');
 
     function updateActiveNav() {
-      const scrollPosition = window.scrollY + 100;
+      const scrollPosition = window.scrollY + 120;
 
       sections.forEach(section => {
         const sectionTop = section.offsetTop;
