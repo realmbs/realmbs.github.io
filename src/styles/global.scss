@@ -330,8 +330,11 @@ a {
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: var(--space-sm);
   padding: var(--space-md) var(--space-xl);
+  min-height: 44px;
+  min-width: 44px;
   border: none;
   border-radius: var(--radius-md);
   font-size: var(--font-size-sm);
@@ -341,15 +344,88 @@ a {
   cursor: pointer;
   transition: all var(--transition-fast);
   text-decoration: none;
-  
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+
+  // Ripple effect for touch devices
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+    pointer-events: none;
+  }
+
+  &:active {
+    transform: translateY(0) !important;
+    transition: transform 0.1s ease-in-out;
+    
+    &::before {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent-primary);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1);
+  }
+
+  &--loading {
+    cursor: wait;
+    opacity: 0.8;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border: 2px solid transparent;
+      border-top: 2px solid currentColor;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-left: var(--space-sm);
+    }
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+    
+    &:hover {
+      transform: none !important;
+      box-shadow: none !important;
+    }
+  }
+
   &--primary {
     background: var(--color-accent-primary);
     color: white;
+    border: 2px solid var(--color-accent-primary);
     
     &:hover {
-      background: var(--color-accent-secondary);
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-lg);
+      &:not(:disabled) {
+        background: var(--color-accent-secondary);
+        border-color: var(--color-accent-secondary);
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-lg);
+      }
+    }
+
+    &:active {
+      background: oklch(58% 0.2 240);
+      border-color: oklch(58% 0.2 240);
     }
   }
   
@@ -359,9 +435,143 @@ a {
     border: 2px solid var(--color-border);
     
     &:hover {
-      border-color: var(--color-accent-primary);
-      color: var(--color-accent-primary);
+      &:not(:disabled) {
+        border-color: var(--color-accent-primary);
+        color: var(--color-accent-primary);
+        background: rgba(14, 165, 233, 0.05);
+        transform: translateY(-1px);
+      }
     }
+
+    &:active {
+      background: rgba(14, 165, 233, 0.1);
+      transform: translateY(-1px);
+    }
+  }
+
+  &--success {
+    background: var(--color-accent-success);
+    color: white;
+    border: 2px solid var(--color-accent-success);
+
+    &:hover:not(:disabled) {
+      background: oklch(62% 0.15 160);
+      border-color: oklch(62% 0.15 160);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-lg);
+    }
+  }
+
+  &--danger {
+    background: var(--color-accent-danger);
+    color: white;
+    border: 2px solid var(--color-accent-danger);
+
+    &:hover:not(:disabled) {
+      background: oklch(58% 0.2 25);
+      border-color: oklch(58% 0.2 25);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-lg);
+    }
+  }
+
+  // Small variant
+  &--sm {
+    padding: var(--space-sm) var(--space-lg);
+    font-size: var(--font-size-xs);
+    min-height: 36px;
+  }
+  
+  // Large variant
+  &--lg {
+    padding: var(--space-lg) var(--space-2xl);
+    font-size: var(--font-size-base);
+    min-height: 52px;
+  }
+}
+
+// Button Utilities & Enhancements
+.btn-icon {
+  padding: var(--space-sm);
+  min-width: 44px;
+  aspect-ratio: 1;
+  
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.btn-outlined {
+  background: transparent !important;
+  border: 2px solid currentColor;
+  
+  &:hover:not(:disabled) {
+    background: currentColor !important;
+    color: var(--color-bg-primary) !important;
+  }
+}
+
+.btn-ghost {
+  background: transparent !important;
+  border: none !important;
+  
+  &:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.1) !important;
+  }
+}
+
+// Enhanced focus management for accessibility
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+    
+    &::before {
+      display: none;
+    }
+  }
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+  .btn {
+    border-width: 3px;
+    
+    &:focus-visible {
+      outline-width: 3px;
+      outline-offset: 3px;
+    }
+  }
+}
+
+// Better touch targets on small screens
+@media (max-width: 480px) {
+  .btn {
+    min-height: 48px;
+    padding: var(--space-md) var(--space-lg);
+  }
+  
+  .btn--sm {
+    min-height: 44px;
+  }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg);}
+  to { transform: rotate(360deg); }
+}
+
+.btn-group {
+  display: inline-flex;
+  gap: var(--space-sm);
+
+  @media (max-width: 480px) {
+    width: 100%;
+  }
+  
+  .btn {
+    flex: 1;
+    justify-content: center;
   }
 }
 
@@ -603,25 +813,53 @@ a {
   }
 }
 
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
 .contact-form label {
   display: block;
-  margin-bottom: var(--space-md);
   font-size: var(--font-size-sm);
+  font-weight: 500;
   color: var(--color-text-secondary);
+  margin-bottom: var(--space-xs);
 }
 
 .contact-form input, 
 .contact-form textarea {
   width: 100%;
   padding: var(--space-md);
-  border: 1px solid var(--color-border);
+  border: 2px solid var(--color-border);
   border-radius: var(--radius-sm);
   background: var(--color-bg-tertiary);
   color: var(--color-text-primary);
   font-size: var(--font-size-sm);
+  font-family: inherit;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  
+  &:focus {
+    outline: none;
+    border-color: var(--color-accent-primary);
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+  }
+  
+  &:invalid {
+    border-color: var(--color-accent-danger);
+  }
+  
+  &::placeholder {
+    color: var(--color-text-muted);
+  }
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 100px;
 }
 
 .contact-form button {
-  margin-top: var(--space-md);
+  margin-top: var(--space-sm);
   width: 100%;
 }
