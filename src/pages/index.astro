@@ -35,24 +35,140 @@ const { personal, education, projects, certifications, skills, social }: SiteDat
         </p>
       </div>
       
-      <div class="grid grid--2">
-        <div class="card">
-          <h3>Academic Excellence</h3>
-          <p>Maintaining a perfect 4.0 GPA while pursuing my Bachelor's in Information Systems Cybersecurity. Recognized on the President's List and graduated summa cum laude with my Associate's degree.</p>
-          <div class="skills">
-            <span class="skill-tag">4.0 GPA</span>
-            <span class="skill-tag">President's List</span>
-            <span class="skill-tag">Summa Cum Laude</span>
+      <!-- About Content Layout -->
+      <div class="about-content">
+        <!-- Main Introduction Card -->
+        <div class="about-intro">
+          <div class="card card--about-hero">
+            <div class="about-hero__profile">
+              <div class="about-hero__avatar">
+                <div class="avatar-placeholder">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="var(--color-accent-primary)">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="about-hero__content">
+                <h3>Mark A. Blaha II</h3>
+                <p class="about-hero__title">Cybersecurity Student & Future Penetration Tester</p>
+                <p class="about-hero__description">
+                  Passionate about cybersecurity with a strong foundation in offensive security principles. 
+                  Currently pursuing my Bachelor's degree while gaining hands-on experience with industry-standard 
+                  security tools and methodologies. Committed to protecting digital infrastructure through 
+                  ethical hacking and vulnerability research.
+                </p>
+                <div class="about-hero__highlights">
+                  <div class="highlight-item">
+                    <span class="highlight-value">4.0</span>
+                    <span class="highlight-label">GPA</span>
+                  </div>
+                  <div class="highlight-item">
+                    <span class="highlight-value">2025</span>
+                    <span class="highlight-label">Graduation</span>
+                  </div>
+                  <div class="highlight-item">
+                    <span class="highlight-value">DFW</span>
+                    <span class="highlight-label">Location</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        
-        <div class="card">
-          <h3>Technical Focus</h3>
-          <p>Specializing in penetration testing, vulnerability assessment, and offensive security. Experienced with industry-standard tools and frameworks for comprehensive security testing.</p>
-          <div class="skills">
-            <span class="skill-tag">Penetration Testing</span>
-            <span class="skill-tag">Vulnerability Assessment</span>
-            <span class="skill-tag">OSINT</span>
+
+        <!-- About Details Grid -->
+        <div class="about-details">
+          <div class="card card--about-focus">
+            <div class="card__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+            </div>
+            <h3>Academic Excellence</h3>
+            <p>Maintaining a perfect 4.0 GPA while pursuing my Bachelor's in Information Systems Cybersecurity. Recognized on the President's List and graduated summa cum laude with my Associate's degree.</p>
+            <div class="about-achievements">
+              <div class="achievement-item achievement-item--success">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                <span>Perfect 4.0 GPA</span>
+              </div>
+              <div class="achievement-item achievement-item--primary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-1 16H9V7h9v14z"/>
+                </svg>
+                <span>President's List</span>
+              </div>
+              <div class="achievement-item achievement-item--warning">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span>Summa Cum Laude</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card card--about-focus">
+            <div class="card__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+              </svg>
+            </div>
+            <h3>Technical Specialization</h3>
+            <p>Focused on offensive security with expertise in penetration testing, vulnerability assessment, and security frameworks. Proficient with industry-standard tools and methodologies.</p>
+            <div class="about-specialties">
+              <div class="specialty-item">
+                <div class="specialty-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                  </svg>
+                </div>
+                <span>Penetration Testing</span>
+              </div>
+              <div class="specialty-item">
+                <div class="specialty-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                </div>
+                <span>Vulnerability Assessment</span>
+              </div>
+              <div class="specialty-item">
+                <div class="specialty-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                  </svg>
+                </div>
+                <span>OSINT Research</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card--about-focus">
+            <div class="card__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+              </svg>
+            </div>
+            <h3>Professional Goals</h3>
+            <p>Pursuing industry certifications and practical experience to become a skilled penetration tester. Committed to continuous learning and staying current with emerging threats and defense techniques.</p>
+            <div class="about-goals">
+              <div class="goal-item">
+                <div class="goal-timeline">2025</div>
+                <div class="goal-content">
+                  <h4>Security+ & AWS Certifications</h4>
+                  <p>Completing foundational certifications</p>
+                </div>
+              </div>
+              <div class="goal-item">
+                <div class="goal-timeline">2026</div>
+                <div class="goal-content">
+                  <h4>OSCP Certification</h4>
+                  <p>Advanced penetration testing expertise</p>
+                </div>
+              </div>
+            </div>
+          </div>
           </div>
         </div>
       </div>
@@ -69,24 +185,27 @@ const { personal, education, projects, certifications, skills, social }: SiteDat
         </p> -->
       </div>
 
-      <div class="grid grid--2">
+      <div class="grid-education">
         {education.map((edu) => (
-          <div class="card">
-            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+          <div class="card card--status">
+            <div class="card__header">
               <div>
-                <h3>{edu.degree}</h3>
-                <p style="color: var(--color-accent-primary); margin-bottom: 0.5rem;">{edu.institution}</p>
-                <p style="color: var(--color-text-muted); margin-bottom: 0;">{edu.location}</p>
+                <h3 class="card__title">{edu.degree}</h3>
+                <p class="card__subtitle">{edu.institution}</p>
+                <p class="card__location">{edu.location}</p>
               </div>
-              <div style="text-align: right;">
-                <p style="font-weight: 600; margin-bottom: 0;">{edu.endDate}</p>
+              <div class="card__meta">
+                <p class="card__date">{edu.endDate}</p>
                 {edu.status === 'current' && (
-                  <span style="background: var(--color-accent-success); color: white; padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem;">Current</span>
+                  <span class="status-badge status-badge--current">Current</span>
+                )}
+                {edu.status === 'completed' && (
+                  <span class="status-badge status-badge--completed">Completed</span>
                 )}
               </div>
             </div>
             <div class="skills">
-              <span class="skill-tag">GPA: {edu.gpa.toFixed(1)}</span>
+              <span class="skill-tag skill-tag--primary">GPA: {edu.gpa.toFixed(1)}</span>
               {edu.honors.map((honor) => (
                 <span class="skill-tag">{honor}</span>
               ))}
@@ -108,7 +227,12 @@ const { personal, education, projects, certifications, skills, social }: SiteDat
       </div>
 
       <div class="grid grid--3 grid--equal-rows">
-        <div class="card">
+        <div class="card card--icon">
+          <div class="card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0L19.2 12l-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
+            </svg>
+          </div>
           <h3>Programming & Scripting</h3>
           <div class="skills">
             {skills.programming.map((skill) => (
@@ -117,7 +241,12 @@ const { personal, education, projects, certifications, skills, social }: SiteDat
           </div>
         </div>
 
-        <div class="card">
+        <div class="card card--icon">
+          <div class="card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+            </svg>
+          </div>
           <h3>Security Tools</h3>
           <div class="skills">
             {skills.security.map((skill) => (
@@ -126,7 +255,12 @@ const { personal, education, projects, certifications, skills, social }: SiteDat
           </div>
         </div>
 
-        <div class="card">
+        <div class="card card--icon">
+          <div class="card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.07 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/>
+            </svg>
+          </div>
           <h3>Networking</h3>
           <div class="skills">
             {skills.networking.map((skill) => (
@@ -135,7 +269,12 @@ const { personal, education, projects, certifications, skills, social }: SiteDat
           </div>
         </div>
 
-        <div class="card">
+        <div class="card card--icon">
+          <div class="card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
           <h3>Security Frameworks</h3>
           <div class="skills">
             {skills.frameworks.map((skill) => (
@@ -144,7 +283,12 @@ const { personal, education, projects, certifications, skills, social }: SiteDat
           </div>
         </div>
 
-        <div class="card">
+        <div class="card card--icon">
+          <div class="card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+            </svg>
+          </div>
           <h3>Cryptography</h3>
           <div class="skills">
             {skills.cryptography.map((skill) => (
@@ -153,7 +297,12 @@ const { personal, education, projects, certifications, skills, social }: SiteDat
           </div>
         </div>
 
-        <div class="card">
+        <div class="card card--icon">
+          <div class="card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-1 16H9V7h9v14z"/>
+            </svg>
+          </div>
           <h3>GRC & Compliance</h3>
           <div class="skills">
             {skills.grc.map((skill) => (
@@ -177,24 +326,34 @@ const { personal, education, projects, certifications, skills, social }: SiteDat
 
       <div class="grid grid--2">
         {projects.map((project) => (
-          <div class="card">
-            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
-              <h3>{project.title}</h3>
-              <span style="color: var(--color-text-muted); font-size: var(--font-size-sm);">{project.date}</span>
+          <div class="card card--icon project-card">
+            <div class="card__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--color-accent-primary)">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <div class="card__header">
+              <h3 class="card__title">{project.title}</h3>
+              <span class="card__meta">{project.date}</span>
             </div>
             <p>{project.description}</p>
             <div class="skills">
               {project.technologies.map((tech) => (
-                <span class="skill-tag">{tech}</span>
+                <span class="skill-tag skill-tag--primary">{tech}</span>
               ))}
             </div>
           </div>
         ))}
         
         <!-- Placeholder for future projects -->
-        <div class="card" style="border: 2px dashed var(--color-border); text-align: center; display: flex; flex-direction: column; justify-content: center; min-height: 200px;">
-          <h3 style="color: var(--color-text-muted);">More Projects Coming Soon</h3>
-          <p style="color: var(--color-text-muted);">Currently working on additional cybersecurity projects and challenges</p>
+        <div class="card card--coming-soon">
+          <div class="card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--color-text-muted)">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+          </div>
+          <h3>More Projects Coming Soon</h3>
+          <p>Currently working on additional cybersecurity projects and challenges</p>
         </div>
       </div>
     </div>
@@ -204,33 +363,120 @@ const { personal, education, projects, certifications, skills, social }: SiteDat
   <section id="certifications" class="section">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-header__title">Certifications</h2>
-        <!-- <p class="section-header__subtitle">
-          Continuous learning and professional development in cybersecurity
-        </p> -->
+        <h2 class="section-header__title">Certifications & Professional Development</h2>
+        <p class="section-header__subtitle">
+          Continuous learning journey in cybersecurity with industry-recognized certifications
+        </p>
       </div>
 
-      <div class="grid-certifications">
-        <div class="card">
-          <h3>Completed Certifications</h3>
-          {certifications.completed.map((cert) => (
-            <div style="padding: 1rem 0; border-bottom: 1px solid var(--color-border); last-child:border-bottom: none;">
-              <h4 style="margin-bottom: 0.5rem; color: var(--color-accent-success);">{cert.name}</h4>
-              <p style="margin-bottom: 0.25rem; color: var(--color-text-secondary);">{cert.issuer}</p>
-              <p style="margin-bottom: 0; color: var(--color-text-muted); font-size: var(--font-size-sm);">Completed: {cert.date}</p>
+      <div class="certifications-grid">
+        <!-- Completed Certifications -->
+        <div class="certification-section certification-section--completed">
+          <div class="certification-section__header">
+            <div class="certification-section__icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="var(--color-accent-success)">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
             </div>
-          ))}
+            <div class="certification-section__title">
+              <h3>Achieved Certifications</h3>
+              <p class="certification-count">{certifications.completed.length} Completed</p>
+            </div>
+          </div>
+          
+          <div class="certification-cards">
+            {certifications.completed.map((cert) => (
+              <div class="certification-card certification-card--completed">
+                <div class="certification-card__status">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-accent-success)">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                </div>
+                <div class="certification-card__content">
+                  <h4 class="certification-card__title">{cert.name}</h4>
+                  <p class="certification-card__issuer">{cert.issuer}</p>
+                  <div class="certification-card__meta">
+                    <span class="certification-card__date">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.1 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
+                      </svg>
+                      Completed {cert.date}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div class="card">
-          <h3>In Progress</h3>
-          {certifications.inProgress.map((cert) => (
-            <div style="padding: 1rem 0; border-bottom: 1px solid var(--color-border); last-child:border-bottom: none;">
-              <h4 style="margin-bottom: 0.5rem; color: var(--color-accent-warning);">{cert.name}</h4>
-              <p style="margin-bottom: 0.25rem; color: var(--color-text-secondary);">Status: {cert.status}</p>
-              <p style="margin-bottom: 0; color: var(--color-text-muted); font-size: var(--font-size-sm);">Expected: {cert.expected}</p>
+        <!-- In Progress Certifications -->
+        <div class="certification-section certification-section--progress">
+          <div class="certification-section__header">
+            <div class="certification-section__icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="var(--color-accent-warning)">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
             </div>
-          ))}
+            <div class="certification-section__title">
+              <h3>Currently Pursuing</h3>
+              <p class="certification-count">{certifications.inProgress.length} In Progress</p>
+            </div>
+          </div>
+          
+          <div class="certification-cards">
+            {certifications.inProgress.map((cert) => (
+              <div class="certification-card certification-card--progress">
+                <div class="certification-card__status">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-accent-warning)">
+                    <path d="M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L6.7 14.8c-.45-.83-.7-1.79-.7-2.8 0-3.31 2.69-6 6-6zm6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z"/>
+                  </svg>
+                </div>
+                <div class="certification-card__content">
+                  <h4 class="certification-card__title">{cert.name}</h4>
+                  <div class="certification-card__progress">
+                    <span class="progress-badge progress-badge--{cert.status.toLowerCase().replace(' ', '-')}">{cert.status}</span>
+                  </div>
+                  <div class="certification-card__meta">
+                    <span class="certification-card__date">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                      </svg>
+                      Expected {cert.expected}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Learning Path Highlight -->
+        <div class="certification-highlight">
+          <div class="card card--highlight">
+            <div class="certification-highlight__header">
+              <div class="certification-highlight__icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="var(--color-accent-primary)">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </div>
+              <h3>Certification Journey</h3>
+            </div>
+            <p>Following a structured learning path focused on penetration testing and cloud security, with plans to achieve advanced certifications in offensive security.</p>
+            <div class="certification-stats">
+              <div class="stat">
+                <span class="stat__value">{certifications.completed.length}</span>
+                <span class="stat__label">Completed</span>
+              </div>
+              <div class="stat">
+                <span class="stat__value">{certifications.inProgress.length}</span>
+                <span class="stat__label">In Progress</span>
+              </div>
+              <div class="stat">
+                <span class="stat__value">2026</span>
+                <span class="stat__label">OSCP Target</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -242,89 +488,206 @@ const { personal, education, projects, certifications, skills, social }: SiteDat
       <div class="section-header">
         <h2 class="section-header__title">Get In Touch</h2>
         <p class="section-header__subtitle">
-          Interested in cybersecurity internships, penetration testing opportunities, or collaboration
+          Ready to collaborate on cybersecurity projects, internships, or discuss penetration testing opportunities
         </p>
       </div>
 
-<!-- Email -->
-
       <div class="grid-contact">
-        <div class="card" style="text-align: center;">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="var(--color-accent-primary)" style="margin-bottom: 1rem;">
-            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-          </svg>
-          <h3>Email</h3>
-          <p>{personal.email}</p>
-          <a href={`mailto:${personal.email}`} class="btn btn--primary">Send Email</a>
+        <!-- Contact Information -->
+        <div class="contact-info">
+          <div class="card card--icon">
+            <div class="card__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+              </svg>
+            </div>
+            <h3>Email</h3>
+            <p>{personal.email}</p>
+            <a href={`mailto:${personal.email}`} class="btn btn--secondary">Send Email</a>
+          </div>
+
+          <div class="card card--icon">
+            <div class="card__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+              </svg>
+            </div>
+            <h3>Location</h3>
+            <p>{personal.location}</p>
+            <p style="color: var(--color-text-muted); font-size: var(--font-size-sm);">Available for local & remote opportunities</p>
+          </div>
+
+          <div class="card card--highlight">
+            <h3>Let's Connect</h3>
+            <p style="margin-bottom: var(--space-lg); color: var(--color-text-secondary);">
+              Connect with me on professional platforms
+            </p>
+            
+            <div class="contact-social">
+              <a href="https://linkedin.com/in/markblaha" class="social-link social-link--linkedin" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" width="18" height="18">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+                LinkedIn
+              </a>
+              
+              <a href="https://github.com/realmbs" class="social-link social-link--github" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" width="18" height="18">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                GitHub
+              </a>
+            </div>
+          </div>
         </div>
 
-<!-- Phone -->
-
-<!--         
-        <div class="card" style="text-align: center;">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="var(--color-accent-primary)" style="margin-bottom: 1rem;">
-            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-          </svg>
-          <h3>Phone</h3>
-          <p>{personal.phone}</p>
-          <a href={`tel:${personal.phone}`} class="btn btn--primary">Call Now</a>
-        </div> -->
-
-<!-- Form -->
-
-        <div class="card" style="text-align: center;">
-          <h3>Contact Me</h3>
-          <form action="https://formspree.io/f/mkgrlgvr" method="POST" class="contact-form" id="contactForm">
-            <label>
-              Name
-              <input type="text" name="name" required aria-describedby="name-error" />
-            </label>
-            <label>
-              Email
-              <input type="email" name="email" required aria-describedby="email-error" />
-            </label>
-            <label>
-              Message
-              <textarea name="message" rows="4" required aria-describedby="message-error" placeholder="Tell me about your project or how I can help..."></textarea>
-            </label>
+        <!-- Contact Form -->
+        <div class="contact-form" id="contactForm">
+          <h3>Send a Message</h3>
+          <p style="margin-bottom: var(--space-lg); color: var(--color-text-secondary);">
+            Have a project in mind or want to discuss cybersecurity opportunities? I'd love to hear from you.
+          </p>
+          
+          <form action="https://formspree.io/f/mkgrlgvr" method="POST" id="contactFormElement">
+            <div class="form-group">
+              <label class="form-label" for="name">Name</label>
+              <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                class="form-input" 
+                required 
+                placeholder="Your full name"
+                aria-describedby="name-error" 
+              />
+              <div class="form-error" id="name-error">Please enter your name</div>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="email">Email</label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                class="form-input" 
+                required 
+                placeholder="your.email@example.com"
+                aria-describedby="email-error" 
+              />
+              <div class="form-error" id="email-error">Please enter a valid email address</div>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="subject">Subject</label>
+              <input 
+                type="text" 
+                id="subject" 
+                name="subject" 
+                class="form-input" 
+                placeholder="Brief description of your inquiry"
+                aria-describedby="subject-error" 
+              />
+              <div class="form-error" id="subject-error">Please enter a subject</div>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="message">Message</label>
+              <textarea 
+                id="message" 
+                name="message" 
+                class="form-textarea" 
+                rows="5" 
+                required 
+                placeholder="Tell me about your project, internship opportunity, or how I can help..."
+                aria-describedby="message-error"
+              ></textarea>
+              <div class="form-error" id="message-error">Please enter your message</div>
+            </div>
+            
             <button type="submit" class="btn btn--primary" id="submitBtn">
               <span class="btn-text">Send Message</span>
             </button>
           </form>
         </div>
-
-<!-- Location -->
-
-        <div class="card">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="var(--color-accent-primary)" style="margin-bottom: 1rem;">
-            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-          </svg>
-          <h3>Location</h3>
-          <p>{personal.location}</p>
-          <p style="color: var(--color-text-muted); font-size: var(--font-size-sm);">Available for local & remote opportunities</p>
-        </div>
       </div>
-
-
     </div>
   </section>
 </BaseLayout>
 
 <script>
-  // Enhanced form handling with button states
+  // Enhanced form handling with validation and improved UX
   document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('contactForm') as HTMLFormElement;
+    const form = document.getElementById('contactFormElement') as HTMLFormElement;
     const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement;
     const btnText = submitBtn.querySelector('.btn-text') as HTMLSpanElement;
+
+    // Form validation
+    const validateField = (field: HTMLInputElement | HTMLTextAreaElement) => {
+      const formGroup = field.closest('.form-group') as HTMLElement;
+      const errorElement = formGroup.querySelector('.form-error') as HTMLElement;
+      
+      // Remove existing classes
+      formGroup.classList.remove('form-group--has-error', 'form-group--has-success');
+      errorElement.classList.remove('form-error--visible');
+      
+      if (field.value.trim() === '' && field.hasAttribute('required')) {
+        formGroup.classList.add('form-group--has-error');
+        errorElement.classList.add('form-error--visible');
+        return false;
+      } else if (field.type === 'email' && field.value.trim() !== '') {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(field.value)) {
+          formGroup.classList.add('form-group--has-error');
+          errorElement.textContent = 'Please enter a valid email address';
+          errorElement.classList.add('form-error--visible');
+          return false;
+        }
+      }
+      
+      if (field.value.trim() !== '') {
+        formGroup.classList.add('form-group--has-success');
+      }
+      
+      return true;
+    };
+
+    // Real-time validation
+    const inputs = form.querySelectorAll('input, textarea');
+    inputs.forEach(input => {
+      input.addEventListener('blur', () => validateField(input as HTMLInputElement | HTMLTextAreaElement));
+      input.addEventListener('input', () => {
+        const formGroup = input.closest('.form-group') as HTMLElement;
+        if (formGroup.classList.contains('form-group--has-error')) {
+          validateField(input as HTMLInputElement | HTMLTextAreaElement);
+        }
+      });
+    });
 
     if (form && submitBtn) {
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
         
+        // Validate all fields
+        let isValid = true;
+        inputs.forEach(input => {
+          if (!validateField(input as HTMLInputElement | HTMLTextAreaElement)) {
+            isValid = false;
+          }
+        });
+        
+        if (!isValid) {
+          // Scroll to first error
+          const firstError = form.querySelector('.form-group--has-error');
+          if (firstError) {
+            firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+          return;
+        }
+        
         // Set loading state
         submitBtn.disabled = true;
         submitBtn.classList.add('btn--loading');
-        btnText.textContent = 'Sending...';
+        btnText.textContent = 'Sending';
         
         try {
           const formData = new FormData(form);
@@ -343,6 +706,14 @@ const { personal, education, projects, certifications, skills, social }: SiteDat
             submitBtn.classList.add('btn--success');
             btnText.textContent = 'Message Sent!';
             form.reset();
+            
+            // Clear form validation states
+            inputs.forEach(input => {
+              const formGroup = input.closest('.form-group') as HTMLElement;
+              formGroup.classList.remove('form-group--has-error', 'form-group--has-success');
+              const errorElement = formGroup.querySelector('.form-error') as HTMLElement;
+              errorElement.classList.remove('form-error--visible');
+            });
             
             // Reset after 3 seconds
             setTimeout(() => {

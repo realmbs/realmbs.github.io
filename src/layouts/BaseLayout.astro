@@ -48,13 +48,13 @@ const { personal, social } = data;
 </head>
 <body>
   <nav class="nav">
+    <div class="nav__scroll-indicator"></div>
     <div class="container nav__container">
       <a href="/" class="nav__brand">Mark Blaha</a>
       
       <!-- mobile nav (hamburger menu) -->
-      
       <details class="nav__mobile">
-        <summary aria-label="Open main menu">&#9776;</summary>
+        <summary aria-label="Open main menu"></summary>
         <ul class="nav__links">
           <li><a href="#about" class="nav__link">About</a></li>
           <li><a href="#education" class="nav__link">Education</a></li>
@@ -66,7 +66,6 @@ const { personal, social } = data;
       </details>
 
       <!-- desktop nav links -->
-
       <ul class="nav__links">
         <li><a href="#about" class="nav__link">About</a></li>
         <li><a href="#education" class="nav__link">Education</a></li>
@@ -112,66 +111,142 @@ const { personal, social } = data;
   <script>
 import { navigate } from "astro:transitions/client";
 
-    // smooth scrolling for navigation links
-    document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector<HTMLElement>(this.getAttribute('href') || '');
-        if (target) {
-          const navElement = document.querySelector<HTMLElement>('.nav');
-          const navHeight = navElement ? navElement.offsetHeight : 80;
-          const targetPosition = target.offsetTop - navHeight - 10;
-          window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
+    // Enhanced navigation functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const nav = document.querySelector<HTMLElement>('.nav');
+      const scrollIndicator = document.querySelector<HTMLElement>('.nav__scroll-indicator');
+      const sections = document.querySelectorAll<HTMLElement>('section[id]');
+      const navLinks = document.querySelectorAll<HTMLAnchorElement>('.nav__link');
 
-    // active nav link highlighting
-    const sections = document.querySelectorAll<HTMLElement>('section[id]');
-    const navLinks = document.querySelectorAll('.nav__link');
-
-    function updateActiveNav() {
-      const scrollPosition = window.scrollY + 120;
-
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        const sectionId = section.getAttribute('id');
-
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-          navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${sectionId}`) {
-              link.classList.add('active');
+      // Smooth scrolling for navigation links
+      document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector<HTMLElement>(this.getAttribute('href') || '');
+          if (target) {
+            const navHeight = nav ? nav.offsetHeight : 80;
+            const targetPosition = target.offsetTop - navHeight - 10;
+            
+            // Close mobile menu if open
+            const mobileNav = document.querySelector<HTMLDetailsElement>('.nav__mobile');
+            if (mobileNav && mobileNav.hasAttribute('open')) {
+              mobileNav.removeAttribute('open');
             }
-          });
+            
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+      // Enhanced scroll effects
+      function handleScroll() {
+        const scrollPosition = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+        
+        // Add scrolled class for glassmorphism effect
+        if (scrollPosition > 20) {
+          nav?.classList.add('scrolled');
+        } else {
+          nav?.classList.remove('scrolled');
+        }
+        
+        // Update scroll indicator
+        const scrollPercent = scrollPosition / (documentHeight - windowHeight);
+        if (scrollIndicator) {
+          scrollIndicator.style.width = `${Math.min(scrollPercent * 100, 100)}%`;
+        }
+        
+        // Update active nav link with offset
+        const offset = 120;
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+          const sectionId = section.getAttribute('id');
+
+          if (scrollPosition + offset >= sectionTop && 
+              scrollPosition + offset < sectionTop + sectionHeight) {
+            navLinks.forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === `#${sectionId}`) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }
+
+      // Throttled scroll handler for better performance
+      let scrollTimeout: number | undefined;
+      window.addEventListener('scroll', () => {
+        if (scrollTimeout) {
+          window.cancelAnimationFrame(scrollTimeout);
+        }
+        scrollTimeout = window.requestAnimationFrame(handleScroll);
+      });
+
+      // Initial call
+      handleScroll();
+
+      // Enhanced mobile menu interaction
+      const mobileNav = document.querySelector<HTMLDetailsElement>('.nav__mobile');
+      const mobileNavSummary = mobileNav?.querySelector('summary');
+      
+      if (mobileNavSummary) {
+        mobileNavSummary.addEventListener('click', (e) => {
+          // Add subtle haptic feedback for mobile devices
+          if ('vibrate' in navigator) {
+            navigator.vibrate(50);
+          }
+        });
+      }
+
+      // Close mobile menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (mobileNav && mobileNav.hasAttribute('open')) {
+          const target = e.target as Node;
+          if (target && !mobileNav.contains(target)) {
+            mobileNav.removeAttribute('open');
+          }
         }
       });
-    }
 
-    window.addEventListener('scroll', updateActiveNav);
-    window.addEventListener('load', updateActiveNav);
-
-    // Intersection Observer for fade-in animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('fade-in-up');
+      // Close mobile menu on escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileNav && mobileNav.hasAttribute('open')) {
+          mobileNav.removeAttribute('open');
         }
       });
-    }, observerOptions);
 
-    // Observe all cards and sections
-    document.querySelectorAll('.card, .section').forEach(el => {
-      observer.observe(el);
+      // Intersection Observer for fade-in animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in-up');
+          }
+        });
+      }, observerOptions);
+
+      // Observe all cards and sections
+      document.querySelectorAll('.card, .section').forEach(el => {
+        observer.observe(el);
+      });
+
+      // Preload scroll position for better UX
+      window.addEventListener('load', () => {
+        handleScroll();
+        
+        // Add loaded class for any entry animations
+        document.body.classList.add('loaded');
+      });
     });
   </script>
 </body>
