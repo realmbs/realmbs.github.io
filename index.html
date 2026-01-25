@@ -2,111 +2,603 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>realmbs.github.io</title>
+
+    <!-- SEO Meta Tags -->
+    <title>Mark Blaha | Software Developer</title>
+    <meta name="description" content="Personal portfolio showcasing software development projects, skills, and professional experience." />
+    <meta name="author" content="Mark Blaha" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://realmbs.github.io/" />
+    <meta property="og:title" content="Mark Blaha | Software Developer" />
+    <meta property="og:description" content="Personal portfolio showcasing software development projects, skills, and professional experience." />
+    <meta property="og:image" content="https://realmbs.github.io/og-image.png" />
+
+    <!-- Twitter Card -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://realmbs.github.io/" />
+    <meta property="twitter:title" content="Mark Blaha | Software Developer" />
+    <meta property="twitter:description" content="Personal portfolio showcasing software development projects, skills, and professional experience." />
+    <meta property="twitter:image" content="https://realmbs.github.io/og-image.png" />
+
+    <!-- Favicon & Theme Color -->
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="theme-color" content="#2563eb" />
   </head>
   <body>
-    <div id="app">
-      <!-- Temporary test content - remove after verifying styles -->
-      <main class="container py-12">
-        <header class="mb-12">
-          <h1>Style System Test</h1>
-          <p class="lead">Testing the SCSS styling foundation</p>
-        </header>
+    <div id="app" class="flex flex-col min-h-screen">
+      <!-- Skip to main content link (accessibility) -->
+      <a href="#main-content" class="skip-link visually-hidden">
+        Skip to main content
+      </a>
 
-        <!-- Theme Toggle Test -->
-        <section class="mb-12">
-          <h2>Theme Toggle</h2>
-          <button
-            id="theme-toggle"
-            class="p-4 rounded-lg"
-            style="background: var(--color-surface); border: 1px solid var(--color-border);"
-            onclick="toggleTheme()"
+      <!-- Site Header -->
+      <header class="sticky top-0 z-fixed">
+        <nav class="container" aria-label="Primary navigation">
+          <div class="flex justify-between items-center py-4">
+            <!-- Logo/Brand -->
+            <a href="#hero" class="font-bold" aria-label="Home">
+              MB
+            </a>
+
+            <!-- Desktop Navigation -->
+            <ul class="flex gap-6 hidden-md-down" role="list">
+              <li><a href="#about">About</a></li>
+              <li><a href="#skills">Skills</a></li>
+              <li><a href="#projects">Projects</a></li>
+              <li><a href="#experience">Experience</a></li>
+              <li><a href="#education">Education</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-4">
+              <!-- Theme Toggle Button -->
+              <button
+                id="theme-toggle"
+                type="button"
+                aria-label="Toggle dark mode"
+                class="p-2 rounded"
+                onclick="toggleTheme()"
+              >
+                <span class="visually-hidden">Toggle theme</span>
+              </button>
+
+              <!-- Mobile Menu Button -->
+              <button
+                id="mobile-menu-toggle"
+                type="button"
+                class="hidden-md-up p-2"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+                aria-controls="mobile-nav"
+              >
+                <span class="visually-hidden">Menu</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Mobile Navigation -->
+          <ul
+            id="mobile-nav"
+            class="flex-col gap-4 hidden"
+            role="list"
+            aria-label="Mobile navigation"
           >
-            Toggle Theme
-          </button>
-          <p class="text-muted mt-4">Current theme is controlled by the data-theme attribute on &lt;html&gt;</p>
-        </section>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </header>
 
-        <!-- Typography Test -->
-        <section class="mb-12">
-          <h2>Typography</h2>
-          <h1>Heading 1</h1>
-          <h2>Heading 2</h2>
-          <h3>Heading 3</h3>
-          <h4>Heading 4</h4>
-          <h5>Heading 5</h5>
-          <h6>Heading 6</h6>
-          <p>This is a regular paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <p class="lead">This is a lead paragraph with larger, muted text.</p>
-          <p><a href="#">This is a link</a></p>
-          <p><code>This is inline code</code></p>
-          <pre><code>// This is a code block
-const greeting = 'Hello, World!';
-console.log(greeting);</code></pre>
-        </section>
-
-        <!-- Color Test -->
-        <section class="mb-12">
-          <h2>Color Tokens</h2>
-          <div class="grid gap-4" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
-            <div class="p-4 rounded" style="background: var(--color-bg);">--color-bg</div>
-            <div class="p-4 rounded" style="background: var(--color-surface); border: 1px solid var(--color-border);">--color-surface</div>
-            <div class="p-4 rounded" style="background: var(--color-surface-alt);">--color-surface-alt</div>
-            <div class="p-4 rounded" style="background: var(--color-primary); color: white;">--color-primary</div>
-            <div class="p-4 rounded" style="background: var(--color-accent); color: white;">--color-accent</div>
-          </div>
-        </section>
-
-        <!-- Spacing Test -->
-        <section class="mb-12">
-          <h2>Spacing Utilities</h2>
-          <div class="flex gap-4 flex-wrap">
-            <div class="p-2 rounded" style="background: var(--color-surface-alt);">p-2</div>
-            <div class="p-4 rounded" style="background: var(--color-surface-alt);">p-4</div>
-            <div class="p-6 rounded" style="background: var(--color-surface-alt);">p-6</div>
-            <div class="p-8 rounded" style="background: var(--color-surface-alt);">p-8</div>
-          </div>
-        </section>
-
-        <!-- Responsive Test -->
-        <section class="mb-12">
-          <h2>Responsive Breakpoints</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div class="p-4 rounded text-center" style="background: var(--color-surface-alt);">
-              Item 1
-            </div>
-            <div class="p-4 rounded text-center" style="background: var(--color-surface-alt);">
-              Item 2
-            </div>
-            <div class="p-4 rounded text-center" style="background: var(--color-surface-alt);">
-              Item 3
+      <!-- Main Content -->
+      <main id="main-content">
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-screen flex items-center py-20">
+          <div class="container">
+            <div class="text-center">
+              <h1 class="mb-4">
+                Hi, I'm <span class="text-primary">Mark Blaha</span>
+              </h1>
+              <p class="lead mb-8">
+                Software Developer passionate about building modern web applications
+              </p>
+              <div class="flex justify-center gap-4 flex-wrap">
+                <a href="#projects" class="btn btn-primary">
+                  View My Work
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                  Get In Touch
+                </a>
+              </div>
             </div>
           </div>
-          <p class="text-muted mt-4">Resize the window to see grid columns change (1 → 2 → 3)</p>
         </section>
 
-        <!-- Flexbox Test -->
-        <section class="mb-12">
-          <h2>Flexbox Utilities</h2>
-          <div class="flex justify-between items-center p-4 rounded" style="background: var(--color-surface-alt);">
-            <span>Left</span>
-            <span>Center</span>
-            <span>Right</span>
+        <!-- About Section -->
+        <section id="about" class="py-20">
+          <div class="container container-narrow">
+            <h2 class="text-center mb-12">About Me</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <!-- Profile Image -->
+              <div class="text-center">
+                <img
+                  src="/images/profile.jpg"
+                  alt="Mark Blaha - Software Developer"
+                  class="rounded-full mx-auto"
+                  width="300"
+                  height="300"
+                  loading="lazy"
+                />
+              </div>
+
+              <!-- About Content -->
+              <div id="about-content" data-render="about">
+                <p class="mb-4">
+                  I am a software developer with a passion for creating elegant solutions
+                  to complex problems.
+                </p>
+                <p>
+                  My journey in tech has led me to work with modern web technologies,
+                  building applications that are both functional and user-friendly.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
-        <!-- Text Utilities -->
-        <section class="mb-12">
-          <h2>Text Utilities</h2>
-          <p class="text-muted">This text uses --color-text-muted</p>
-          <p class="text-primary">This text uses --color-primary</p>
-          <p class="font-bold">This text is bold</p>
-          <p class="text-center">This text is centered</p>
+        <!-- Skills Section -->
+        <section id="skills" class="py-20">
+          <div class="container">
+            <h2 class="text-center mb-12">Skills & Technologies</h2>
+
+            <!-- Skills Container -->
+            <div
+              id="skills-container"
+              data-render="skills"
+              class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            >
+              <!-- Frontend -->
+              <article class="card">
+                <h3 class="mb-4">Frontend</h3>
+                <ul class="flex flex-wrap gap-2" role="list">
+                  <li><span class="skill-badge">TypeScript</span></li>
+                  <li><span class="skill-badge">JavaScript</span></li>
+                  <li><span class="skill-badge">React</span></li>
+                  <li><span class="skill-badge">HTML5</span></li>
+                  <li><span class="skill-badge">CSS3</span></li>
+                  <li><span class="skill-badge">SCSS</span></li>
+                </ul>
+              </article>
+
+              <!-- Backend -->
+              <article class="card">
+                <h3 class="mb-4">Backend</h3>
+                <ul class="flex flex-wrap gap-2" role="list">
+                  <li><span class="skill-badge">Node.js</span></li>
+                  <li><span class="skill-badge">Python</span></li>
+                  <li><span class="skill-badge">SQL</span></li>
+                  <li><span class="skill-badge">REST APIs</span></li>
+                </ul>
+              </article>
+
+              <!-- Tools & DevOps -->
+              <article class="card">
+                <h3 class="mb-4">Tools & DevOps</h3>
+                <ul class="flex flex-wrap gap-2" role="list">
+                  <li><span class="skill-badge">Git</span></li>
+                  <li><span class="skill-badge">GitHub</span></li>
+                  <li><span class="skill-badge">VS Code</span></li>
+                  <li><span class="skill-badge">Vite</span></li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20">
+          <div class="container">
+            <h2 class="text-center mb-12">Featured Projects</h2>
+
+            <!-- Featured Capstone Project -->
+            <article
+              id="capstone-project"
+              data-render="capstone"
+              class="card mb-12"
+            >
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Project Image -->
+                <div class="relative">
+                  <img
+                    src="/images/projects/capstone-preview.png"
+                    alt="Capstone Project Preview"
+                    class="rounded-lg w-full"
+                    loading="lazy"
+                  />
+                  <span class="absolute top-4 left-4 skill-badge">Featured</span>
+                </div>
+
+                <!-- Project Details -->
+                <div class="flex flex-col justify-center">
+                  <h3 class="mb-4">Capstone Project</h3>
+                  <p class="text-muted mb-4">
+                    A comprehensive project showcasing full-stack development skills
+                    with modern technologies and best practices.
+                  </p>
+                  <ul class="flex flex-wrap gap-2 mb-6" role="list">
+                    <li><span class="skill-badge skill-badge--small">React</span></li>
+                    <li><span class="skill-badge skill-badge--small">Node.js</span></li>
+                    <li><span class="skill-badge skill-badge--small">TypeScript</span></li>
+                  </ul>
+                  <div class="flex gap-4">
+                    <a href="#" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                      Live Demo
+                    </a>
+                    <a href="#" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+                      View Code
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Other Projects Grid -->
+            <div
+              id="projects-container"
+              data-render="projects"
+              class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            >
+              <!-- Project Card 1 -->
+              <article class="card">
+                <img
+                  src="/images/projects/project-1.png"
+                  alt="Project 1 Preview"
+                  class="rounded-lg mb-4 w-full"
+                  loading="lazy"
+                />
+                <h3 class="mb-2">Project One</h3>
+                <p class="text-muted mb-4 line-clamp-3">
+                  Brief description of the project and what it accomplishes.
+                </p>
+                <ul class="flex flex-wrap gap-2 mb-4" role="list">
+                  <li><span class="skill-badge skill-badge--small">Tech</span></li>
+                </ul>
+                <div class="flex gap-4">
+                  <a href="#" target="_blank" rel="noopener noreferrer">Demo</a>
+                  <a href="#" target="_blank" rel="noopener noreferrer">Code</a>
+                </div>
+              </article>
+
+              <!-- Project Card 2 -->
+              <article class="card">
+                <img
+                  src="/images/projects/project-2.png"
+                  alt="Project 2 Preview"
+                  class="rounded-lg mb-4 w-full"
+                  loading="lazy"
+                />
+                <h3 class="mb-2">Project Two</h3>
+                <p class="text-muted mb-4 line-clamp-3">
+                  Brief description of the project and what it accomplishes.
+                </p>
+                <ul class="flex flex-wrap gap-2 mb-4" role="list">
+                  <li><span class="skill-badge skill-badge--small">Tech</span></li>
+                </ul>
+                <div class="flex gap-4">
+                  <a href="#" target="_blank" rel="noopener noreferrer">Demo</a>
+                  <a href="#" target="_blank" rel="noopener noreferrer">Code</a>
+                </div>
+              </article>
+
+              <!-- Project Card 3 -->
+              <article class="card">
+                <img
+                  src="/images/projects/project-3.png"
+                  alt="Project 3 Preview"
+                  loading="lazy"
+                  class="rounded-lg mb-4 w-full"
+                />
+                <h3 class="mb-2">Project Three</h3>
+                <p class="text-muted mb-4 line-clamp-3">
+                  Brief description of the project and what it accomplishes.
+                </p>
+                <ul class="flex flex-wrap gap-2 mb-4" role="list">
+                  <li><span class="skill-badge skill-badge--small">Tech</span></li>
+                </ul>
+                <div class="flex gap-4">
+                  <a href="#" target="_blank" rel="noopener noreferrer">Demo</a>
+                  <a href="#" target="_blank" rel="noopener noreferrer">Code</a>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-20">
+          <div class="container container-narrow">
+            <h2 class="text-center mb-12">Work Experience</h2>
+
+            <!-- Timeline Container -->
+            <div
+              id="experience-container"
+              data-render="experience"
+              class="relative"
+            >
+              <!-- Experience Entry 1 -->
+              <article class="mb-8 relative pl-8">
+                <div class="timeline-marker" aria-hidden="true"></div>
+
+                <header class="mb-2">
+                  <h3 class="mb-1">Software Developer</h3>
+                  <p class="text-primary font-medium">Company Name</p>
+                  <p class="text-muted">
+                    <time datetime="2023-01">Jan 2023</time> - Present
+                  </p>
+                </header>
+
+                <ul class="mb-4">
+                  <li>Developed and maintained web applications using modern frameworks</li>
+                  <li>Collaborated with cross-functional teams to deliver features</li>
+                  <li>Implemented responsive designs and improved performance</li>
+                </ul>
+
+                <ul class="flex flex-wrap gap-2" role="list">
+                  <li><span class="skill-badge skill-badge--small">React</span></li>
+                  <li><span class="skill-badge skill-badge--small">TypeScript</span></li>
+                </ul>
+              </article>
+
+              <!-- Experience Entry 2 -->
+              <article class="mb-8 relative pl-8">
+                <div class="timeline-marker" aria-hidden="true"></div>
+
+                <header class="mb-2">
+                  <h3 class="mb-1">Junior Developer</h3>
+                  <p class="text-primary font-medium">Previous Company</p>
+                  <p class="text-muted">
+                    <time datetime="2021-06">Jun 2021</time> - <time datetime="2022-12">Dec 2022</time>
+                  </p>
+                </header>
+
+                <ul class="mb-4">
+                  <li>Built and tested software components</li>
+                  <li>Participated in code reviews and team meetings</li>
+                  <li>Learned and applied best practices in software development</li>
+                </ul>
+
+                <ul class="flex flex-wrap gap-2" role="list">
+                  <li><span class="skill-badge skill-badge--small">JavaScript</span></li>
+                  <li><span class="skill-badge skill-badge--small">Node.js</span></li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- Education & Certifications Section -->
+        <section id="education" class="py-20">
+          <div class="container container-narrow">
+            <h2 class="text-center mb-12">Education & Certifications</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <!-- Education Column -->
+              <div>
+                <h3 class="mb-6">Education</h3>
+                <div
+                  id="education-container"
+                  data-render="education"
+                >
+                  <article class="card mb-4">
+                    <h4 class="mb-1">Bachelor of Science in Computer Science</h4>
+                    <p class="text-primary font-medium">University Name</p>
+                    <p class="text-muted">
+                      <time datetime="2017">2017</time> - <time datetime="2021">2021</time>
+                    </p>
+                  </article>
+                </div>
+              </div>
+
+              <!-- Certifications Column -->
+              <div>
+                <h3 class="mb-6">Certifications</h3>
+                <div
+                  id="certifications-container"
+                  data-render="certifications"
+                >
+                  <article class="card mb-4">
+                    <h4 class="mb-1">AWS Certified Developer</h4>
+                    <p class="text-muted">
+                      Issued <time datetime="2023-06">June 2023</time>
+                    </p>
+                    <a
+                      href="#"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      View Credential
+                    </a>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20">
+          <div class="container container-narrow">
+            <h2 class="text-center mb-4">Get In Touch</h2>
+            <p class="text-center text-muted mb-12">
+              Have a project in mind or want to connect? Feel free to reach out!
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+              <!-- Contact Form -->
+              <div>
+                <form
+                  id="contact-form"
+                  class="flex flex-col gap-4"
+                  action="#"
+                  method="POST"
+                  data-form="contact"
+                  novalidate
+                >
+                  <div class="form-group">
+                    <label for="contact-name" class="mb-2">
+                      Name <span class="text-error" aria-hidden="true">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="contact-name"
+                      name="name"
+                      required
+                      autocomplete="name"
+                      class="form-input w-full"
+                      placeholder="Your name"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="contact-email" class="mb-2">
+                      Email <span class="text-error" aria-hidden="true">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      id="contact-email"
+                      name="email"
+                      required
+                      autocomplete="email"
+                      class="form-input w-full"
+                      placeholder="your.email@example.com"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="contact-subject" class="mb-2">
+                      Subject
+                    </label>
+                    <input
+                      type="text"
+                      id="contact-subject"
+                      name="subject"
+                      class="form-input w-full"
+                      placeholder="What's this about?"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="contact-message" class="mb-2">
+                      Message <span class="text-error" aria-hidden="true">*</span>
+                    </label>
+                    <textarea
+                      id="contact-message"
+                      name="message"
+                      required
+                      rows="5"
+                      class="form-input w-full"
+                      placeholder="Your message..."
+                    ></textarea>
+                  </div>
+
+                  <!-- Form Status Messages -->
+                  <div
+                    id="form-status"
+                    class="hidden"
+                    role="alert"
+                    aria-live="polite"
+                  ></div>
+
+                  <button type="submit" class="btn btn-primary">
+                    Send Message
+                  </button>
+                </form>
+              </div>
+
+              <!-- Contact Info & Social Links -->
+              <div>
+                <h3 class="mb-6">Connect With Me</h3>
+
+                <address class="not-italic mb-8">
+                  <ul class="flex flex-col gap-4" role="list">
+                    <li class="flex items-center gap-3">
+                      <a href="mailto:contact@example.com">
+                        contact@example.com
+                      </a>
+                    </li>
+                    <li class="flex items-center gap-3">
+                      <span>City, State</span>
+                    </li>
+                  </ul>
+                </address>
+
+                <h4 class="mb-4">Social Links</h4>
+                <ul class="flex gap-4" role="list">
+                  <li>
+                    <a
+                      href="https://github.com/realmbs"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="GitHub Profile"
+                      class="social-link"
+                    >
+                      GitHub
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://linkedin.com/in/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="LinkedIn Profile"
+                      class="social-link"
+                    >
+                      LinkedIn
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </section>
       </main>
+
+      <!-- Site Footer -->
+      <footer class="py-8 mt-auto">
+        <div class="container">
+          <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+            <!-- Copyright -->
+            <p class="text-muted">
+              &copy; <span id="current-year">2024</span> Mark Blaha. All rights reserved.
+            </p>
+
+            <!-- Footer Navigation -->
+            <nav aria-label="Footer navigation">
+              <ul class="flex gap-6" role="list">
+                <li><a href="#hero" class="text-muted">Home</a></li>
+                <li><a href="#about" class="text-muted">About</a></li>
+                <li><a href="#projects" class="text-muted">Projects</a></li>
+                <li><a href="#contact" class="text-muted">Contact</a></li>
+              </ul>
+            </nav>
+
+            <!-- Back to Top -->
+            <a href="#hero" class="text-muted" aria-label="Back to top">
+              Back to top
+            </a>
+          </div>
+        </div>
+      </footer>
     </div>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

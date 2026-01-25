@@ -108,35 +108,23 @@ realmbs.github.io/
 - GitHub Pages at `https://realmbs.github.io`
 - Build output: `/dist` directory
 
-# CURRENT TASK: STYLING FOUNDATION
-1. Create SCSS abstracts
+# CURRENT TASK: DATA
+1. design resume json schema
+* create resume.json in `src/data/`
+* define personal information object
+* define experience array
+* define education array
+* define certifications array
+* define skills categorization
+* define projects array
+2. create TS types
+* create resume.d.ts in `src/types/`
+* define TS interface matching json schema
+* export types for use
+3. populate resume data
+* fill in actual resume information [completed by human]
 
-write to _variables.scss with color palette, spacing scale, breakpoints, font families, z-index layers
-write to _mixins.scss with responsive breakpoint mixins, flexbox/grid utilities
-write to _functions.scss with rem conversion, color manipulation helpers
 
-2. Create base styles
-
-write to _reset.scss with CSS reset or normalize
-write to _typography.scss with font imports, base font sizes, heading styles, body text
-write to _utilities.scss with container classes, visibility helpers, spacing utilities
-
-3. Create theme system
-
-write to _light.scss with CSS custom properties for light mode colors
-write to _dark.scss with CSS custom properties for dark mode colors
-Define color tokens (background, text, accent, borders)
-Plan theme switching mechanism (class or data attribute)
-
-4. Create main SCSS entry
-
-write to main.scss that imports everything in correct order
-Import order: abstracts → base → themes → layout → components
-Update main.ts to import main.scss
-
-5. Test styling system
-
-Add temporary HTML to index.html to test colors
-Verify CSS custom properties work
-Check responsive breakpoints
-Test in browser dev tools
+# COMPLETED TASKS
+1. STYLING FOUNDATION
+2. HTML STRUCTURE
