@@ -7,7 +7,106 @@
     <title>realmbs.github.io</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <!-- Temporary test content - remove after verifying styles -->
+      <main class="container py-12">
+        <header class="mb-12">
+          <h1>Style System Test</h1>
+          <p class="lead">Testing the SCSS styling foundation</p>
+        </header>
+
+        <!-- Theme Toggle Test -->
+        <section class="mb-12">
+          <h2>Theme Toggle</h2>
+          <button
+            id="theme-toggle"
+            class="p-4 rounded-lg"
+            style="background: var(--color-surface); border: 1px solid var(--color-border);"
+            onclick="toggleTheme()"
+          >
+            Toggle Theme
+          </button>
+          <p class="text-muted mt-4">Current theme is controlled by the data-theme attribute on &lt;html&gt;</p>
+        </section>
+
+        <!-- Typography Test -->
+        <section class="mb-12">
+          <h2>Typography</h2>
+          <h1>Heading 1</h1>
+          <h2>Heading 2</h2>
+          <h3>Heading 3</h3>
+          <h4>Heading 4</h4>
+          <h5>Heading 5</h5>
+          <h6>Heading 6</h6>
+          <p>This is a regular paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p class="lead">This is a lead paragraph with larger, muted text.</p>
+          <p><a href="#">This is a link</a></p>
+          <p><code>This is inline code</code></p>
+          <pre><code>// This is a code block
+const greeting = 'Hello, World!';
+console.log(greeting);</code></pre>
+        </section>
+
+        <!-- Color Test -->
+        <section class="mb-12">
+          <h2>Color Tokens</h2>
+          <div class="grid gap-4" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
+            <div class="p-4 rounded" style="background: var(--color-bg);">--color-bg</div>
+            <div class="p-4 rounded" style="background: var(--color-surface); border: 1px solid var(--color-border);">--color-surface</div>
+            <div class="p-4 rounded" style="background: var(--color-surface-alt);">--color-surface-alt</div>
+            <div class="p-4 rounded" style="background: var(--color-primary); color: white;">--color-primary</div>
+            <div class="p-4 rounded" style="background: var(--color-accent); color: white;">--color-accent</div>
+          </div>
+        </section>
+
+        <!-- Spacing Test -->
+        <section class="mb-12">
+          <h2>Spacing Utilities</h2>
+          <div class="flex gap-4 flex-wrap">
+            <div class="p-2 rounded" style="background: var(--color-surface-alt);">p-2</div>
+            <div class="p-4 rounded" style="background: var(--color-surface-alt);">p-4</div>
+            <div class="p-6 rounded" style="background: var(--color-surface-alt);">p-6</div>
+            <div class="p-8 rounded" style="background: var(--color-surface-alt);">p-8</div>
+          </div>
+        </section>
+
+        <!-- Responsive Test -->
+        <section class="mb-12">
+          <h2>Responsive Breakpoints</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="p-4 rounded text-center" style="background: var(--color-surface-alt);">
+              Item 1
+            </div>
+            <div class="p-4 rounded text-center" style="background: var(--color-surface-alt);">
+              Item 2
+            </div>
+            <div class="p-4 rounded text-center" style="background: var(--color-surface-alt);">
+              Item 3
+            </div>
+          </div>
+          <p class="text-muted mt-4">Resize the window to see grid columns change (1 → 2 → 3)</p>
+        </section>
+
+        <!-- Flexbox Test -->
+        <section class="mb-12">
+          <h2>Flexbox Utilities</h2>
+          <div class="flex justify-between items-center p-4 rounded" style="background: var(--color-surface-alt);">
+            <span>Left</span>
+            <span>Center</span>
+            <span>Right</span>
+          </div>
+        </section>
+
+        <!-- Text Utilities -->
+        <section class="mb-12">
+          <h2>Text Utilities</h2>
+          <p class="text-muted">This text uses --color-text-muted</p>
+          <p class="text-primary">This text uses --color-primary</p>
+          <p class="font-bold">This text is bold</p>
+          <p class="text-center">This text is centered</p>
+        </section>
+      </main>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

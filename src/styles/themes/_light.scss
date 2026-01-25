@@ -1,1 +1,76 @@
-// light mode overrides, base colors, backgrounds, etc
+// ============================================
+// LIGHT THEME
+// CSS Custom Properties for light mode
+// ============================================
+
+@use '../abstracts/variables' as *;
+
+// Light theme is the default
+:root {
+  // Color scheme hint for browser
+  color-scheme: light;
+
+  // Background colors
+  --color-bg: #{$color-gray-50};
+  --color-surface: #ffffff;
+  --color-surface-alt: #{$color-gray-100};
+  --color-surface-hover: #{$color-gray-200};
+
+  // Text colors
+  --color-text: #{$color-gray-900};
+  --color-text-muted: #{$color-gray-600};
+  --color-text-subtle: #{$color-gray-500};
+
+  // Primary/accent colors
+  --color-primary: #{$color-primary-600};
+  --color-primary-hover: #{$color-primary-700};
+  --color-primary-light: #{$color-primary-100};
+
+  // Secondary accent
+  --color-accent: #{$color-accent-500};
+
+  // Border colors
+  --color-border: #{$color-gray-200};
+  --color-border-strong: #{$color-gray-300};
+
+  // Status colors
+  --color-success: #{$color-success};
+  --color-warning: #{$color-warning};
+  --color-error: #{$color-error};
+
+  // Shadows (adjusted for light mode)
+  --shadow-sm: #{$shadow-sm};
+  --shadow-md: #{$shadow-md};
+  --shadow-lg: #{$shadow-lg};
+
+  // Focus ring
+  --color-focus-ring: #{$color-primary-500};
+
+  // Overlay
+  --color-overlay: rgba(0, 0, 0, 0.5);
+}
+
+// Apply light theme when explicitly set via data attribute
+[data-theme="light"] {
+  color-scheme: light;
+
+  --color-bg: #{$color-gray-50};
+  --color-surface: #ffffff;
+  --color-surface-alt: #{$color-gray-100};
+  --color-surface-hover: #{$color-gray-200};
+
+  --color-text: #{$color-gray-900};
+  --color-text-muted: #{$color-gray-600};
+  --color-text-subtle: #{$color-gray-500};
+
+  --color-primary: #{$color-primary-600};
+  --color-primary-hover: #{$color-primary-700};
+  --color-primary-light: #{$color-primary-100};
+
+  --color-accent: #{$color-accent-500};
+
+  --color-border: #{$color-gray-200};
+  --color-border-strong: #{$color-gray-300};
+
+  --color-overlay: rgba(0, 0, 0, 0.5);
+}

@@ -1,2 +1,37 @@
-// imports everything in correct order
-// abstracts -> base -> layout -> components -> themes
+// ============================================
+// MAIN SCSS ENTRY POINT
+// Import order: abstracts -> base -> themes -> layout -> components
+// ============================================
+
+// 1. Abstracts (no CSS output, only variables, functions, mixins)
+// These are used via @use in other files, but we forward them here for organization
+@use 'abstracts';
+
+// 2. Base styles (reset, typography, utilities)
+@use 'base';
+
+// 3. Themes (CSS custom properties for light/dark mode)
+@use 'themes';
+
+// 4. Layout (when implemented)
+// @use 'layout';
+
+// 5. Components (when implemented)
+// @use 'components';
+
+// ============================================
+// GLOBAL STYLES
+// Core body and app styles
+// ============================================
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

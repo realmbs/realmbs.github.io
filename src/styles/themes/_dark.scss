@@ -1,1 +1,76 @@
-// dark mode specific styles, overrides for colors, backgrounds, etc
+// ============================================
+// DARK THEME
+// CSS Custom Properties for dark mode
+// ============================================
+
+@use '../abstracts/variables' as *;
+
+// Dark theme via system preference
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
+    // Background colors
+    --color-bg: #{$color-gray-950};
+    --color-surface: #{$color-gray-900};
+    --color-surface-alt: #{$color-gray-800};
+    --color-surface-hover: #{$color-gray-700};
+
+    // Text colors
+    --color-text: #{$color-gray-50};
+    --color-text-muted: #{$color-gray-400};
+    --color-text-subtle: #{$color-gray-500};
+
+    // Primary/accent colors (slightly lighter for dark bg)
+    --color-primary: #{$color-primary-400};
+    --color-primary-hover: #{$color-primary-300};
+    --color-primary-light: #{$color-primary-900};
+
+    // Secondary accent
+    --color-accent: #{$color-accent-500};
+
+    // Border colors
+    --color-border: #{$color-gray-700};
+    --color-border-strong: #{$color-gray-600};
+
+    // Shadows (adjusted for dark mode)
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+
+    // Focus ring
+    --color-focus-ring: #{$color-primary-400};
+
+    // Overlay
+    --color-overlay: rgba(0, 0, 0, 0.7);
+  }
+}
+
+// Dark theme via data attribute (overrides system preference)
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-bg: #{$color-gray-950};
+  --color-surface: #{$color-gray-900};
+  --color-surface-alt: #{$color-gray-800};
+  --color-surface-hover: #{$color-gray-700};
+
+  --color-text: #{$color-gray-50};
+  --color-text-muted: #{$color-gray-400};
+  --color-text-subtle: #{$color-gray-500};
+
+  --color-primary: #{$color-primary-400};
+  --color-primary-hover: #{$color-primary-300};
+  --color-primary-light: #{$color-primary-900};
+
+  --color-accent: #{$color-accent-500};
+
+  --color-border: #{$color-gray-700};
+  --color-border-strong: #{$color-gray-600};
+
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+
+  --color-overlay: rgba(0, 0, 0, 0.7);
+}

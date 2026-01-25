@@ -1,0 +1,4 @@
+// Themes index - forward all theme partials
+// Light first (establishes defaults), then dark (overrides)
+@forward 'light';
+@forward 'dark';

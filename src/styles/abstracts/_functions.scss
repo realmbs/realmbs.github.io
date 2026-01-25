@@ -1,1 +1,117 @@
-// scss functions for calculations, conversions, and color manipulation
+// ============================================
+// FUNCTIONS
+// SCSS helper functions for calculations
+// ============================================
+
+@use 'sass:math';
+@use 'sass:color';
+@use 'sass:map';
+@use 'sass:list';
+@use 'variables' as *;
+
+// --------------------------------------------
+// REM CONVERSION
+// Convert px values to rem (base 16px)
+// --------------------------------------------
+@function rem($px) {
+  @if math.is-unitless($px) {
+    @return math.div($px, 16) * 1rem;
+  } @else if math.unit($px) == 'px' {
+    @return math.div(math.div($px, 1px), 16) * 1rem;
+  } @else {
+    @error 'rem() requires a unitless number or px value';
+  }
+}
+
+// --------------------------------------------
+// EM CONVERSION
+// Convert px to em relative to context
+// --------------------------------------------
+@function em($px, $context: 16) {
+  @if math.is-unitless($px) {
+    @return math.div($px, $context) * 1em;
+  } @else if math.unit($px) == 'px' {
+    @return math.div(math.div($px, 1px), $context) * 1em;
+  } @else {
+    @error 'em() requires a unitless number or px value';
+  }
+}
+
+// --------------------------------------------
+// COLOR MANIPULATION
+// Helpers for color adjustments
+// --------------------------------------------
+
+/// Lighten a color by mixing with white
+/// @param {Color} $color - Base color
+/// @param {Number} $percentage - Amount to lighten (0-100)
+/// @return {Color} Lightened color
+@function tint($color, $percentage) {
+  @return color.mix(white, $color, $percentage);
+}
+
+/// Darken a color by mixing with black
+/// @param {Color} $color - Base color
+/// @param {Number} $percentage - Amount to darken (0-100)
+/// @return {Color} Darkened color
+@function shade($color, $percentage) {
+  @return color.mix(black, $color, $percentage);
+}
+
+/// Adjust color opacity
+/// @param {Color} $color - Base color
+/// @param {Number} $alpha - Opacity value (0-1)
+/// @return {Color} Color with adjusted opacity
+@function alpha($color, $alpha) {
+  @return color.change($color, $alpha: $alpha);
+}
+
+// --------------------------------------------
+// SPACING HELPERS
+// --------------------------------------------
+
+/// Get spacing value from scale
+/// @param {String} $key - Spacing key (e.g., '4', '8')
+/// @return {Number} Spacing value
+@function spacing($key) {
+  @if map.has-key($spacing-scale, $key) {
+    @return map.get($spacing-scale, $key);
+  } @else {
+    @error 'Unknown spacing key: #{$key}';
+  }
+}
+
+// --------------------------------------------
+// STRING HELPERS
+// --------------------------------------------
+
+/// Remove unit from a number
+/// @param {Number} $num - Number with unit
+/// @return {Number} Unitless number
+@function strip-unit($num) {
+  @return math.div($num, $num * 0 + 1);
+}
+
+// --------------------------------------------
+// FLUID TYPOGRAPHY/SIZING
+// Clamp-based responsive values
+// --------------------------------------------
+
+/// Create a fluid value that scales between breakpoints
+/// @param {Number} $min-size - Minimum size (px)
+/// @param {Number} $max-size - Maximum size (px)
+/// @param {Number} $min-width - Minimum viewport width (px)
+/// @param {Number} $max-width - Maximum viewport width (px)
+/// @return {String} CSS clamp() value
+@function fluid($min-size, $max-size, $min-width: 375, $max-width: 1200) {
+  $min-rem: rem($min-size);
+  $max-rem: rem($max-size);
+
+  $slope: math.div($max-size - $min-size, $max-width - $min-width);
+  $intercept: $min-size - ($slope * $min-width);
+
+  $slope-vw: $slope * 100;
+  $intercept-rem: rem($intercept);
+
+  @return clamp(#{$min-rem}, #{$intercept-rem} + #{$slope-vw}vw, #{$max-rem});
+}
