@@ -1,0 +1,113 @@
+{
+  "personal": {
+    "name": "Mark Blaha",
+    "title": "Recent Graduate",
+    "email": "markblaha96@icloud.com",
+    "location": "Dallas, TX",
+    "bio": [
+      "I am a recent graduate with a bachelor's degree in cybersecurity and 4.0 GPA",
+      "I have experience in cloud-native and frontend development and offensive security tools. I am actively preparing for the OSCP certification."
+    ],
+    "socialLinks": [
+      {
+        "platform": "github",
+        "url": "https://github.com/realmbs",
+        "label": "GitHub"
+      },
+      {
+        "platform": "linkedin",
+        "url": "https://www.linkedin.com/in/mark-blaha-314982334/",
+        "label": "LinkedIn"
+      }
+    ]
+  },
+  "skills": [
+    {
+      "name": "Programming",
+      "skills": ["Python", "TypeScript", "Bash", "HTML5", "SCSS"]
+    },
+    {
+      "name": "Cloud",
+      "skills": ["AWS", "Terraform", "Lambda", "DynamoDB", "EC2", "S3"]
+    },
+    {
+      "name": "Developer Tools",
+      "skills": ["Git", "GitHub", "GitHub Actions", "Vite"]
+    },
+    {
+      "name": "Security",
+      "skills": ["Wireshark", "Burp Suite", "Nmap", "Metasploit", "OpenVAS", "ATT&CK", "CIS Top 18"]
+    },
+    {
+      "name": "Networking",
+      "skills": ["TCP/IP", "OSI Model", "Cisco IOS", "DNS", "DHCP", "VPNs"]
+    },
+    {
+      "name": "GRC",
+      "skills": ["PCI-DSS v4.0", "COBIT 2019", "ISO 27001", "NIST CSF"]
+    },
+    {
+      "name": "Soft Skills",
+      "skills": ["Problem Solving", "Technical and non-technical writing", "Effective Communication", "Academic Research"]
+    }
+  ],
+  "projects": [
+    {
+      "title": "Capstone Project",
+      "description": "A cloud-native threat intelligence platform created for small business use. Collects and processes 32,000+ IOCs from multiple open-source threat intelligence feeds, providing helpful intelligence to users via a web dashboard.",
+      "image": "/images/projects/capstone-preview.png",
+      "technologies": ["AWS", "Terraform", "DynamoDB", "Lambda", "API Gateway", "TypeScript"],
+      "demoUrl": "#",
+      "codeUrl": "#",
+      "featured": true
+    },
+    {
+      "title": "PCI-DSS v4.0 / COBIT 2019 Audit",
+      "description": "Level 3 PCI-DSS audit of a $150k revenue mock financial firm. Implemented 30+ control tests, conducted risk assessemnt, and delivered technical report to faculty. Implemented COBIT 2019 framework to align IT goals with business objectives.",
+      "image": "/images/projects/project-1.png",
+      "technologies": ["PCI-DSS v4.0", "COBIT 2019"],
+      "demoUrl": "#",
+      "codeUrl": "#",
+      "featured": false
+    },
+    {
+      "title": "Network Security and DNS Management System",
+      "description": "Enhanced network security by blocking 1M+ malicious domains using Pi-hole and DNS-over-HTTPS. Implemented real-time monitoring with Slack webhooks and automated Bash scripts for system updates and backups.",
+      "image": "/images/projects/project-2.png",
+      "technologies": ["Pi-hole", "DNS-over-HTTPS", "Slack", "Bash"],
+      "demoUrl": "#",
+      "codeUrl": "#",
+      "featured": false
+    }
+  ],
+  "experience": [
+    {
+      "title": "Business Development Associate",
+      "company": "Procertas, LLC",
+      "startDate": "2025-01",
+      "endDate": null,
+      "responsibilities": [
+        "Performed email-based outreach to prospective clients in the education sector",
+        "Implemented CRM strategies to manage client relationships",
+        "Impelemented automation tools to streamline client research and outreach processes"
+      ],
+      "technologies": ["CRM", "Professional communication"]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Bachelor of Applied Technology in Cybersecurity",
+      "institution": "Collin College",
+      "gpa": 4.0,
+      "startYear": 2023,
+      "endYear": 2025
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Google Certified Cybersecurity Professional",
+      "issueDate": "2024-01",
+      "credentialUrl": "#"
+    }
+  ]
+}

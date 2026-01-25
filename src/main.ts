@@ -1,6 +1,9 @@
 // Import SCSS styles
 import './styles/main.scss';
 
+// Import resume renderer
+import { initResumeRenderer } from './scripts/resume-renderer';
+
 // Theme management
 const THEME_KEY = 'theme-preference';
 
@@ -63,6 +66,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Expose toggle function globally for testing
   (window as unknown as { toggleTheme: () => void }).toggleTheme = toggleTheme;
+
+  // Render resume data to DOM
+  initResumeRenderer();
 });
 
 // Listen for system preference changes

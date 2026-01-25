@@ -108,23 +108,18 @@ realmbs.github.io/
 - GitHub Pages at `https://realmbs.github.io`
 - Build output: `/dist` directory
 
-# CURRENT TASK: DATA
-1. design resume json schema
-* create resume.json in `src/data/`
-* define personal information object
-* define experience array
-* define education array
-* define certifications array
-* define skills categorization
-* define projects array
-2. create TS types
-* create resume.d.ts in `src/types/`
-* define TS interface matching json schema
-* export types for use
-3. populate resume data
-* fill in actual resume information [completed by human]
+# CURRENT TASK: FULL PAGE SCROLLING
+1. implement full page scrolling
+* hero page
+* about me
+* skills & technologies
+* featured projects
+* work experience
+* education & certifications
+* get in touch 
 
 
 # COMPLETED TASKS
 1. STYLING FOUNDATION
 2. HTML STRUCTURE
+3. DATA (resume.json schema, resume.d.ts)
