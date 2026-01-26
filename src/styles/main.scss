@@ -13,11 +13,11 @@
 // 3. Themes (CSS custom properties for light/dark mode)
 @use 'themes';
 
-// 4. Layout (when implemented)
-// @use 'layout';
+// 4. Layout
+@use 'layout';
 
-// 5. Components (when implemented)
-// @use 'components';
+// 5. Components
+@use 'components';
 
 // ============================================
 // GLOBAL STYLES

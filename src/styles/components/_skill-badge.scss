@@ -1,0 +1,110 @@
+// ============================================
+// SKILL BADGE COMPONENT
+// Pill-style badges for skills and tags
+// ============================================
+
+@use '../abstracts' as *;
+
+// --------------------------------------------
+// BASE SKILL BADGE
+// --------------------------------------------
+.skill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-1;
+
+  padding: $spacing-2 $spacing-3;
+
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  line-height: 1;
+  white-space: nowrap;
+
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+  border-radius: $border-radius-full;
+
+  @include transition((background-color, color, transform));
+
+  &:hover {
+    background-color: var(--color-primary);
+    color: white;
+  }
+}
+
+// --------------------------------------------
+// SIZE VARIANTS
+// --------------------------------------------
+.skill-badge--small {
+  padding: $spacing-1 $spacing-2;
+  font-size: $font-size-xs;
+}
+
+.skill-badge--large {
+  padding: $spacing-3 $spacing-4;
+  font-size: $font-size-base;
+}
+
+// --------------------------------------------
+// COLOR VARIANTS
+// --------------------------------------------
+
+// Muted/subtle variant
+.skill-badge--muted {
+  background-color: var(--color-surface-alt);
+  color: var(--color-text-muted);
+
+  &:hover {
+    background-color: var(--color-surface-hover);
+    color: var(--color-text);
+  }
+}
+
+// Accent variant
+.skill-badge--accent {
+  background-color: var(--color-accent-light);
+  color: var(--color-accent);
+
+  &:hover {
+    background-color: var(--color-accent);
+    color: white;
+  }
+}
+
+// Success variant
+.skill-badge--success {
+  background-color: var(--color-success-light);
+  color: var(--color-success);
+
+  &:hover {
+    background-color: var(--color-success);
+    color: white;
+  }
+}
+
+// --------------------------------------------
+// OUTLINE VARIANT
+// --------------------------------------------
+.skill-badge--outline {
+  background-color: transparent;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+
+  &:hover {
+    background-color: var(--color-primary);
+    color: white;
+  }
+}
+
+// --------------------------------------------
+// NON-INTERACTIVE VARIANT
+// --------------------------------------------
+.skill-badge--static {
+  pointer-events: none;
+
+  &:hover {
+    background-color: var(--color-primary-light);
+    color: var(--color-primary);
+    transform: none;
+  }
+}

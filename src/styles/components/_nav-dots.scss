@@ -1,0 +1,85 @@
+// ============================================
+// NAVIGATION DOTS
+// Section indicator for full-page scroll
+// ============================================
+
+@use '../abstracts' as *;
+
+// --------------------------------------------
+// NAV DOTS CONTAINER
+// --------------------------------------------
+.nav-dots {
+  position: fixed;
+  right: $spacing-4;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: $z-index-fixed;
+
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-3;
+
+  // Hide on small screens
+  @include breakpoint-down('md') {
+    display: none;
+  }
+}
+
+// --------------------------------------------
+// NAV DOT ITEM
+// --------------------------------------------
+.nav-dots__item {
+  @include button-reset;
+
+  position: relative;
+  width: 12px;
+  height: 12px;
+  border-radius: $border-radius-full;
+  background-color: var(--color-border-strong);
+
+  @include transition(background-color, transform);
+  @include focus-ring;
+
+  &:hover {
+    background-color: var(--color-primary);
+    transform: scale(1.2);
+  }
+
+  // Active state
+  &[aria-current="true"],
+  &.is-active {
+    background-color: var(--color-primary);
+    transform: scale(1.3);
+  }
+}
+
+// --------------------------------------------
+// NAV DOT LABEL (TOOLTIP)
+// --------------------------------------------
+.nav-dots__label {
+  @include visually-hidden;
+
+  // Show on hover/focus
+  .nav-dots__item:hover &,
+  .nav-dots__item:focus-visible & {
+    // Reset visually-hidden
+    position: absolute;
+    right: calc(100% + #{$spacing-2});
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    height: auto;
+    clip: auto;
+    overflow: visible;
+    white-space: nowrap;
+    margin: 0;
+
+    padding: $spacing-1 $spacing-2;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: $border-radius-sm;
+    box-shadow: var(--shadow-md);
+    font-size: $font-size-sm;
+    color: var(--color-text);
+  }
+}

@@ -1,1 +1,86 @@
-// section spacing, max width
+// ============================================
+// SECTION LAYOUT
+// Full-page scroll-snap behavior
+// ============================================
+
+@use '../abstracts' as *;
+
+// --------------------------------------------
+// CSS CUSTOM PROPERTY FOR HEADER HEIGHT
+// --------------------------------------------
+:root {
+  --header-height: 4rem;
+}
+
+// --------------------------------------------
+// SCROLL CONTAINER
+// Applied to <main> element
+// --------------------------------------------
+.scroll-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+
+  // Respect reduced motion preference
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+    scroll-snap-type: none;
+  }
+}
+
+// --------------------------------------------
+// SECTION BASE
+// Each full-page section
+// --------------------------------------------
+.section {
+  min-height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+
+  // Flexbox for content alignment
+  display: flex;
+  flex-direction: column;
+
+  // Account for fixed header height
+  padding-top: var(--header-height);
+  box-sizing: border-box;
+
+  // Scrollable variant for sections with long content
+  &--scrollable {
+    scroll-snap-align: start;
+    min-height: 100vh;
+    // Allow natural height overflow
+  }
+
+  // Centered content (hero section)
+  &--center {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  // Top-aligned content
+  &--top {
+    justify-content: flex-start;
+  }
+}
+
+// --------------------------------------------
+// SECTION CONTENT WRAPPER
+// Constrains content width within sections
+// --------------------------------------------
+.section__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: $spacing-8 $container-padding;
+
+  @include breakpoint('lg') {
+    padding: $spacing-12 $container-padding-lg;
+  }
+}

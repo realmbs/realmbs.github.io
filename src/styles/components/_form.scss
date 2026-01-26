@@ -1,0 +1,163 @@
+// ============================================
+// FORM COMPONENT
+// Form inputs, labels, and groups
+// ============================================
+
+@use '../abstracts' as *;
+
+// --------------------------------------------
+// FORM GROUP
+// --------------------------------------------
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2;
+}
+
+// --------------------------------------------
+// FORM LABEL
+// --------------------------------------------
+.form-label {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: var(--color-text);
+}
+
+// Required indicator
+.form-required {
+  color: var(--color-error);
+  margin-left: $spacing-1;
+}
+
+// --------------------------------------------
+// FORM INPUT
+// --------------------------------------------
+.form-input {
+  width: 100%;
+  padding: $spacing-3 $spacing-4;
+
+  font-family: inherit;
+  font-size: $font-size-base;
+  color: var(--color-text);
+
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: $border-radius-md;
+
+  @include transition((border-color, box-shadow));
+
+  &::placeholder {
+    color: var(--color-text-subtle);
+  }
+
+  &:hover {
+    border-color: var(--color-border-strong);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-light);
+  }
+
+  // Disabled state
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: var(--color-surface-alt);
+  }
+
+  // Error state
+  &.is-error,
+  &[aria-invalid="true"] {
+    border-color: var(--color-error);
+
+    &:focus {
+      box-shadow: 0 0 0 3px var(--color-error-light);
+    }
+  }
+
+  // Success state
+  &.is-success {
+    border-color: var(--color-success);
+
+    &:focus {
+      box-shadow: 0 0 0 3px var(--color-success-light);
+    }
+  }
+}
+
+// --------------------------------------------
+// TEXTAREA
+// --------------------------------------------
+textarea.form-input {
+  resize: vertical;
+  min-height: 120px;
+}
+
+// --------------------------------------------
+// SELECT
+// --------------------------------------------
+select.form-input {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23737373' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right $spacing-3 center;
+  padding-right: $spacing-10;
+  cursor: pointer;
+}
+
+// --------------------------------------------
+// CHECKBOX & RADIO
+// --------------------------------------------
+.form-check {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-2;
+  cursor: pointer;
+}
+
+.form-check-input {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+
+  accent-color: var(--color-primary);
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
+
+.form-check-label {
+  font-size: $font-size-sm;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+// --------------------------------------------
+// FORM HELPER TEXT
+// --------------------------------------------
+.form-helper {
+  font-size: $font-size-xs;
+  color: var(--color-text-muted);
+}
+
+// Error message
+.form-error {
+  font-size: $font-size-xs;
+  color: var(--color-error);
+}
+
+// --------------------------------------------
+// FORM ACTIONS
+// --------------------------------------------
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-4;
+  margin-top: $spacing-4;
+}

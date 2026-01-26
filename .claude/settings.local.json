@@ -5,7 +5,8 @@
       "Bash(wc:*)",
       "Bash(ls:*)",
       "Bash(find:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(npm run build:*)"
     ]
   }
 }

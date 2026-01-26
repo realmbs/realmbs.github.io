@@ -1,1 +1,247 @@
-// navigation, logo positioning
+// ============================================
+// HEADER LAYOUT
+// Fixed navigation header
+// ============================================
+
+@use '../abstracts' as *;
+
+// --------------------------------------------
+// SITE HEADER
+// --------------------------------------------
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-index-fixed;
+
+  height: var(--header-height);
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+
+  // Glassmorphism effect
+  backdrop-filter: blur(8px);
+  background-color: color-mix(in srgb, var(--color-bg) 85%, transparent);
+
+  @include transition(box-shadow);
+
+  // Scrolled state (add shadow)
+  &.is-scrolled {
+    box-shadow: var(--shadow-md);
+  }
+}
+
+// --------------------------------------------
+// NAVIGATION LINK
+// --------------------------------------------
+.nav-link {
+  position: relative;
+  padding: $spacing-2 $spacing-3;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+
+  @include transition(color);
+  @include focus-ring;
+
+  &:hover {
+    color: var(--color-text);
+  }
+
+  // Active state
+  &[aria-current="page"],
+  &.is-active {
+    color: var(--color-primary);
+
+    // Underline indicator
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: $spacing-3;
+      right: $spacing-3;
+      height: 2px;
+      background-color: var(--color-primary);
+      border-radius: $border-radius-full;
+    }
+  }
+}
+
+// --------------------------------------------
+// LOGO / BRAND
+// --------------------------------------------
+.site-logo {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: var(--color-text);
+  text-decoration: none;
+
+  @include transition(color);
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+// --------------------------------------------
+// MOBILE MENU TOGGLE (HAMBURGER)
+// --------------------------------------------
+#mobile-menu-toggle,
+.mobile-menu-toggle {
+  @include button-reset;
+  @include flex-center;
+
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: $border-radius-md;
+
+  @include transition(background-color);
+  @include focus-ring;
+
+  &:hover {
+    background-color: var(--color-surface-hover);
+  }
+
+  // Hamburger icon container
+  .hamburger {
+    position: relative;
+    width: 20px;
+    height: 14px;
+  }
+
+  // Hamburger lines
+  .hamburger__line {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-text);
+    border-radius: $border-radius-full;
+
+    @include transition((transform, opacity));
+
+    &:nth-child(1) {
+      top: 0;
+    }
+
+    &:nth-child(2) {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &:nth-child(3) {
+      bottom: 0;
+    }
+  }
+
+  // Open state - transform to X
+  &[aria-expanded="true"] {
+    .hamburger__line {
+      &:nth-child(1) {
+        top: 50%;
+        transform: translateY(-50%) rotate(45deg);
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+      }
+
+      &:nth-child(3) {
+        bottom: 50%;
+        transform: translateY(50%) rotate(-45deg);
+      }
+    }
+  }
+}
+
+// --------------------------------------------
+// MOBILE NAVIGATION MENU
+// --------------------------------------------
+#mobile-nav,
+.mobile-nav {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+
+  padding: $spacing-4;
+
+  // Animation
+  animation: slideDown $transition-fast forwards;
+
+  // Hidden state
+  &.hidden {
+    display: none;
+  }
+
+  // Mobile nav items
+  li {
+    list-style: none;
+  }
+
+  // Mobile nav links
+  a {
+    display: block;
+    padding: $spacing-3 $spacing-4;
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: $font-weight-medium;
+    border-radius: $border-radius-md;
+
+    @include transition((background-color, color));
+
+    &:hover {
+      background-color: var(--color-surface-hover);
+    }
+
+    &[aria-current="page"],
+    &.is-active {
+      color: var(--color-primary);
+      background-color: var(--color-primary-light);
+    }
+  }
+}
+
+// Slide down animation
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-$spacing-2);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// --------------------------------------------
+// HEADER INNER CONTAINER
+// --------------------------------------------
+.header__inner {
+  @include flex-between;
+  height: 100%;
+}
+
+// Desktop navigation
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: $spacing-6;
+
+  @include breakpoint-down('md') {
+    display: none;
+  }
+}
+
+// Header actions (theme toggle, mobile menu)
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-4;
+}

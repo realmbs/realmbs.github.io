@@ -1,1 +1,98 @@
-// grid system or utility classes
+// ============================================
+// GRID LAYOUT
+// Responsive grid systems for content areas
+// ============================================
+
+@use '../abstracts' as *;
+
+// --------------------------------------------
+// SKILLS GRID
+// 1 col → 2 col (md) → 3 col (lg)
+// --------------------------------------------
+.skills-grid {
+  @include grid-columns(1, $spacing-6);
+
+  @include breakpoint('md') {
+    @include grid-columns(2, $spacing-6);
+  }
+
+  @include breakpoint('lg') {
+    @include grid-columns(3, $spacing-6);
+  }
+}
+
+// --------------------------------------------
+// PROJECTS GRID
+// Same responsive pattern as skills
+// --------------------------------------------
+.projects-grid {
+  @include grid-columns(1, $spacing-6);
+
+  @include breakpoint('md') {
+    @include grid-columns(2, $spacing-6);
+  }
+
+  @include breakpoint('lg') {
+    @include grid-columns(3, $spacing-6);
+  }
+}
+
+// --------------------------------------------
+// TWO COLUMN LAYOUT
+// For education, about sections
+// --------------------------------------------
+.two-col-layout {
+  @include grid-columns(1, $spacing-8);
+
+  @include breakpoint('md') {
+    @include grid-columns(2, $spacing-8);
+  }
+}
+
+// --------------------------------------------
+// FEATURED LAYOUT
+// 2-column layout for featured content
+// --------------------------------------------
+.featured-layout {
+  @include grid-columns(1, $spacing-8);
+
+  @include breakpoint('lg') {
+    @include grid-columns(2, $spacing-8);
+    align-items: center;
+  }
+}
+
+// --------------------------------------------
+// AUTO-FIT GRID
+// Automatically adjusts columns based on space
+// --------------------------------------------
+.grid-auto {
+  @include grid-auto-fit(280px, $spacing-6);
+}
+
+.grid-auto--sm {
+  @include grid-auto-fit(200px, $spacing-4);
+}
+
+.grid-auto--lg {
+  @include grid-auto-fit(320px, $spacing-8);
+}
+
+// --------------------------------------------
+// CONTENT GRID
+// Main content + sidebar layout
+// --------------------------------------------
+.content-grid {
+  @include grid-columns(1, $spacing-8);
+
+  @include breakpoint('lg') {
+    grid-template-columns: 1fr 300px;
+  }
+}
+
+// Reversed (sidebar on left)
+.content-grid--reversed {
+  @include breakpoint('lg') {
+    grid-template-columns: 300px 1fr;
+  }
+}

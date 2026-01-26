@@ -1,0 +1,113 @@
+// ============================================
+// CARD COMPONENT
+// Card container for content blocks
+// ============================================
+
+@use '../abstracts' as *;
+
+// --------------------------------------------
+// BASE CARD
+// --------------------------------------------
+.card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: $border-radius-lg;
+  padding: $spacing-6;
+
+  box-shadow: var(--shadow-sm);
+
+  @include transition((box-shadow, border-color, transform));
+
+  &:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-border-strong);
+  }
+
+  // Image inside card
+  img {
+    border-radius: $border-radius-md;
+  }
+
+  // Card header
+  h3, h4 {
+    margin-bottom: $spacing-2;
+  }
+
+  // Card description
+  p {
+    color: var(--color-text-muted);
+  }
+}
+
+// --------------------------------------------
+// CARD VARIANTS
+// --------------------------------------------
+
+// Featured card (larger, more prominent)
+.card--featured {
+  padding: $spacing-8;
+
+  @include breakpoint('lg') {
+    padding: $spacing-10;
+  }
+}
+
+// Interactive card (clickable)
+.card--interactive {
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  @include focus-ring;
+}
+
+// Compact card (less padding)
+.card--compact {
+  padding: $spacing-4;
+}
+
+// --------------------------------------------
+// CARD SECTIONS
+// --------------------------------------------
+.card__header {
+  margin-bottom: $spacing-4;
+  padding-bottom: $spacing-4;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.card__body {
+  // Default body styles
+}
+
+.card__footer {
+  margin-top: $spacing-4;
+  padding-top: $spacing-4;
+  border-top: 1px solid var(--color-border);
+}
+
+// --------------------------------------------
+// CARD IMAGE
+// --------------------------------------------
+.card__image {
+  margin: #{-$spacing-6} #{-$spacing-6} $spacing-4;
+  border-radius: $border-radius-lg $border-radius-lg 0 0;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 0;
+  }
+
+  .card--compact & {
+    margin: #{-$spacing-4} #{-$spacing-4} $spacing-3;
+  }
+}

@@ -1,0 +1,170 @@
+// ============================================
+// TIMELINE COMPONENT
+// Vertical timeline for experience/history
+// ============================================
+
+@use '../abstracts' as *;
+
+// --------------------------------------------
+// TIMELINE CONTAINER
+// --------------------------------------------
+.timeline {
+  position: relative;
+  padding-left: $spacing-8;
+
+  // Vertical line
+  &::before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--color-border);
+  }
+}
+
+// --------------------------------------------
+// TIMELINE ITEM
+// --------------------------------------------
+.timeline__item {
+  position: relative;
+  padding-bottom: $spacing-8;
+
+  // Remove bottom padding on last item
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+// --------------------------------------------
+// TIMELINE MARKER
+// --------------------------------------------
+.timeline-marker {
+  position: absolute;
+  left: calc(-#{$spacing-8} + 1px);
+  top: $spacing-1;
+
+  width: 12px;
+  height: 12px;
+  border-radius: $border-radius-full;
+  background-color: var(--color-primary);
+  border: 2px solid var(--color-bg);
+  box-shadow: 0 0 0 2px var(--color-primary);
+
+  // Pulse animation on hover
+  @include transition((transform, box-shadow));
+
+  .timeline__item:hover & {
+    transform: scale(1.2);
+    box-shadow: 0 0 0 4px var(--color-primary-light);
+  }
+}
+
+// Marker variants
+.timeline-marker--muted {
+  background-color: var(--color-border-strong);
+  box-shadow: 0 0 0 2px var(--color-border-strong);
+
+  .timeline__item:hover & {
+    box-shadow: 0 0 0 4px var(--color-surface-alt);
+  }
+}
+
+.timeline-marker--accent {
+  background-color: var(--color-accent);
+  box-shadow: 0 0 0 2px var(--color-accent);
+
+  .timeline__item:hover & {
+    box-shadow: 0 0 0 4px var(--color-accent-light);
+  }
+}
+
+// --------------------------------------------
+// TIMELINE CONTENT
+// --------------------------------------------
+.timeline__content {
+  // Content styling
+}
+
+.timeline__header {
+  margin-bottom: $spacing-2;
+}
+
+.timeline__title {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text);
+  margin-bottom: $spacing-1;
+}
+
+.timeline__subtitle {
+  font-size: $font-size-base;
+  color: var(--color-primary);
+  font-weight: $font-weight-medium;
+}
+
+.timeline__date {
+  font-size: $font-size-sm;
+  color: var(--color-text-muted);
+}
+
+.timeline__body {
+  margin-top: $spacing-3;
+  color: var(--color-text-muted);
+
+  ul {
+    padding-left: $spacing-4;
+    margin-top: $spacing-2;
+
+    li {
+      margin-bottom: $spacing-2;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.timeline__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-2;
+  margin-top: $spacing-4;
+}
+
+// --------------------------------------------
+// HORIZONTAL TIMELINE (optional variant)
+// --------------------------------------------
+.timeline--horizontal {
+  display: flex;
+  padding-left: 0;
+  padding-top: $spacing-8;
+  overflow-x: auto;
+
+  &::before {
+    left: 0;
+    right: 0;
+    top: 5px;
+    bottom: auto;
+    width: auto;
+    height: 2px;
+  }
+
+  .timeline__item {
+    flex-shrink: 0;
+    padding-bottom: 0;
+    padding-right: $spacing-8;
+    min-width: 200px;
+
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+
+  .timeline-marker {
+    left: 0;
+    top: calc(-#{$spacing-8} + 1px);
+  }
+}

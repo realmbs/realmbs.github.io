@@ -108,18 +108,17 @@ realmbs.github.io/
 - GitHub Pages at `https://realmbs.github.io`
 - Build output: `/dist` directory
 
-# CURRENT TASK: FULL PAGE SCROLLING
-1. implement full page scrolling
-* hero page
-* about me
-* skills & technologies
-* featured projects
-* work experience
-* education & certifications
-* get in touch 
-
+# CURRENT TASK: STYLES IMPROVEMENTS
+1. single page scrolling
+* PROBLEM: single page scrolling not working perfectly, each page should be clearly marked on the viewport with a clean border and scrolling down with the mouse should snap on to the next page
+2. featured projects modal redesign
+* PROBLEM: this section should be redesigned to include a clean modal design with arrows to display all featured projects
+3. other improvements of your choice
+* thoroughly review the entire styles directory and implement improvements using your best judgement and modern responsive web design principles  
 
 # COMPLETED TASKS
 1. STYLING FOUNDATION
 2. HTML STRUCTURE
 3. DATA (resume.json schema, resume.d.ts)
+4. COMPONENT STYLES
+5. CORE TS FUNCTIONALITY

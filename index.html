@@ -40,7 +40,7 @@
     </a>
 
     <!-- Site Header -->
-    <header class="sticky top-0 z-fixed">
+    <header class="site-header">
       <nav class="container" aria-label="Primary navigation">
         <div class="flex justify-between items-center py-4">
           <!-- Logo/Brand -->
@@ -50,12 +50,12 @@
 
           <!-- Desktop Navigation -->
           <ul class="flex gap-6 hidden-md-down" role="list">
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#experience" class="nav-link">Experience</a></li>
+            <li><a href="#education" class="nav-link">Education</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
           </ul>
 
           <!-- Actions -->
@@ -87,9 +87,9 @@
     </header>
 
     <!-- Main Content -->
-    <main id="main-content">
+    <main id="main-content" class="scroll-container">
       <!-- Hero Section -->
-      <section id="hero" class="min-h-screen flex items-center py-20">
+      <section id="hero" class="section section--center">
         <div class="container">
           <div class="text-center">
             <h1 class="mb-4">
@@ -111,7 +111,7 @@
       </section>
 
       <!-- About Section -->
-      <section id="about" class="py-20">
+      <section id="about" class="section">
         <div class="container container-narrow">
           <h2 class="text-center mb-12">About Me</h2>
 
@@ -136,7 +136,7 @@
       </section>
 
       <!-- Skills Section -->
-      <section id="skills" class="py-20">
+      <section id="skills" class="section">
         <div class="container">
           <h2 class="text-center mb-12">Skills & Technologies</h2>
 
@@ -181,7 +181,7 @@
       </section>
 
       <!-- Projects Section -->
-      <section id="projects" class="py-20">
+      <section id="projects" class="section section--scrollable">
         <div class="container">
           <h2 class="text-center mb-12">Featured Projects</h2>
 
@@ -277,7 +277,7 @@
       </section>
 
       <!-- Experience Section -->
-      <section id="experience" class="py-20">
+      <section id="experience" class="section section--scrollable">
         <div class="container container-narrow">
           <h2 class="text-center mb-12">Work Experience</h2>
 
@@ -335,7 +335,7 @@
       </section>
 
       <!-- Education & Certifications Section -->
-      <section id="education" class="py-20">
+      <section id="education" class="section">
         <div class="container container-narrow">
           <h2 class="text-center mb-12">Education & Certifications</h2>
 
@@ -374,7 +374,7 @@
       </section>
 
       <!-- Contact Section -->
-      <section id="contact" class="py-20">
+      <section id="contact" class="section">
         <div class="container container-narrow">
           <h2 class="text-center mb-4">Get In Touch</h2>
           <p class="text-center text-muted mb-12">
@@ -462,35 +462,25 @@
             </div>
           </div>
         </div>
+
+        <!-- Footer (inside contact section) -->
+        <footer class="py-8 mt-auto">
+          <div class="container">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+              <!-- Copyright -->
+              <p class="text-muted">
+                &copy; <span id="current-year"></span> Mark Blaha. All rights reserved.
+              </p>
+
+              <!-- Back to Top -->
+              <a href="#hero" class="text-muted" aria-label="Back to top">
+                Back to top
+              </a>
+            </div>
+          </div>
+        </footer>
       </section>
     </main>
-
-    <!-- Site Footer -->
-    <footer class="py-8 mt-auto">
-      <div class="container">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-          <!-- Copyright -->
-          <p class="text-muted">
-            &copy; <span id="current-year">2024</span> Mark Blaha. All rights reserved.
-          </p>
-
-          <!-- Footer Navigation -->
-          <nav aria-label="Footer navigation">
-            <ul class="flex gap-6" role="list">
-              <li><a href="#hero" class="text-muted">Home</a></li>
-              <li><a href="#about" class="text-muted">About</a></li>
-              <li><a href="#projects" class="text-muted">Projects</a></li>
-              <li><a href="#contact" class="text-muted">Contact</a></li>
-            </ul>
-          </nav>
-
-          <!-- Back to Top -->
-          <a href="#hero" class="text-muted" aria-label="Back to top">
-            Back to top
-          </a>
-        </div>
-      </div>
-    </footer>
   </div>
 
   <script type="module" src="/src/main.ts"></script>

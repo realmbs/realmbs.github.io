@@ -1,0 +1,102 @@
+// ============================================
+// THEME TOGGLE COMPONENT
+// Light/dark mode toggle button
+// ============================================
+
+@use '../abstracts' as *;
+
+// --------------------------------------------
+// THEME TOGGLE BUTTON
+// --------------------------------------------
+#theme-toggle,
+.theme-toggle {
+  @include button-reset;
+  @include flex-center;
+
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: $border-radius-full;
+  background-color: var(--color-surface-alt);
+
+  @include transition((background-color, transform));
+  @include focus-ring;
+
+  &:hover {
+    background-color: var(--color-surface-hover);
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+// --------------------------------------------
+// THEME TOGGLE ICONS
+// Uses CSS to show/hide icons based on theme
+// --------------------------------------------
+.theme-toggle__icon {
+  width: 20px;
+  height: 20px;
+  color: var(--color-text);
+
+  @include transition((transform, opacity));
+}
+
+// Sun icon (shown in dark mode)
+.theme-toggle__sun {
+  position: absolute;
+  opacity: 0;
+  transform: rotate(-90deg) scale(0);
+
+  [data-theme="dark"] & {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+}
+
+// Moon icon (shown in light mode)
+.theme-toggle__moon {
+  position: absolute;
+  opacity: 1;
+  transform: rotate(0) scale(1);
+
+  [data-theme="dark"] & {
+    opacity: 0;
+    transform: rotate(90deg) scale(0);
+  }
+}
+
+// --------------------------------------------
+// ALTERNATIVE: EMOJI/TEXT TOGGLE
+// For simpler implementations
+// --------------------------------------------
+.theme-toggle--simple {
+  font-size: $font-size-lg;
+
+  // Hide the default text
+  color: transparent;
+  overflow: hidden;
+
+  &::before {
+    color: var(--color-text);
+  }
+
+  // Moon emoji for light mode
+  &::before {
+    content: '\1F319'; // 🌙
+  }
+
+  // Sun emoji for dark mode
+  [data-theme="dark"] &::before {
+    content: '\2600\FE0F'; // ☀️
+  }
+}
+
+// --------------------------------------------
+// SCREEN READER TEXT
+// --------------------------------------------
+.theme-toggle__sr-text {
+  @include visually-hidden;
+}

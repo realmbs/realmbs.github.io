@@ -1,6 +1,5 @@
 // Layout index - forward all layout partials
-// Uncomment as files are implemented
-// @forward 'grid';
-// @forward 'header';
-// @forward 'section';
-// @forward 'footer';
+@forward 'header';
+@forward 'section';
+@forward 'grid';
+@forward 'footer';
