@@ -18,7 +18,7 @@ export function render(container: HTMLElement, _params: Record<string, string>):
       <p class="hero__greeting">$ whoami</p>
       <h1 class="hero__name">Mark Blaha</h1>
       <p class="hero__tagline">
-        Cybersecurity Professional. Recent Graduate. Actively preparing for OSCP certification.
+        Cybersecurity Professional. Recent Graduate. Actively preparing for OSCP.
       </p>
       <div class="hero__cta">
         <a href="#/projects" class="btn btn--filled">View Projects</a>
