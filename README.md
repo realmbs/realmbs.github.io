@@ -8,7 +8,7 @@ A cybersecurity portfolio and lab writeup site built with TypeScript, SCSS, and 
 
 ### Purpose
 
-Personal portfolio for a recent cybersecurity graduate. Highlights cybersecurity projects, technical skills, and (in the future) OSCP-prep lab writeups.
+Personal portfolio for a recent cybersecurity graduate. Highlights cybersecurity projects, technical skills, and OSCP lab writeups.
 
 ### Tech Stack
 
