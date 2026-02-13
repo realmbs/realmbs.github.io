@@ -1,5 +1,0 @@
-// Abstracts index - forward all partials
-// Order matters: variables and functions first, then mixins
-@forward 'variables';
-@forward 'functions';
-@forward 'mixins';
