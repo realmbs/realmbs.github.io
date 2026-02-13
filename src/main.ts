@@ -13,20 +13,25 @@ function getPageContent(): HTMLElement {
   return document.getElementById('page-content')!
 }
 
-function pageHandler(renderFn: (el: HTMLElement, params: Record<string, string>) => void) {
+function setTitle(page?: string): void {
+  document.title = page ? `${page} | realmbs` : 'realmbs — Cybersecurity Portfolio'
+}
+
+function pageHandler(title: string, renderFn: (el: HTMLElement, params: Record<string, string>) => void) {
   return (params: Record<string, string>) => {
     renderFn(getPageContent(), params)
+    setTitle(title || undefined)
     updateNavActive()
     window.scrollTo(0, 0)
   }
 }
 
-addRoute('/', pageHandler(renderHome))
-addRoute('/projects', pageHandler(renderProjects))
-addRoute('/skills', pageHandler(renderSkills))
-addRoute('/writeups', pageHandler(renderWriteups))
-addRoute('/writeups/:slug', pageHandler(renderWriteupDetail))
-addRoute('/contact', pageHandler(renderContact))
+addRoute('/', pageHandler('', renderHome))
+addRoute('/projects', pageHandler('Projects', renderProjects))
+addRoute('/skills', pageHandler('Skills', renderSkills))
+addRoute('/writeups', pageHandler('Writeups', renderWriteups))
+addRoute('/writeups/:slug', pageHandler('Writeup', renderWriteupDetail))
+addRoute('/contact', pageHandler('Contact', renderContact))
 
 mountNav()
 mountFooter()
