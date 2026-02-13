@@ -129,4 +129,45 @@
     font-family: $font-heading;
     font-size: 0.95rem;
   }
+
+  &__form {
+    margin-top: $spacing-xl;
+    padding-top: $spacing-xl;
+    border-top: 1px solid $border-color;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+
+  &__form-title {
+    font-size: 1.3rem;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__label {
+    font-family: $font-code;
+    font-size: 0.85rem;
+    color: $text-secondary;
+  }
+
+  &__input {
+    font-family: $font-body;
+    font-size: 0.95rem;
+    color: $text-primary;
+    background: $bg-card;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    padding: $spacing-sm $spacing-md;
+    transition: border-color $transition-fast;
+
+    &:focus {
+      outline: none;
+      border-color: $accent;
+    }
+
+    &--textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+  }
 }
