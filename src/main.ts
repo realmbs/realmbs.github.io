@@ -14,7 +14,7 @@ function getPageContent(): HTMLElement {
 }
 
 function setTitle(page?: string): void {
-  document.title = page ? `${page} | realmbs` : 'realmbs — Cybersecurity Portfolio'
+  document.title = page ? `${page} | Mark Blaha` : 'Mark Blaha'
 }
 
 function pageHandler(title: string, renderFn: (el: HTMLElement, params: Record<string, string>) => void) {

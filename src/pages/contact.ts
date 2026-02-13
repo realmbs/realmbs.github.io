@@ -4,7 +4,7 @@ export function render(container: HTMLElement, _params: Record<string, string>):
   container.innerHTML = `
     <div class="page-header">
       <h1 class="page-header__title">Contact</h1>
-      <p class="page-header__subtitle">Get in touch.</p>
+      <p class="page-header__subtitle">Contact me</p>
     </div>
     <div class="contact">
       <p class="contact__text">${resume.summary}</p>

@@ -1,22 +1,26 @@
 [
   {
-    "name": "Penetration Testing",
-    "items": ["Nmap", "Burp Suite", "Metasploit", "Gobuster", "Hydra", "John the Ripper", "Hashcat", "Wireshark", "BloodHound", "Responder"]
+    "name": "Offensive Security",
+    "items": ["Nmap", "Burp Suite", "Metasploit", "Gobuster", "Hydra", "Hashcat", "Wireshark", "ffuf", "crackmapexec"]
   },
   {
-    "name": "Programming",
-    "items": ["Python", "TypeScript", "Bash", "Go", "SQL", "PowerShell"]
+    "name": "Frameworks",
+    "items": ["MITRE ATT&CK", "CIS Top 18", "NIST CSF", "PCI-DSS v4.0", "COBIT 2019", "ISO 27001", "STIX 2.1"]
+  },
+  {
+    "name": "Cloud",
+    "items": ["AWS (EC2, S3, DynamoDB, Lambda, API Gateway, CloudWatch, IAM)", "Terraform"]
+  },
+  {
+    "name": "Development",
+    "items": ["Python", "TypeScript", "Git/GitHub", "SQL"]
   },
   {
     "name": "Networking",
-    "items": ["TCP/IP", "DNS", "HTTP/HTTPS", "SMB", "LDAP", "Active Directory", "VPN", "Firewalls"]
-  },
-  {
-    "name": "Systems",
-    "items": ["Linux", "Windows Server", "Docker", "Git", "Nginx", "SSH", "Virtualization"]
+    "items": ["TCP/IP", "DNS", "HTTP/HTTPS", "SMB", "Active Directory", "Cisco IOS"]
   },
   {
     "name": "Certifications",
-    "items": ["OSCP (In Progress)", "CompTIA Security+", "CompTIA Network+"]
+    "items": ["OSCP - In Progress (Expected Q4 2026)"]
   }
 ]
