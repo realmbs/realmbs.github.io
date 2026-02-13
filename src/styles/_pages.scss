@@ -51,6 +51,22 @@
   }
 }
 
+.home-latest {
+  margin-top: $spacing-xl;
+  max-width: 700px;
+
+  &__heading {
+    font-size: 1.2rem;
+    color: $text-secondary;
+    margin-bottom: $spacing-md;
+
+    &::before {
+      content: '> ';
+      color: $accent;
+    }
+  }
+}
+
 .btn {
   display: inline-block;
   font-family: $font-heading;
@@ -169,5 +185,31 @@
       resize: vertical;
       min-height: 120px;
     }
+  }
+
+  &__success {
+    color: $accent;
+    font-family: $font-code;
+    font-size: 0.95rem;
+  }
+
+  &__error {
+    color: #ff4444;
+    font-size: 0.85rem;
+  }
+}
+
+// Responsive typography
+@media (max-width: $bp-md) {
+  .hero__name {
+    font-size: 2rem;
+  }
+
+  .hero__tagline {
+    font-size: 1rem;
+  }
+
+  .page-header__title {
+    font-size: 1.5rem;
   }
 }

@@ -4,7 +4,7 @@ export function render(container: HTMLElement, _params: Record<string, string>):
   container.innerHTML = `
     <div class="page-header">
       <h1 class="page-header__title">Contact</h1>
-      <p class="page-header__subtitle">Contact me</p>
+      <p class="page-header__subtitle">Get in touch</p>
     </div>
     <div class="contact">
       <p class="contact__text">${resume.summary}</p>
@@ -26,4 +26,34 @@ export function render(container: HTMLElement, _params: Record<string, string>):
       </form>
     </div>
   `
+
+  const form = container.querySelector('.contact__form') as HTMLFormElement
+  form.addEventListener('submit', async (e: Event) => {
+    e.preventDefault()
+    const btn = form.querySelector('button') as HTMLButtonElement
+    btn.disabled = true
+    btn.textContent = 'Sending...'
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+      })
+      if (!res.ok) throw new Error('Request failed')
+      form.innerHTML = '<p class="contact__success">Message sent. Thanks!</p>'
+    } catch (_e: unknown) {
+      btn.disabled = false
+      btn.textContent = 'Send'
+      const existing = form.querySelector('.contact__error')
+      if (existing) {
+        existing.textContent = 'Something went wrong. Please try again.'
+      } else {
+        const errEl = document.createElement('p')
+        errEl.className = 'contact__error'
+        errEl.textContent = 'Something went wrong. Please try again.'
+        form.appendChild(errEl)
+      }
+    }
+  })
 }

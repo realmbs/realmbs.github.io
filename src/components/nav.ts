@@ -25,9 +25,25 @@ export function mountNav(): void {
   header.innerHTML = `
     <nav class="site-nav">
       <a href="#/" class="site-nav__logo">realmbs</a>
+      <button class="site-nav__toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
       <div class="site-nav__links">${links}</div>
     </nav>
   `
+
+  const nav = header.querySelector('.site-nav')!
+  const toggle = header.querySelector('.site-nav__toggle')!
+
+  toggle.addEventListener('click', () => {
+    nav.classList.toggle('site-nav--open')
+  })
+
+  header.querySelectorAll('.site-nav__link').forEach((link) => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('site-nav--open')
+    })
+  })
 }
 
 export function updateNavActive(): void {

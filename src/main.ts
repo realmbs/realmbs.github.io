@@ -2,6 +2,7 @@ import './styles/main.scss'
 import { addRoute, startRouter } from './router.ts'
 import { mountNav, updateNavActive } from './components/nav.ts'
 import { mountFooter } from './components/footer.ts'
+import { mountScrollTop } from './components/scroll-top.ts'
 import { render as renderHome } from './pages/home.ts'
 import { render as renderProjects } from './pages/projects.ts'
 import { render as renderSkills } from './pages/skills.ts'
@@ -19,10 +20,16 @@ function setTitle(page?: string): void {
 
 function pageHandler(title: string, renderFn: (el: HTMLElement, params: Record<string, string>) => void) {
   return (params: Record<string, string>) => {
-    renderFn(getPageContent(), params)
+    const el = getPageContent()
+    window.scrollTo(0, 0)
+    renderFn(el, params)
     setTitle(title || undefined)
     updateNavActive()
-    window.scrollTo(0, 0)
+
+    // Trigger page fade-in animation
+    el.classList.remove('page-enter')
+    void el.offsetWidth
+    el.classList.add('page-enter')
   }
 }
 
@@ -35,4 +42,5 @@ addRoute('/contact', pageHandler('Contact', renderContact))
 
 mountNav()
 mountFooter()
+mountScrollTop()
 startRouter()
