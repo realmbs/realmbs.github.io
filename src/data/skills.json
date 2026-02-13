@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Penetration Testing",
+    "items": ["Nmap", "Burp Suite", "Metasploit", "Gobuster", "Hydra", "John the Ripper", "Hashcat", "Wireshark", "BloodHound", "Responder"]
+  },
+  {
+    "name": "Programming",
+    "items": ["Python", "TypeScript", "Bash", "Go", "SQL", "PowerShell"]
+  },
+  {
+    "name": "Networking",
+    "items": ["TCP/IP", "DNS", "HTTP/HTTPS", "SMB", "LDAP", "Active Directory", "VPN", "Firewalls"]
+  },
+  {
+    "name": "Systems",
+    "items": ["Linux", "Windows Server", "Docker", "Git", "Nginx", "SSH", "Virtualization"]
+  },
+  {
+    "name": "Certifications",
+    "items": ["OSCP (In Progress)", "CompTIA Security+", "CompTIA Network+"]
+  }
+]
