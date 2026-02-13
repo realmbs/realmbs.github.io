@@ -7,6 +7,7 @@ import { render as renderProjects } from './pages/projects.ts'
 import { render as renderSkills } from './pages/skills.ts'
 import { render as renderWriteups } from './pages/writeups.ts'
 import { render as renderContact } from './pages/contact.ts'
+import { render as renderWriteupDetail } from './pages/writeup-detail.ts'
 
 function getPageContent(): HTMLElement {
   return document.getElementById('page-content')!
@@ -24,6 +25,7 @@ addRoute('/', pageHandler(renderHome))
 addRoute('/projects', pageHandler(renderProjects))
 addRoute('/skills', pageHandler(renderSkills))
 addRoute('/writeups', pageHandler(renderWriteups))
+addRoute('/writeups/:slug', pageHandler(renderWriteupDetail))
 addRoute('/contact', pageHandler(renderContact))
 
 mountNav()
