@@ -9,10 +9,15 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "sass": "^1.97.3",
     "typescript": "~5.9.3",
     "vite": "^8.0.0-beta.13"
   },
   "overrides": {
     "vite": "^8.0.0-beta.13"
+  },
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "marked": "^17.0.2"
   }
 }

@@ -1,0 +1,59 @@
+@use 'variables' as *;
+
+.card {
+  background: $bg-card;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  padding: $spacing-lg;
+  transition: border-color $transition-normal, background $transition-normal;
+
+  &:hover {
+    border-color: $accent;
+    background: $bg-card-hover;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: 1.1rem;
+    margin-bottom: $spacing-sm;
+    color: $text-primary;
+  }
+
+  &__description {
+    color: $text-secondary;
+    font-size: 0.9rem;
+    margin-bottom: $spacing-md;
+    line-height: 1.5;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-xs;
+  }
+
+  &__tag {
+    font-family: $font-code;
+    font-size: 0.75rem;
+    color: $accent;
+    background: $accent-glow;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  &__links {
+    display: flex;
+    gap: $spacing-md;
+    margin-top: $spacing-md;
+  }
+
+  &__link {
+    font-size: 0.85rem;
+  }
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: $spacing-lg;
+}

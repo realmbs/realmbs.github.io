@@ -1,0 +1,132 @@
+@use 'variables' as *;
+
+.page-header {
+  margin-bottom: $spacing-xl;
+
+  &__title {
+    font-size: 2rem;
+    margin-bottom: $spacing-sm;
+
+    &::before {
+      content: '> ';
+      color: $accent;
+    }
+  }
+
+  &__subtitle {
+    color: $text-secondary;
+    font-size: 1rem;
+  }
+}
+
+// Home page
+.hero {
+  padding: $spacing-2xl 0;
+  max-width: 700px;
+
+  &__greeting {
+    font-family: $font-code;
+    color: $accent;
+    font-size: 0.95rem;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__name {
+    font-size: 2.8rem;
+    margin-bottom: $spacing-md;
+    color: $text-primary;
+  }
+
+  &__tagline {
+    font-size: 1.2rem;
+    color: $text-secondary;
+    margin-bottom: $spacing-lg;
+    line-height: 1.6;
+  }
+
+  &__cta {
+    display: flex;
+    gap: $spacing-md;
+    flex-wrap: wrap;
+  }
+}
+
+.btn {
+  display: inline-block;
+  font-family: $font-heading;
+  font-size: 0.9rem;
+  padding: $spacing-sm $spacing-lg;
+  border-radius: 4px;
+  border: 1px solid $accent;
+  color: $accent;
+  transition: background $transition-fast, color $transition-fast;
+
+  &:hover {
+    background: $accent;
+    color: $bg-primary;
+  }
+
+  &--filled {
+    background: $accent;
+    color: $bg-primary;
+
+    &:hover {
+      background: $accent-dim;
+      border-color: $accent-dim;
+      color: $bg-primary;
+    }
+  }
+}
+
+// Skills page
+.skills-section {
+  margin-bottom: $spacing-xl;
+
+  &__title {
+    font-size: 1.3rem;
+    margin-bottom: $spacing-md;
+    padding-bottom: $spacing-sm;
+    border-bottom: 1px solid $border-color;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-sm;
+  }
+
+  &__item {
+    font-family: $font-code;
+    font-size: 0.85rem;
+    color: $text-primary;
+    background: $bg-card;
+    border: 1px solid $border-color;
+    padding: $spacing-xs $spacing-md;
+    border-radius: 4px;
+  }
+}
+
+// Contact page
+.contact {
+  max-width: 600px;
+
+  &__text {
+    color: $text-secondary;
+    margin-bottom: $spacing-xl;
+    line-height: 1.7;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    font-family: $font-heading;
+    font-size: 0.95rem;
+  }
+}
