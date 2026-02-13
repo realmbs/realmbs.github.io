@@ -8,6 +8,7 @@ export interface Project {
   github?: string
   liveUrl?: string
   image?: string
+  pdf?: string
 }
 
 export interface SkillCategory {

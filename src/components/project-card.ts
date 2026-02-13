@@ -6,6 +6,9 @@ export function renderProjectCard(project: Project): string {
     .join('')
 
   const links: string[] = []
+  if (project.pdf) {
+    links.push(`<a href="${project.pdf}" target="_blank" rel="noopener" class="card__link">Download PDF</a>`)
+  }
   if (project.github) {
     links.push(`<a href="${project.github}" target="_blank" rel="noopener" class="card__link">GitHub</a>`)
   }

@@ -1,16 +1,18 @@
 [
   {
-    "slug": "network-scanner",
-    "title": "Network Scanner",
-    "description": "A Python-based network reconnaissance tool that performs host discovery, port scanning, and service enumeration. Built to streamline the initial phases of penetration testing engagements.",
-    "tags": ["Python", "Scapy", "Nmap", "Networking"],
-    "github": "https://github.com/realmbs/network-scanner"
+    "slug": "threat-intelligence",
+    "title": "Threat Intelligence Platform",
+    "description": "A cloud-native threat intelligence platform that ingests and analyzes data from open source CTI feeds to provide helpful intelligence for users. ",
+    "tags": ["AWS", "Lambda", "DynamoDB", "Python"],
+    "github": "https://github.com/realmbs/senior-project",
+    "pdf": "/threat-intelligence.pdf"
   },
   {
-    "slug": "vuln-dashboard",
-    "title": "Vulnerability Dashboard",
-    "description": "Web-based dashboard for tracking and triaging vulnerabilities discovered during security assessments. Aggregates findings from multiple scanning tools into a unified view.",
-    "tags": ["TypeScript", "SQLite", "REST API", "Security"],
-    "github": "https://github.com/realmbs/vuln-dashboard"
+    "slug": "TEMPLATE",
+    "title": "TEMPLATE",
+    "description": "TEMPLATE",
+    "tags": ["TEMPLATE"],
+    "github": "https://github.com/realmbs/null",
+    "pdf": "/null.pdf"
   }
 ]
