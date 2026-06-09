@@ -11,6 +11,14 @@
       content="Mark Blaha — builder-operator at the cybersecurity × business-development seam. Cloud-native security systems on AWS, and the business case that ships them."
     />
     <title>Mark Blaha — Cybersecurity × Business Development</title>
+    <script>
+      // Apply saved theme before first paint to avoid a flash.
+      try {
+        var t = localStorage.getItem('site.theme')
+        if (t === 'light' || t === 'dark')
+          document.documentElement.setAttribute('data-theme', t)
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>
