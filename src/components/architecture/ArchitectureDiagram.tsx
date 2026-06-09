@@ -336,15 +336,10 @@ export default function ArchitectureDiagram() {
       ref={figureRef}
       aria-label="Interactive cloud-architecture diagram of the threat-intelligence platform — external feeds through API Gateway and Lambda functions to DynamoDB, S3, and the dashboard. Use the node buttons for component details."
     >
-      <div
-        className="ad-scroll"
-        ref={scrollRef}
-        style={{ height: CANVAS_H * scale }}
-      >
-        <div
-          className="ad-stage"
-          style={{ transform: `scale(${scale})` }}
-        >
+      <div className="ad-scroll" ref={scrollRef}>
+        {/* `zoom` scales the layout box (Safari-safe), unlike transform:scale
+            which WebKit mis-clips inside an overflow container. */}
+        <div className="ad-stage" style={{ zoom: scale }}>
           {TIERS.map((tier) => (
             <div
               className="ad-tier"

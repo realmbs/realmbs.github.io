@@ -63,7 +63,6 @@
   position: relative;
   width: 1480px;
   height: 616px;
-  transform-origin: top left;
   color: var(--ad-ink);
   background-image: linear-gradient(var(--ad-grid) 1px, transparent 1px),
     linear-gradient(90deg, var(--ad-grid) 1px, transparent 1px),
