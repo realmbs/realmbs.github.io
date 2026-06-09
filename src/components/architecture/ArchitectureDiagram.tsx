@@ -6,6 +6,7 @@ import {
   type CSSProperties,
   type RefObject,
 } from 'react'
+import { createPortal } from 'react-dom'
 import { useInView } from '../../hooks'
 import Icon from './Icon'
 import './architecture.css'
@@ -224,8 +225,11 @@ function Drawer({ node, onClose }: { node: ArchNode | null; onClose: () => void 
   if (!node) return null
   const c = ACCENTS[node.accent]
   const d = node.detail ?? { kind: '' }
-  return (
-    <div className="ad-drawer-scrim" onClick={onClose}>
+  // Portal to <body> so no transformed/clipping ancestor (e.g. the .reveal
+  // wrapper's transform) can trap the fixed drawer inside the diagram box.
+  // The `archdiagram` class re-supplies the scoped --ad-* theme vars.
+  return createPortal(
+    <div className="archdiagram ad-drawer-scrim" onClick={onClose}>
       <aside
         className="ad-drawer"
         style={{ '--c': c } as StyleVars}
@@ -297,7 +301,8 @@ function Drawer({ node, onClose }: { node: ArchNode | null; onClose: () => void 
           </dl>
         )}
       </aside>
-    </div>
+    </div>,
+    document.body,
   )
 }
 
