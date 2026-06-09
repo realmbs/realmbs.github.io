@@ -3,7 +3,8 @@
     "allow": [
       "WebFetch(domain:vite.dev)",
       "WebFetch(domain:github.com)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "WebFetch(domain:api.anthropic.com)"
     ]
   }
 }

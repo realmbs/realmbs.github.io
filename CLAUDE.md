@@ -1,65 +1,106 @@
 # CLAUDE.md
 
-Project context and conventions for AI-assisted development.
+Project memory for Mark's personal site. Read this fully before any task.
 
-## Project Overview
+## What this is
 
-Cybersecurity portfolio and OSCP lab writeup site. Vanilla TypeScript + SCSS + Vite 8, deployed to GitHub Pages via GitHub Actions. No framework — all DOM manipulation is manual.
+A single-page personal landing site, rebuilt from scratch. Its job is to make a strong, minimal
+impression for grad-school admissions readers and professional contacts. Content is deliberately
+sparse; the hero is the centerpiece. No blog, no writeups, no CMS, no comments.
+
+## Visual direction
+
+The look is locked from a Claude Design mockup, provided with the kickoff prompt. Design exports
+React/JSX, so translate its component structure directly — match layout, type, color, spacing, and
+hero treatment. Do not improvise a different aesthetic. If anything in the mockup is ambiguous, ask
+before guessing.
+
+## Stack
+
+- Vite + React + TypeScript (the `react-ts` template).
+- Tailwind CSS v4 via `@tailwindcss/vite`, with a custom token theme pulled from the mockup —
+  define real colors, type scale, and spacing. Do not ship the default palette.
+- The hero is a single React component, lazy-loaded. WebGL via `@react-three/fiber` + `three`
+  (plus `@react-three/drei` as needed), or `cobe` for the lightweight globe path. Pick per the
+  locked concept and keep it in one component.
+- This is a client-rendered SPA — React runs the whole page. Keep the dependency surface minimal.
+- No analytics, no trackers, no third-party beacons. Self-host fonts (no Google Fonts CDN).
+
+## Structure
+
+```
+/
+  index.html
+  src/
+    main.tsx
+    App.tsx
+    components/
+      Hero.tsx          # lazy-loaded WebGL island
+      Bio.tsx
+      Capstone.tsx
+      Contact.tsx
+    styles/index.css    # tokens + base styles
+    assets/             # self-hosted fonts, hero textures / poster frames
+  public/
+    resume.pdf          # placeholder filename
+  vite.config.ts
+  tsconfig.json
+  .github/workflows/deploy.yml
+```
 
 ## Commands
 
-- `npm run dev` — Start Vite dev server
-- `npm run build` — TypeScript check + Vite production build
-- `npm run preview` — Preview production build locally
+- dev: `npm run dev`
+- build: `npm run build` (outputs to `dist/`)
+- preview: `npm run preview`
 
-## Architecture
+## Content map
 
-- **Routing:** Hash-based (`#/`, `#/projects`, `#/writeups/:slug`, etc.) — no server config needed for GitHub Pages
-- **Pages:** Each page is a TS module in `src/pages/` that exports a render function mounting into `#app`
-- **Components:** Reusable UI pieces in `src/components/` (nav, footer, cards)
-- **Data:** JSON files in `src/data/` (resume, projects, skills) with TypeScript types in `src/types/`
-- **Content:** Lab writeups as Markdown with frontmatter in `src/content/writeups/`
-- **Styles:** SCSS partials in `src/styles/`, imported via `main.scss`
-- **Entry point:** `src/main.ts` → initializes router, mounts nav/footer
+1. Hero — full viewport, the visual centerpiece, with name + one-line tagline over it.
+2. Bio — 2-4 sentences. "Builder-operator at the business/tech seam": cybersecurity background
+   (offensive security, AWS/serverless, Python) plus full-cycle business development.
+3. Capstone — brief, one project. Serverless AWS threat-intelligence platform that ingested and
+   normalized 32,000+ indicators of compromise while running at roughly $0.82/month. Built for a
+   BAT in Cybersecurity at Collin College (NSA CAE-CD program), completed Dec 2025, 4.0 GPA.
+   Treat exact wording as placeholder for Mark to confirm.
+4. Resume — link to `/resume.pdf` (placeholder filename; Mark supplies the file).
+5. Contact — email + GitHub + LinkedIn (placeholders).
 
-## Code Conventions
+## Performance + accessibility budget
 
-- Strict TypeScript — `strict: true`, no unused locals/params, no fallthrough switch cases
-- ES modules only (`"type": "module"`, `verbatimModuleSyntax`)
-- Target ES2022, bundler module resolution
-- No classes for components — use plain functions returning HTML strings or DOM elements
-- Keep components small and focused; one export per file
-- SCSS variables for all colors, fonts, and spacing — never hardcode values in component styles
-- Use `_` prefix for SCSS partials (e.g., `_variables.scss`)
+- Lighthouse 95+ across performance, accessibility, best-practices, and SEO on the built site.
+- This is an SPA, so the React runtime ships for the whole page. The WebGL hero is the one heavy
+  dependency: lazy-load it with `React.lazy` + a dynamic `import()` behind `<Suspense>` so `three`/r3f
+  is code-split out of the initial bundle. Do not pull the WebGL library into the main chunk.
+- Keep the dependency surface small; this is a tiny site.
+- `prefers-reduced-motion`: ship a static hero fallback (a rendered poster frame or a CSS gradient).
+  Never autoplay heavy motion when reduced motion is requested.
+- Real alt text, semantic landmarks, visible focus states, keyboard-reachable links, sufficient contrast.
 
-## Design System
+## Deployment (GitHub Pages, CI/CD)
 
-- **Background:** `#0a0a0a` (near-black)
-- **Accent:** `#00d4ff` (cyan/teal) with supporting shades
-- **Font (headings/code):** JetBrains Mono
-- **Font (body):** System sans-serif stack
-- **Style:** Professional dark theme with subtle terminal cues — not overdone
+- GitHub Actions, following Vite's official static-deploy workflow. Single job:
+  checkout -> setup-node (lts/*, npm cache) -> `npm ci` -> `npm run build` -> configure-pages ->
+  upload-pages-artifact (path `./dist`) -> deploy-pages.
+- Set the repo Pages source to "GitHub Actions" (not a branch).
+- Permissions block: `contents: read`, `pages: write`, `id-token: write`. Concurrency group `pages`.
+- Verify current action major versions at scaffold time — they bump. As of last check:
+  `actions/checkout@v6`, `actions/setup-node@v6`, plus current `actions/configure-pages`,
+  `actions/upload-pages-artifact`, `actions/deploy-pages`.
+- `base` in `vite.config.ts` depends on repo type — confirm before setting:
+  - User site (`yourname.github.io`): `base: '/'` (default).
+  - Project repo: `base: '/repo-name/'`.
+- Single page, no client router, so no 404 fallback is needed. If routing is added later, copy
+  `index.html` to `404.html` at build so deep links resolve.
+- Official guide: https://vite.dev/guide/static-deploy
 
-## File Organization
+## Conventions
 
-```
-src/
-├── components/    # Reusable UI (nav, footer, cards)
-├── content/       # Markdown writeups
-├── data/          # JSON data files
-├── pages/         # Page render functions
-├── styles/        # SCSS partials + main.scss
-├── types/         # TypeScript type definitions
-├── router.ts      # Hash router
-├── markdown.ts    # Markdown utilities
-└── main.ts        # Entry point
-```
+- Small, single-purpose components. Lean on the token theme; avoid utility-class soup.
+- No dependency unless it earns its place. This is a tiny site.
+- Commit at milestones with clear messages. Never commit secrets.
+- Ask before adding analytics, external embeds, or any third-party network call. The default is none.
 
-## Important Notes
+## Out of scope
 
-- GitHub Pages deployment — all routes must work with hash-based navigation
-- Build output goes to `dist/` (gitignored)
-- Static assets in `public/` are copied as-is to build output
-- `resume.pdf` is served from `public/resume.pdf`
-- Do not add runtime dependencies unless absolutely necessary — keep the bundle minimal
-- When adding a new page: create the page module in `src/pages/`, register the route in `router.ts`, add a nav link in `src/components/nav.ts`, and create a corresponding SCSS partial
+No blog, CMS, writeups, comments, or dynamic backend. If a task implies any of these, confirm first.
