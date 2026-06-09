@@ -1,3 +1,9 @@
+import { lazy, Suspense } from 'react'
+
+const ArchitectureDiagram = lazy(
+  () => import('./architecture/ArchitectureDiagram'),
+)
+
 export default function Capstone() {
   return (
     <section className="section" id="capstone" aria-labelledby="capstone-h">
@@ -56,12 +62,12 @@ export default function Capstone() {
         </p>
       </div>
 
-      <div
-        className="capstone-visual reveal"
-        role="img"
-        aria-label="Placeholder for the threat-intel platform architecture diagram or dashboard capture"
-      >
-        <span className="ph">[ architecture diagram / dashboard capture ]</span>
+      <div className="capstone-arch reveal">
+        <Suspense
+          fallback={<div className="capstone-arch-loading" aria-hidden="true" />}
+        >
+          <ArchitectureDiagram />
+        </Suspense>
       </div>
     </section>
   )
