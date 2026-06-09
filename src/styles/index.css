@@ -1,0 +1,150 @@
+/* ============================================================
+   MARK BLAHA — personal site
+   Token theme ported from the Claude Design mockup.
+   Mono-forward · dark default + light toggle · signal-blue.
+   Display font: JetBrains Mono (stand-in for MonoLisa — swap
+   --font-mono if a MonoLisa license is available).
+   ============================================================ */
+
+@import 'tailwindcss';
+
+/* Theme-independent tokens registered with Tailwind v4. The font is the
+   single swap point for MonoLisa (change here + load the licensed face). */
+@theme {
+  --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace,
+    'SF Mono', Menlo, monospace;
+}
+
+/* Color tokens reference the live CSS variables (below) via `inline`, so the
+   generated utilities (text-accent, bg-bg-1, …) follow the dark/light toggle. */
+@theme inline {
+  --color-bg-0: var(--bg-0);
+  --color-bg-1: var(--bg-1);
+  --color-bg-2: var(--bg-2);
+  --color-line: var(--line);
+  --color-line-2: var(--line-2);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-accent-ink: var(--accent-ink);
+}
+
+/* ---- DARK (default) ---- */
+:root {
+  color-scheme: dark;
+
+  --bg-0: oklch(0.135 0.006 255);
+  --bg-1: oklch(0.178 0.007 255);
+  --bg-2: oklch(0.23 0.008 255);
+  --line: oklch(0.62 0.012 255 / 0.16);
+  --line-2: oklch(0.7 0.014 255 / 0.26);
+  --text: oklch(0.965 0.004 255);
+  --muted: oklch(0.72 0.01 255);
+  --faint: oklch(0.55 0.012 255);
+  --accent: oklch(0.78 0.15 250); /* signal blue */
+  --accent-2: oklch(0.82 0.13 210); /* cyan (hero depth) */
+  --accent-ink: oklch(0.16 0.05 255); /* ink on accent fill */
+  --grain: 0.045;
+
+  /* spacing — 8pt base */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
+  --s-10: 128px;
+  --s-11: 192px;
+
+  --maxw: 1280px;
+  --gutter: clamp(20px, 5vw, 80px);
+  --radius: 4px;
+}
+
+/* ---- LIGHT ---- */
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --bg-0: oklch(0.975 0.004 255);
+  --bg-1: oklch(0.945 0.005 255);
+  --bg-2: oklch(0.905 0.007 255);
+  --line: oklch(0.3 0.012 255 / 0.14);
+  --line-2: oklch(0.3 0.012 255 / 0.26);
+  --text: oklch(0.235 0.012 255);
+  --muted: oklch(0.42 0.014 255);
+  --faint: oklch(0.55 0.014 255);
+  --accent: oklch(0.52 0.16 252); /* deeper blue for contrast on white */
+  --accent-2: oklch(0.55 0.13 210);
+  --accent-ink: oklch(0.99 0.01 255);
+  --grain: 0.022;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg-0);
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    transition: background 0.5s ease, color 0.5s ease;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-ink);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* fine film grain over everything */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9000;
+    opacity: var(--grain);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+/* ---- shared utility helpers (ported from the mockup) ---- */
+@layer components {
+  .label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+
+  .wrap {
+    max-width: var(--maxw);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+}
