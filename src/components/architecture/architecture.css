@@ -9,9 +9,9 @@
   --ad-ink: #e9eef7;
   --ad-dim: #8493aa;
   --ad-faint: #5a6678;
-  --ad-card: rgba(255, 255, 255, 0.028);
-  --ad-bd: rgba(255, 255, 255, 0.085);
-  --ad-hi: rgba(255, 255, 255, 0.05);
+  --ad-card: rgba(255, 255, 255, 0.05);
+  --ad-bd: rgba(255, 255, 255, 0.1);
+  --ad-hi: rgba(255, 255, 255, 0.08);
   --ad-line: rgba(150, 166, 190, 0.3);
   --ad-grid: rgba(255, 255, 255, 0.022);
   --ad-badge: #0e1521;
@@ -196,7 +196,6 @@
   border-radius: 14px;
   background: var(--ad-card);
   border: 1px solid var(--ad-bd);
-  backdrop-filter: blur(7px);
   cursor: pointer;
   overflow: hidden;
   text-align: left;
