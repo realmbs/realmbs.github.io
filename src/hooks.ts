@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import type { RefObject } from 'react'
 
 export type Theme = 'dark' | 'light'
 
@@ -55,6 +56,39 @@ export function useScrollReveal() {
     els.forEach((el) => io.observe(el))
     return () => io.disconnect()
   }, [])
+}
+
+/** Tracks the prefers-reduced-motion media query (reactive to changes). */
+export function usePrefersReducedMotion() {
+  const [reduced, setReduced] = useState(
+    () =>
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+  )
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const onChange = () => setReduced(mq.matches)
+    mq.addEventListener('change', onChange)
+    return () => mq.removeEventListener('change', onChange)
+  }, [])
+  return reduced
+}
+
+/** True while `ref` intersects the viewport — used to pause the WebGL loop
+ *  when the hero scrolls out of view. */
+export function useInView(ref: RefObject<Element | null>, threshold = 0.02) {
+  const [inView, setInView] = useState(true)
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const io = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold },
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [ref, threshold])
+  return inView
 }
 
 /** True once the user has scrolled past `fraction` of the viewport height. */

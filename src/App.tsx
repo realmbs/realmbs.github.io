@@ -16,7 +16,7 @@ export default function App() {
         Skip to content
       </a>
       <TopBar theme={theme} onToggleTheme={toggle} />
-      <Hero />
+      <Hero theme={theme} />
       <main className="wrap" id="main">
         <Bio />
         <Capstone />

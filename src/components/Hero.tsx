@@ -1,10 +1,34 @@
-// Phase 2: static hero shell. The WebGL threat-map globe mounts in Phase 3 as a
-// lazy-loaded island behind the overlay; the `.hero-poster` gradient below
-// doubles as the prefers-reduced-motion / no-WebGL fallback.
-export default function Hero() {
+import { lazy, Suspense, useRef } from 'react'
+import type { Theme } from '../hooks'
+import { useInView, usePrefersReducedMotion } from '../hooks'
+import GlobeErrorBoundary from './hero/GlobeErrorBoundary'
+
+// Lazy island — three + r3f are dynamically imported, so they're code-split
+// out of the initial bundle and only fetched when the hero needs them.
+const GlobeCanvas = lazy(() => import('./hero/GlobeCanvas'))
+
+function HeroPoster() {
+  return <div className="hero-poster" aria-hidden="true" />
+}
+
+export default function Hero({ theme }: { theme: Theme }) {
+  const sectionRef = useRef<HTMLElement>(null)
+  const inView = useInView(sectionRef)
+  const reducedMotion = usePrefersReducedMotion()
+
   return (
-    <section className="hero" id="top" aria-label="Introduction">
-      <div className="hero-poster" aria-hidden="true" />
+    <section className="hero" id="top" aria-label="Introduction" ref={sectionRef}>
+      <div className="hero-canvas">
+        {reducedMotion ? (
+          <HeroPoster />
+        ) : (
+          <GlobeErrorBoundary fallback={<HeroPoster />}>
+            <Suspense fallback={<HeroPoster />}>
+              <GlobeCanvas theme={theme} active={inView} />
+            </Suspense>
+          </GlobeErrorBoundary>
+        )}
+      </div>
       <div className="vignette" aria-hidden="true" />
 
       <div className="hero-overlay">
