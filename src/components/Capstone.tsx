@@ -1,5 +1,8 @@
+import { Suspense, lazy } from 'react'
 import { useReveal } from '../hooks'
 import SectionHead from './SectionHead'
+
+const ArchitectureDiagram = lazy(() => import('./architecture/ArchitectureDiagram'))
 
 const stats = [
   { value: '32,000+', label: 'indicators of compromise ingested and normalized' },
@@ -12,6 +15,7 @@ const tags = ['AWS', 'Serverless', 'Python', 'Threat Intelligence']
 export default function Capstone() {
   const titleRef = useReveal()
   const bodyRef = useReveal()
+  const diagramRef = useReveal()
   const statsRef = useReveal()
 
   return (
@@ -29,6 +33,20 @@ export default function Capstone() {
           into a queryable indicator store — engineered to run on pocket change instead of a server
           bill. Built as the capstone for a BAT in Cybersecurity at Collin College.
         </p>
+        <div ref={diagramRef} className="reveal mt-14">
+          <p className="t-label mb-4">System architecture — interactive</p>
+          <Suspense
+            fallback={
+              // Mirrors the loaded figure: stage (zoom floor ≈ 384px tall) + controls row.
+              <div>
+                <div className="aspect-[1480/616] min-h-96 border border-line" />
+                <div className="h-[53px]" />
+              </div>
+            }
+          >
+            <ArchitectureDiagram />
+          </Suspense>
+        </div>
         <div ref={statsRef} className="reveal mt-16 grid gap-10 sm:grid-cols-3">
           {stats.map((stat) => (
             <div key={stat.value} className="border-t border-line pt-6">

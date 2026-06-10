@@ -4,7 +4,27 @@
       "WebFetch(domain:vite.dev)",
       "WebFetch(domain:github.com)",
       "Bash(npm install:*)",
-      "WebFetch(domain:api.anthropic.com)"
+      "WebFetch(domain:api.anthropic.com)",
+      "Bash(ls -la /Users/markblaha/realmbs.github.io/src/components/architecture/ /tmp/design/architecture-diagram/ /tmp/design/architecture-diagram/project/ 2>&1)",
+      "Bash(grep -rniE '#[0-9a-f]{3,8}|rgb|hsl|IBM Plex|fonts\\\\.googleapis|font-family|backdrop' /Users/markblaha/realmbs.github.io/src/components/architecture/ /Users/markblaha/realmbs.github.io/src/components/Capstone.tsx)",
+      "Bash(echo \"exit: $?\")",
+      "Bash(ls /tmp/design/architecture-diagram/ /tmp/design/architecture-diagram/project/ 2>/dev/null)",
+      "Bash(sed -n '105,135p' \"/tmp/design/architecture-diagram/project/Architecture Diagram.html\")",
+      "Bash(sed -n '185,200p' \"/tmp/design/architecture-diagram/project/Architecture Diagram.html\")",
+      "Bash(npm run *)",
+      "Bash(sed -n '74,170p' /Users/markblaha/realmbs.github.io/src/components/architecture/architecture.css)",
+      "Bash(sed -n '318,350p' /Users/markblaha/realmbs.github.io/src/components/architecture/architecture.css)",
+      "Bash(git -C /Users/markblaha/realmbs.github.io log --oneline -3 -- src/components/Capstone.tsx)",
+      "Bash(python3 -)",
+      "Bash(grep -n -i \"step 7\\\\|shodan\\\\|foundation\\\\|eyebrow\\\\|hint\\\\|caption\\\\|drawer\\\\|icon size\" /tmp/design/architecture-diagram/chats/chat1.md | head -30)",
+      "Bash(echo \"exit $?\")",
+      "Bash(grep -n \"EDGES\" /tmp/design/architecture-diagram/project/data.jsx | head; sed -n '/const EDGES/,/];/p' /tmp/design/architecture-diagram/project/data.jsx)",
+      "Bash(npx tsc *)",
+      "Bash(grep -n -i \"hint\\\\|caption\" \"/tmp/design/architecture-diagram/chats/chat1.md\" | head -40)",
+      "Bash(awk 'NR>=200 && NR<=260' \"/tmp/design/architecture-diagram/project/Architecture Diagram.html\")",
+      "Bash(grep -in \"focus\\\\|drawer\\\\|tooltip\\\\|tip\\\\b\\\\|escape\\\\|keyboard\" /tmp/design/architecture-diagram/chats/chat1.md | head -20)",
+      "Bash(sed -n 44,60p \"/tmp/design/architecture-diagram/project/Architecture Diagram.html\")",
+      "Bash(sed -n 185,195p \"/tmp/design/architecture-diagram/project/Architecture Diagram.html\")"
     ]
   }
 }
