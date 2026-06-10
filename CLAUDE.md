@@ -10,10 +10,13 @@ sparse; the hero is the centerpiece. No blog, no writeups, no CMS, no comments.
 
 ## Visual direction
 
-The look is locked from a Claude Design mockup, provided with the kickoff prompt. Design exports
-React/JSX, so translate its component structure directly — match layout, type, color, spacing, and
-hero treatment. Do not improvise a different aesthetic. If anything in the mockup is ambiguous, ask
-before guessing.
+Redesigned June 2026 (supersedes the original Claude Design mockup). The locked direction is a
+dark editorial look: near-black ink background, Space Grotesk display type at oversized scale,
+JetBrains Mono uppercase labels, a single acid-lime accent (`#d7ff3f`), hairline rules, film-grain
+overlay, and scroll reveals. The hero is a full-viewport three.js particle-terrain (custom shader
+points, fbm displacement, mouse parallax). The fixed nav uses `mix-blend-difference` for
+legibility — do not reintroduce `backdrop-filter` (known GPU compositing bug on this machine).
+Do not improvise a different aesthetic; if something is ambiguous, ask before guessing.
 
 ## Stack
 

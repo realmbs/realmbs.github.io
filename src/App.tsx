@@ -1,23 +1,22 @@
-import TopBar from './components/TopBar'
+import Nav from './components/Nav'
 import Hero from './components/Hero'
 import Bio from './components/Bio'
 import Capstone from './components/Capstone'
 import Resume from './components/Resume'
 import Contact from './components/Contact'
-import { useScrollReveal, useTheme } from './hooks'
 
 export default function App() {
-  const { theme, toggle } = useTheme()
-  useScrollReveal()
-
   return (
     <>
-      <a className="skip-link" href="#main">
+      <a
+        href="#about"
+        className="t-label fixed top-3 left-3 z-[70] -translate-y-20 rounded bg-acid px-3 py-2 !text-ink transition-transform focus:translate-y-0"
+      >
         Skip to content
       </a>
-      <TopBar theme={theme} onToggleTheme={toggle} />
-      <Hero theme={theme} />
-      <main className="wrap" id="main">
+      <Nav />
+      <main>
+        <Hero />
         <Bio />
         <Capstone />
         <Resume />

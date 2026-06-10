@@ -1,73 +1,34 @@
-# React + TypeScript + Vite
+# realmbs.github.io
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal landing site for Mark Blaha — cybersecurity × business development.
 
-Currently, two official plugins are available:
+Single-page SPA: a full-viewport three.js particle-terrain hero, then About, Capstone,
+Résumé, and Contact sections. Dark editorial design — Space Grotesk display type,
+JetBrains Mono labels, acid-lime accent, film-grain finish.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Stack
 
-## React Compiler
+- Vite + React + TypeScript
+- Tailwind CSS v4 (`@tailwindcss/vite`) with a custom token theme
+- three.js via `@react-three/fiber`, lazy-loaded so the WebGL chunk stays out of the
+  initial bundle
+- Self-hosted fonts via Fontsource — no third-party requests, no analytics, no trackers
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Commands
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```sh
+npm run dev      # dev server
+npm run build    # type-check + production build to dist/
+npm run preview  # serve the production build locally
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Deploy
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Pushes to `main` deploy to GitHub Pages via `.github/workflows/deploy.yml`
+(repo Pages source must be set to "GitHub Actions").
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Accessibility / performance notes
+
+- `prefers-reduced-motion` swaps the WebGL hero for a static poster gradient.
+- The canvas pauses (`frameloop="never"`) whenever the hero scrolls off screen.
+- Semantic landmarks, visible focus states, skip link, keyboard-reachable links.

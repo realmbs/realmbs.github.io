@@ -1,27 +1,22 @@
 export default function Resume() {
   return (
-    <section className="section" id="resume" aria-labelledby="resume-h">
-      <div className="section-head reveal">
-        <span className="num" aria-hidden="true">
-          03
+    <a
+      href="/resume.pdf"
+      target="_blank"
+      rel="noreferrer"
+      className="group block border-y border-line transition-colors duration-300 hover:bg-acid"
+    >
+      <div className="shell flex items-center justify-between py-10 sm:py-14">
+        <span className="text-[clamp(1.5rem,4.5vw,3rem)] font-medium tracking-[-0.02em] transition-colors duration-300 group-hover:text-ink">
+          View the résumé
         </span>
-        <h2 id="resume-h">Resume</h2>
-      </div>
-      <div className="resume-row reveal">
-        <a
-          className="resume-cta"
-          href="/resume.pdf"
-          target="_blank"
-          rel="noopener"
-          aria-label="Download resume PDF (opens in a new tab)"
+        <span
+          className="text-[clamp(1.5rem,4.5vw,3rem)] text-acid transition-colors duration-300 group-hover:text-ink"
+          aria-hidden
         >
-          Download resume
-          <span className="arrow" aria-hidden="true">
-            ↗
-          </span>
-        </a>
-        <span className="resume-note">PDF · opens in a new tab</span>
+          ↗
+        </span>
       </div>
-    </section>
+    </a>
   )
 }
