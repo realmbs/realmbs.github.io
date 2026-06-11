@@ -18,7 +18,7 @@ export default function Contact() {
           ref={headRef}
           className="reveal text-[clamp(2.6rem,9vw,6.5rem)] leading-none font-semibold tracking-[-0.03em]"
         >
-          Let&rsquo;s talk<span className="text-acid">.</span>
+          Get in touch<span className="text-acid">.</span>
         </h3>
         <div ref={linksRef} className="reveal mt-12 flex flex-col gap-6 sm:flex-row sm:items-baseline sm:gap-12">
           <a
