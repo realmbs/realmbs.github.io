@@ -74,11 +74,11 @@ export const NODES: ArchNode[] = [
     y: 64,
     w: 250,
     h: 78,
-    blurb: 'Primary open source IOC feed. Pulled on demand for fresh indicators.',
+    blurb: 'Primary open source CTI feed. Pulled on demand for fresh indicators.',
     detail: {
       kind: 'External API',
       points: [
-        ['Role', 'Primary live TI source - community IOC feed'],
+        ['Role', 'Primary live TI source - community CTI feed'],
         ['Auth', 'API key stored in AWS Secrets Manager'],
         ['Pulled by', 'collector.py via /collect'],
         ['Format', 'Raw JSON → normalized to STIX 2.1'],
@@ -99,10 +99,10 @@ export const NODES: ArchNode[] = [
     detail: {
       kind: 'External API',
       points: [
-        ['Role', 'Secondary TI source - redundancy & coverage'],
+        ['Role', 'Secondary CTI source - redundancy & coverage'],
         ['Auth', 'API key in AWS Secrets Manager'],
         ['Pulled by', 'collector.py via /collect'],
-        ['Mitigates', 'External API rate-limit / outage risk'],
+        ['Mitigates', 'External API rate limit / outage risk'],
       ],
     },
   },
@@ -117,7 +117,7 @@ export const NODES: ArchNode[] = [
     w: 250,
     h: 78,
     blurb:
-      'Adds real-world context: geolocation, open ports, org & ISP identification.',
+      'Adds real world context: geolocation, open ports, org & ISP identification.',
     detail: {
       kind: 'Enrichment API',
       points: [
@@ -135,14 +135,14 @@ export const NODES: ArchNode[] = [
     tier: 'gateway',
     icon: 'gateway',
     label: 'API Gateway',
-    sub: 'HTTPS · rate-limited',
+    sub: 'HTTPS · rate limited',
     x: 330,
     y: 136,
     w: 206,
     h: 222,
     isGateway: true,
     endpoints: [
-      { path: '/collect', desc: 'Trigger fresh TI collection' },
+      { path: '/collect', desc: 'Trigger fresh CTI collection' },
       { path: '/search', desc: 'Query stored indicators' },
       { path: '/enrich', desc: 'Enrich a data point via the Shodan API' },
     ],
@@ -151,7 +151,7 @@ export const NODES: ArchNode[] = [
     detail: {
       kind: 'Amazon API Gateway',
       points: [
-        ['/collect', 'Pulls fresh TI from connected sources'],
+        ['/collect', 'Pulls fresh CTI from connected sources'],
         ['/search', 'Search query API for the dashboard'],
         ['/enrich', 'Initiates Shodan enrichment for a data point'],
         ['Security', 'HTTPS / TLS in transit · per-endpoint rate limiting'],
@@ -201,7 +201,7 @@ export const NODES: ArchNode[] = [
     w: 214,
     h: 90,
     blurb:
-      'Handles all search queries — runs GSI lookups against DynamoDB and returns JSON.',
+      'Handles all search queries - runs GSI lookups against DynamoDB and returns JSON.',
     detail: {
       kind: 'Lambda · Processing',
       config: [
@@ -282,7 +282,7 @@ export const NODES: ArchNode[] = [
       ],
       points: [
         ['Encryption', 'At rest by default'],
-        ['Billing', 'Serverless — scales with data volume'],
+        ['Billing', 'Serverless - scales with data volume'],
       ],
     },
   },
@@ -339,7 +339,7 @@ export const NODES: ArchNode[] = [
       points: [
         ['Metrics', 'Total IOCs · high-risk · recent activity · sources'],
         ['Map', 'Leaflet heatmap of top IOC geolocations'],
-        ['Analytics', 'Chart.js — IOC type, confidence, source effectiveness'],
+        ['Analytics', 'Chart.js - IOC type, confidence, source effectiveness'],
         ['Search', 'Partial-match lookup with manual enrichment'],
         ['Audience', 'Operable by one non-technical person'],
       ],
@@ -364,11 +364,11 @@ export const EDGES: Edge[] = [
 ]
 
 export const STEP_CAPTIONS: Record<number, string> = {
-  1: 'Open-source feeds (OTX & Abuse.ch) enter via the API Gateway /collect endpoint',
-  2: 'API Gateway invokes collector.py — responses normalized to STIX 2.1',
+  1: 'Open source feeds (OTX & Abuse.ch) enter via the API Gateway /collect endpoint',
+  2: 'API Gateway invokes collector.py - responses normalized to STIX 2.1',
   3: 'collector.py archives the raw API responses to the S3 raw bucket',
   4: 'collector.py writes STIX 2.1 indicators to DynamoDB + hash de-dup',
-  5: '/search invokes processor.py — GSI queries against DynamoDB',
-  6: '/enrich invokes enrichment.py — Shodan + WHOIS enrichment, OSINT stored',
+  5: '/search invokes processor.py - GSI queries against DynamoDB',
+  6: '/enrich invokes enrichment.py - Shodan + WHOIS enrichment, OSINT stored',
   7: 'processor.py returns JSON results to the dashboard',
 }

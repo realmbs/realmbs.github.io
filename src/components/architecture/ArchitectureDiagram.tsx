@@ -336,7 +336,7 @@ export default function ArchitectureDiagram() {
     <figure
       className="archdiagram"
       ref={figureRef}
-      aria-label="Interactive architecture diagram of the threat-intelligence platform — external feeds through API Gateway and Lambda functions to DynamoDB, S3, and the dashboard. Use the node buttons for component details."
+      aria-label="Interactive architecture diagram of the threat intelligence platform - external feeds through API Gateway and Lambda functions to DynamoDB, S3, and the dashboard. Use the node buttons for component details."
     >
       <div className="ad-scroll" ref={scrollRef}>
         {/* `zoom` scales the layout box (Safari-safe), unlike transform:scale,
@@ -368,14 +368,14 @@ export default function ArchitectureDiagram() {
                 // stage bottom (the scroll container hides vertical overflow).
                 hoverNode.y + hoverNode.h + 106 > CANVAS_H
                   ? {
-                      left: Math.min(hoverNode.x, CANVAS_W - 280),
-                      top: hoverNode.y - 10,
-                      transform: 'translateY(-100%)',
-                    }
+                    left: Math.min(hoverNode.x, CANVAS_W - 280),
+                    top: hoverNode.y - 10,
+                    transform: 'translateY(-100%)',
+                  }
                   : {
-                      left: Math.min(hoverNode.x, CANVAS_W - 280),
-                      top: hoverNode.y + hoverNode.h + 10,
-                    }
+                    left: Math.min(hoverNode.x, CANVAS_W - 280),
+                    top: hoverNode.y + hoverNode.h + 10,
+                  }
               }
             >
               {hoverNode.blurb}
@@ -386,7 +386,7 @@ export default function ArchitectureDiagram() {
 
       <figcaption className="ad-controls">
         <div className="ad-walk">
-          <span className="ad-walk-title">Data-flow walkthrough</span>
+          <span className="ad-walk-title">Data flow walkthrough</span>
           {/* aria-disabled (not disabled) so a focused button at a bound
               never drops keyboard focus to <body>; clamps make them no-ops. */}
           <div className="ad-walk-btns">
