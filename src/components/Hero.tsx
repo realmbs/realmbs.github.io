@@ -82,7 +82,7 @@ export default function Hero() {
           className={`mt-7 max-w-md font-mono text-sm leading-relaxed text-muted ${enter}`}
           style={delay('0.45s')}
         >
-          I build secure, serverless systems on AWS — and the business case that ships them.
+          I build secure, serverless systems on AWS - and the business case that ships them.
         </p>
       </div>
 
@@ -90,7 +90,7 @@ export default function Hero() {
         <p className="t-label" aria-hidden>
           Scroll ↓
         </p>
-        <p className="t-label hidden sm:block">BAT Cybersecurity — NSA CAE-CD</p>
+        <p className="t-label hidden sm:block">BAT Cybersecurity - NSA CAE-CD</p>
       </div>
     </section>
   )

@@ -8,7 +8,7 @@ export default function Resume() {
     >
       <div className="shell flex items-center justify-between py-10 sm:py-14">
         <span className="text-[clamp(1.5rem,4.5vw,3rem)] font-medium tracking-[-0.02em] transition-colors duration-300 group-hover:text-ink">
-          View the résumé
+          View my resume
         </span>
         <span
           className="text-[clamp(1.5rem,4.5vw,3rem)] text-acid transition-colors duration-300 group-hover:text-ink"

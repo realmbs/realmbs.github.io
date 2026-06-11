@@ -27,7 +27,7 @@ export default function Nav() {
               rel="noreferrer"
               className="t-label !text-acid transition-opacity hover:opacity-75"
             >
-              Résumé ↗
+              Resume ↗
             </a>
           </li>
         </ul>

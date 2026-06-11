@@ -26,15 +26,15 @@ export default function Capstone() {
           ref={titleRef}
           className="reveal max-w-4xl text-[clamp(2rem,5.2vw,3.9rem)] leading-[1.05] font-semibold tracking-[-0.02em]"
         >
-          Serverless threat-intelligence platform
+          Serverless Threat Intelligence Platform
         </h3>
         <p ref={bodyRef} className="reveal mt-7 max-w-2xl leading-relaxed text-muted">
-          An event-driven AWS pipeline that ingests open-source threat feeds and normalizes them
-          into a queryable indicator store — engineered to run on pocket change instead of a server
+          An event-driven AWS pipeline that ingests open source threat feeds and normalizes them
+          into a queryable indicator store - engineered to run on pocket change instead of a server
           bill. Built as the capstone for a BAT in Cybersecurity at Collin College.
         </p>
         <div ref={diagramRef} className="reveal mt-14">
-          <p className="t-label mb-4">System architecture — interactive</p>
+          <p className="t-label mb-4">System architecture</p>
           <Suspense
             fallback={
               // Mirrors the loaded figure: stage (zoom floor ≈ 384px tall) + controls row.

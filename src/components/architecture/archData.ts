@@ -74,11 +74,11 @@ export const NODES: ArchNode[] = [
     y: 64,
     w: 250,
     h: 78,
-    blurb: 'Primary open-source IOC feed. Pulled on demand for fresh indicators.',
+    blurb: 'Primary open source IOC feed. Pulled on demand for fresh indicators.',
     detail: {
       kind: 'External API',
       points: [
-        ['Role', 'Primary live TI source — community IOC feed'],
+        ['Role', 'Primary live TI source - community IOC feed'],
         ['Auth', 'API key stored in AWS Secrets Manager'],
         ['Pulled by', 'collector.py via /collect'],
         ['Format', 'Raw JSON → normalized to STIX 2.1'],
@@ -99,7 +99,7 @@ export const NODES: ArchNode[] = [
     detail: {
       kind: 'External API',
       points: [
-        ['Role', 'Secondary TI source — redundancy & coverage'],
+        ['Role', 'Secondary TI source - redundancy & coverage'],
         ['Auth', 'API key in AWS Secrets Manager'],
         ['Pulled by', 'collector.py via /collect'],
         ['Mitigates', 'External API rate-limit / outage risk'],

@@ -3,8 +3,7 @@ import SectionHead from './SectionHead'
 
 const socials = [
   { label: 'GitHub', href: 'https://github.com/realmbs' },
-  // TODO(mark): confirm the LinkedIn URL.
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/markblaha' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/mark-blaha-314982334/' },
 ]
 
 export default function Contact() {
@@ -47,7 +46,6 @@ export default function Contact() {
       <footer className="mt-28 border-t border-line">
         <div className="shell flex flex-col gap-2 py-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="t-label">© 2026 Mark Blaha</p>
-          <p className="t-label">React + three.js — no trackers, no analytics</p>
         </div>
       </footer>
     </section>

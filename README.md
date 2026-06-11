@@ -1,10 +1,6 @@
 # realmbs.github.io
 
-Personal landing site for Mark Blaha — cybersecurity × business development.
-
-Single-page SPA: a full-viewport three.js particle-terrain hero, then About, Capstone,
-Résumé, and Contact sections. Dark editorial design — Space Grotesk display type,
-JetBrains Mono labels, acid-lime accent, film-grain finish.
+Personal landing site for Mark Blaha.
 
 ## Stack
 
@@ -12,7 +8,7 @@ JetBrains Mono labels, acid-lime accent, film-grain finish.
 - Tailwind CSS v4 (`@tailwindcss/vite`) with a custom token theme
 - three.js via `@react-three/fiber`, lazy-loaded so the WebGL chunk stays out of the
   initial bundle
-- Self-hosted fonts via Fontsource — no third-party requests, no analytics, no trackers
+- Self-hosted fonts via Fontsource
 
 ## Commands
 
