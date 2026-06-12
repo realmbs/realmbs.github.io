@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="dark" />
   <meta name="theme-color" content="#0a0a0c" />
-  <title>Mark Blaha</title>
+  <title>Mark Blaha — Cybersecurity × Business Development</title>
   <meta name="description"
     content="Mark Blaha - builder-operator at the seam of cybersecurity and business development. Secure, serverless systems on AWS, and the business case that ships them." />
   <link rel="canonical" href="https://realmbs.github.io/" />
@@ -34,6 +34,41 @@
     content="Builder-operator at the seam of cybersecurity and business development. Secure, serverless systems on AWS." />
   <meta name="twitter:image" content="https://realmbs.github.io/og.png" />
 
+  <!-- Boot curtain: painted before React loads so first paint is branded ink,
+       not a blank page. The Intro component adopts and dismisses it. -->
+  <style>
+    #intro-boot {
+      position: fixed;
+      inset: 0;
+      z-index: 90;
+      background: #0a0a0c;
+      display: grid;
+      place-items: center;
+    }
+
+    #intro-boot span {
+      width: 180px;
+      height: 1px;
+      background: #d7ff3f;
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: intro-boot-rule 1.25s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+    }
+
+    @keyframes intro-boot-rule {
+      to {
+        transform: scaleX(1);
+      }
+    }
+  </style>
+  <noscript>
+    <style>
+      #intro-boot {
+        display: none;
+      }
+    </style>
+  </noscript>
+
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -56,7 +91,63 @@
 </head>
 
 <body>
-  <div id="root"></div>
+  <div id="intro-boot" aria-hidden="true"><span></span></div>
+  <!-- Static hero shell: paints the headline/tagline straight from HTML
+       (classes ship in the CSS bundle) so first paint is the composed hero,
+       long before React mounts. React's first render replaces it in place
+       with identical geometry. -->
+  <div id="root">
+    <main aria-hidden="true" id="hero-ghost">
+      <section class="relative flex min-h-svh flex-col justify-end overflow-hidden">
+        <div class="absolute inset-0 overflow-hidden">
+          <div class="hero-poster"></div>
+        </div>
+        <div class="relative">
+          <div class="shell pb-24 sm:pb-28">
+            <p class="t-label mb-5 !text-acid">Cybersecurity × Business Development</p>
+            <h1
+              class="font-display text-[clamp(3.2rem,min(12vw,17svh),9.5rem)] leading-[0.92] font-semibold tracking-[-0.03em] uppercase">
+              <span class="block">Mark</span>
+              <span class="stroke-text block">Blaha</span>
+            </h1>
+            <p class="mt-7 max-w-md font-mono text-sm leading-relaxed text-muted">
+              I build secure, serverless systems on AWS - and the business case that ships them.
+            </p>
+          </div>
+          <div class="shell relative flex items-center justify-between pb-7">
+            <p class="t-label">Scroll ↓</p>
+            <p class="t-label hidden sm:block">BAT Cybersecurity - NSA CAE-CD</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script>
+    // Synchronous, pre-paint housekeeping:
+    // - drop the boot curtain unless this is a first visit on a wide,
+    //   motion-OK viewport (the only case the intro plays); record its
+    //   first-paint time so the React intro continues the clock.
+    // - on wide repeat/reduced visits the hero ghost would double with the
+    //   letter cascade, so drop it there too (phones keep it for instant LCP).
+    (function () {
+      var boot = document.getElementById('intro-boot')
+      var wide = false
+      var skip = true
+      try {
+        wide = window.matchMedia('(min-width: 768px)').matches
+        skip =
+          window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+          !wide ||
+          sessionStorage.getItem('mb-intro-seen')
+      } catch (e) { /* private mode: let it play */ }
+      if (skip) {
+        boot.remove()
+        if (wide) document.getElementById('hero-ghost').remove()
+      } else {
+        window.__introT0 = performance.now()
+      }
+    })()
+  </script>
   <script type="module" src="/src/main.tsx"></script>
 </body>
 

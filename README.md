@@ -8,7 +8,11 @@ Personal landing site for Mark Blaha.
 - Tailwind CSS v4 (`@tailwindcss/vite`) with a custom token theme
 - three.js via `@react-three/fiber`, lazy-loaded so the WebGL chunk stays out of the
   initial bundle
-- Self-hosted fonts via Fontsource
+- Self-hosted variable fonts (latin subsets vendored to `public/fonts/`, preloaded;
+  Fontsource packages kept as the dev-time source)
+- Contact form posts to Formspree (the page's only third-party call)
+- Share/identity assets generated in-repo: `og.png`, favicon + touch icon built from
+  the real Space Grotesk letterforms
 
 ## Commands
 
@@ -25,6 +29,10 @@ Pushes to `main` deploy to GitHub Pages via `.github/workflows/deploy.yml`
 
 ## Accessibility / performance notes
 
-- `prefers-reduced-motion` swaps the WebGL hero for a static poster gradient.
+- `prefers-reduced-motion` swaps the WebGL hero for a static poster gradient and
+  disables every entrance/scroll effect.
 - The canvas pauses (`frameloop="never"`) whenever the hero scrolls off screen.
 - Semantic landmarks, visible focus states, skip link, keyboard-reachable links.
+- A static hero shell in `index.html` paints the headline before React mounts
+  (LCP); the intro curtain plays once per session on wide viewports only.
+- Lighthouse (devtools throttling): 96 / 100 / 100 / 100. axe-core: 0 violations.

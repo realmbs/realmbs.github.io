@@ -9,7 +9,7 @@ import {
   type ReactNode,
 } from 'react'
 import { usePrefersReducedMotion } from '../hooks'
-import { INTRO_MS, introWillPlay } from '../introState'
+import { introWillPlay } from '../introState'
 import Scramble from './Scramble'
 
 const HeroScene = lazy(() => import('./hero/HeroScene'))
@@ -47,15 +47,15 @@ export default function Hero() {
   const contentRef = useRef<HTMLDivElement>(null)
   // Drive the canvas only while the hero is on screen.
   const [active, setActive] = useState(true)
-  // Entrance animation: flip on after first paint so the transition runs.
-  const [entered, setEntered] = useState(false)
+  // Entrance animation. The hero renders fully composed when the intro
+  // curtain plays (the wipe is the entrance) and on phones (which paint a
+  // static hero shell from index.html for instant LCP — the React render
+  // must match it). The letter cascade runs on wide curtain-less visits.
+  const [entered, setEntered] = useState(
+    () => introWillPlay() || !window.matchMedia('(min-width: 768px)').matches,
+  )
 
   useEffect(() => {
-    // When the intro curtain plays, hold the cascade until it starts lifting.
-    if (introWillPlay()) {
-      const t = setTimeout(() => setEntered(true), INTRO_MS - 150)
-      return () => clearTimeout(t)
-    }
     const id = requestAnimationFrame(() => setEntered(true))
     return () => cancelAnimationFrame(id)
   }, [])

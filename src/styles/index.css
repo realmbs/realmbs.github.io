@@ -28,7 +28,7 @@
   --color-ink: #0a0a0c;
   --color-fg: #ededf0;
   --color-muted: #a3a3ae;
-  --color-dim: #63636e;
+  --color-dim: #82828c; /* ≥4.5:1 on ink — the floor for the 11px mono labels */
   --color-acid: #d7ff3f;
   --color-line: rgb(237 237 240 / 12%);
 
@@ -143,9 +143,10 @@
     }
   }
 
-  /* Scroll-linked word illumination (Bio lede). */
+  /* Scroll-linked word illumination (Bio lede). Dim state stays ≥3:1
+     contrast (large text) so unlit words remain readable. */
   .word {
-    opacity: 0.16;
+    opacity: 0.4;
     transition: opacity 0.45s ease;
   }
 

@@ -33,7 +33,9 @@ export default function Scramble({ text, className }: { text: string; className?
   }, [inView, reduced, text])
 
   return (
-    <span ref={ref} className={className} aria-label={text}>
+    <span ref={ref} className={className}>
+      {/* Real text for assistive tech; the churning glyphs are decoration. */}
+      <span className="sr-only">{text}</span>
       <span aria-hidden>{out}</span>
     </span>
   )

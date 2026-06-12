@@ -254,7 +254,7 @@ function Drawer({ node, onClose }: { node: ArchNode | null; onClose: () => void 
   // wrapper's transform) can trap the fixed-position drawer inside the figure.
   return createPortal(
     <div className="archdiagram is-in ad-drawer-scrim" onClick={onClose}>
-      <aside
+      <div
         className="ad-drawer"
         role="dialog"
         aria-modal="true"
@@ -318,7 +318,7 @@ function Drawer({ node, onClose }: { node: ArchNode | null; onClose: () => void 
             ))}
           </dl>
         )}
-      </aside>
+      </div>
     </div>,
     document.body,
   )

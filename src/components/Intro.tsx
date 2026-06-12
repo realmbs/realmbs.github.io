@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { INTRO_KEY, INTRO_MS, introWillPlay } from '../introState'
+import { INTRO_KEY, INTRO_MS, introElapsed, introWillPlay } from '../introState'
 import Scramble from './Scramble'
 
 /**
@@ -12,13 +12,16 @@ export default function Intro() {
   const [gone, setGone] = useState(false)
 
   useEffect(() => {
+    // The boot curtain (index.html) has covered the page since first paint;
+    // this React overlay replaces it seamlessly and continues its clock.
+    document.getElementById('intro-boot')?.remove()
     if (!introWillPlay()) return
     try {
       sessionStorage.setItem(INTRO_KEY, '1')
     } catch {
       // private mode — intro simply plays again next load
     }
-    const t = setTimeout(() => setLeaving(true), INTRO_MS)
+    const t = setTimeout(() => setLeaving(true), Math.max(INTRO_MS - introElapsed(), 400))
     return () => clearTimeout(t)
   }, [])
 
