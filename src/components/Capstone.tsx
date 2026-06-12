@@ -1,6 +1,5 @@
 import { Suspense, lazy, useEffect, useMemo, useState } from 'react'
 import { useInViewOnce, usePrefersReducedMotion, useReveal } from '../hooks'
-import PipelineLog from './PipelineLog'
 import SectionHead from './SectionHead'
 
 const ArchitectureDiagram = lazy(() => import('./architecture/ArchitectureDiagram'))
@@ -67,7 +66,6 @@ export default function Capstone() {
   const titleRef = useReveal()
   const bodyRef = useReveal()
   const diagramRef = useReveal()
-  const logRef = useReveal()
   const statsRef = useReveal()
   const ctaRef = useReveal()
 
@@ -99,9 +97,6 @@ export default function Capstone() {
           >
             <ArchitectureDiagram />
           </Suspense>
-        </div>
-        <div ref={logRef} className="reveal mt-12">
-          <PipelineLog />
         </div>
         <div ref={statsRef} className="reveal mt-16 grid gap-10 sm:grid-cols-3">
           {stats.map((stat) => (
