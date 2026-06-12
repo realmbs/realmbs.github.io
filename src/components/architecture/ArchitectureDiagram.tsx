@@ -53,6 +53,12 @@ function edgeGeom(a: Anchor, b: Anchor) {
   return { path, mid, arrow: { x: b.x, y: b.y, ang } }
 }
 
+// Vertical separator positions: midpoints of the gaps between tiers.
+const SEPARATORS = TIERS.slice(1).map((tier, i) => {
+  const prev = TIERS[i]
+  return (prev.x + prev.w + tier.x) / 2
+})
+
 // ── responsive fit: scale by container width, floor for mobile pan ─
 function useFit(ref: RefObject<HTMLElement | null>) {
   const [scale, setScale] = useState(MIN_SCALE)
@@ -112,13 +118,19 @@ function Connectors({
         const g = edgeGeom(a, b)
         const lit = !!hoverId && (e.from.id === hoverId || e.to.id === hoverId)
         const on = lit || (!!activeStep && e.step === activeStep)
+        const faded = !!activeStep && e.step !== activeStep && !lit
         return (
-          <g key={i} className={on ? 'ad-edge on' : 'ad-edge'}>
-            <path
-              d={g.path}
-              className="ad-edge-base"
-              strokeDasharray={e.dashed ? '2 7' : 'none'}
-            />
+          <g
+            key={i}
+            className={`ad-edge${on ? ' on' : ''}${faded ? ' faded' : ''}`}
+            style={{ '--d': i } as CSSProperties}
+          >
+            {e.dashed ? (
+              <path d={g.path} className="ad-edge-base is-dashed" strokeDasharray="2 7" />
+            ) : (
+              // pathLength=1 normalizes the draw-in animation (dashoffset 1 → 0).
+              <path d={g.path} className="ad-edge-base" pathLength={1} />
+            )}
             {flow && (
               <path
                 d={g.path}
@@ -139,7 +151,7 @@ function Connectors({
             )}
             {e.step && (
               <g transform={`translate(${g.mid.x} ${g.mid.y})`} className="ad-step-badge">
-                <circle r="11" />
+                <rect x="-10" y="-10" width="20" height="20" rx="2" />
                 <text dy="4">{e.step}</text>
               </g>
             )}
@@ -158,20 +170,26 @@ function Connectors({
 // ── node card ──────────────────────────────────────────────────────
 function NodeCard({
   n,
+  index,
   onOpen,
   onHover,
   dim,
+  lit,
 }: {
   n: ArchNode
+  index: number
   onOpen: (n: ArchNode) => void
   onHover: (id: string | null) => void
   dim: boolean
+  lit: boolean
 }) {
   return (
     <button
       type="button"
-      className={'ad-node' + (dim ? ' dim' : '')}
-      style={{ left: n.x, top: n.y, width: n.w, height: n.h }}
+      className={`ad-node${dim ? ' dim' : ''}${lit ? ' lit' : ''}`}
+      style={
+        { left: n.x, top: n.y, width: n.w, height: n.h, '--d': index } as CSSProperties
+      }
       onClick={() => onOpen(n)}
       onMouseEnter={() => onHover(n.id)}
       onMouseLeave={() => onHover(null)}
@@ -235,7 +253,7 @@ function Drawer({ node, onClose }: { node: ArchNode | null; onClose: () => void 
   // Portal to <body> so no transformed/clipping ancestor (e.g. the .reveal
   // wrapper's transform) can trap the fixed-position drawer inside the figure.
   return createPortal(
-    <div className="archdiagram ad-drawer-scrim" onClick={onClose}>
+    <div className="archdiagram is-in ad-drawer-scrim" onClick={onClose}>
       <aside
         className="ad-drawer"
         role="dialog"
@@ -316,6 +334,10 @@ export default function ArchitectureDiagram() {
   const [open, setOpen] = useState<ArchNode | null>(null)
   const [hover, setHover] = useState<string | null>(null)
   const [step, setStep] = useState(0) // 0 = off
+  // Entrance choreography runs once, the first time the figure is seen.
+  // Latched during render (not an effect) — inView already triggers this render.
+  const [seen, setSeen] = useState(false)
+  if (inView && !seen) setSeen(true)
   // Stable identity — the Drawer effect depends on it.
   const closeDrawer = useCallback(() => setOpen(null), [])
 
@@ -332,31 +354,66 @@ export default function ArchitectureDiagram() {
     })
   }
 
+  // Nodes touched by the active walkthrough step light up; the rest recede.
+  const stepIds = new Set<string>()
+  if (step) {
+    EDGES.forEach((e) => {
+      if (e.step === step) {
+        stepIds.add(e.from.id)
+        stepIds.add(e.to.id)
+      }
+    })
+  }
+
   return (
     <figure
-      className="archdiagram"
+      className={`archdiagram${seen ? ' is-in' : ''}`}
       ref={figureRef}
       aria-label="Interactive architecture diagram of the threat intelligence platform - external feeds through API Gateway and Lambda functions to DynamoDB, S3, and the dashboard. Use the node buttons for component details."
     >
+      <div className="ad-head">
+        <span className="ad-fig">
+          <i>Fig. 01</i> Event-driven pipeline
+        </span>
+        <span className="ad-legend" aria-hidden="true">
+          <span>
+            <i className="lg-solid" /> data flow
+          </span>
+          <span>
+            <i className="lg-dashed" /> static hosting
+          </span>
+          <span>
+            <i className="lg-step">4</i> walkthrough step
+          </span>
+        </span>
+      </div>
+
       <div className="ad-scroll" ref={scrollRef}>
         {/* `zoom` scales the layout box (Safari-safe), unlike transform:scale,
             which WebKit mis-clips inside an overflow container. */}
         <div className="ad-stage" style={{ zoom: scale } as CSSProperties}>
-          {TIERS.map((tier) => (
+          {TIERS.map((tier, i) => (
             <div className="ad-tier" key={tier.id} style={{ left: tier.x, width: tier.w }}>
+              <i>{`0${i + 1}`}</i>
               {tier.label}
             </div>
           ))}
 
+          {SEPARATORS.map((x) => (
+            <span className="ad-sep" key={x} style={{ left: x }} aria-hidden="true" />
+          ))}
+
           <Connectors byId={byId} flow={inView} activeStep={step || null} hoverId={hover} />
 
-          {NODES.map((n) => (
+          {NODES.map((n, i) => (
             <NodeCard
               key={n.id}
               n={n}
+              index={i}
               onOpen={setOpen}
               onHover={setHover}
-              dim={!!hover && !connected.has(n.id)}
+              dim={(!!hover && !connected.has(n.id)) || (!!step && !stepIds.has(n.id))}
+              lit={!!step && stepIds.has(n.id)}
             />
           ))}
 
@@ -404,9 +461,19 @@ export default function ArchitectureDiagram() {
               Reset
             </button>
           </div>
+          <div className="ad-dots" role="group" aria-label="Jump to walkthrough step">
+            {Array.from({ length: MAX_STEP }, (_, i) => i + 1).map((s) => (
+              <button
+                key={s}
+                className={`ad-dot${s === step ? ' now' : ''}${s < step ? ' done' : ''}`}
+                onClick={() => setStep(s === step ? 0 : s)}
+                aria-label={`Step ${s}${s === step ? ' (active — click to turn off)' : ''}`}
+              />
+            ))}
+          </div>
         </div>
 
-        <span aria-live="polite">
+        <span className="ad-cap-area" aria-live="polite">
           {step > 0 ? (
             <span className="ad-caption">
               <span className="ad-wc-num">{step}</span>

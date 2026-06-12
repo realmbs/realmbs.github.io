@@ -6,9 +6,84 @@
   --ad-card: rgb(237 237 240 / 2.5%);
   --ad-card-hi: rgb(237 237 240 / 5%);
   --ad-wire: rgb(237 237 240 / 24%);
-  --ad-grid: rgb(237 237 240 / 2.5%);
+  --ad-grid: rgb(237 237 240 / 1.8%);
+  --ad-grid-major: rgb(237 237 240 / 4%);
+  --ad-mark: rgb(237 237 240 / 16%);
   --ad-acid-dim: rgb(215 255 63 / 30%);
   margin: 0;
+}
+
+/* ── header strip: figure title + wire legend ───────────────────── */
+.ad-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 24px;
+  border: 1px solid var(--color-line);
+  border-bottom: none;
+  padding: 11px 16px;
+}
+
+.ad-fig {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.ad-fig i {
+  font-style: normal;
+  color: var(--color-acid);
+  margin-right: 12px;
+}
+
+.ad-legend {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-dim);
+}
+
+.ad-legend > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ad-legend .lg-solid,
+.ad-legend .lg-dashed {
+  width: 24px;
+  height: 0;
+  border-top: 1.5px solid var(--ad-wire);
+}
+
+.ad-legend .lg-dashed {
+  border-top-style: dashed;
+}
+
+.ad-legend .lg-step {
+  width: 16px;
+  height: 16px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--ad-wire);
+  border-radius: 2px;
+  font-style: normal;
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--color-muted);
+}
+
+@media (max-width: 640px) {
+  .ad-legend {
+    display: none;
+  }
 }
 
 /* ── stage / responsive fit ─────────────────────────────────────── */
@@ -25,10 +100,53 @@
   width: 1480px;
   height: 616px;
   color: var(--color-fg);
+  /* top → bottom: vignette, acid glow, minor grid, major grid */
   background-image:
+    radial-gradient(140% 120% at 50% 45%, transparent 55%, rgb(0 0 0 / 30%) 100%),
+    radial-gradient(55% 60% at 46% 42%, rgb(215 255 63 / 2.5%), transparent 70%),
     linear-gradient(var(--ad-grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--ad-grid) 1px, transparent 1px);
-  background-size: 40px 40px;
+    linear-gradient(90deg, var(--ad-grid) 1px, transparent 1px),
+    linear-gradient(var(--ad-grid-major) 1px, transparent 1px),
+    linear-gradient(90deg, var(--ad-grid-major) 1px, transparent 1px);
+  background-size:
+    100% 100%,
+    100% 100%,
+    20px 20px,
+    20px 20px,
+    100px 100px,
+    100px 100px;
+}
+
+/* Registration crosses in the stage corners. */
+.ad-stage::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--ad-mark), var(--ad-mark)) left 20px top 13px / 1px 15px no-repeat,
+    linear-gradient(var(--ad-mark), var(--ad-mark)) left 13px top 20px / 15px 1px no-repeat,
+    linear-gradient(var(--ad-mark), var(--ad-mark)) right 20px top 13px / 1px 15px no-repeat,
+    linear-gradient(var(--ad-mark), var(--ad-mark)) right 13px top 20px / 15px 1px no-repeat,
+    linear-gradient(var(--ad-mark), var(--ad-mark)) left 20px bottom 13px / 1px 15px no-repeat,
+    linear-gradient(var(--ad-mark), var(--ad-mark)) left 13px bottom 20px / 15px 1px no-repeat,
+    linear-gradient(var(--ad-mark), var(--ad-mark)) right 20px bottom 13px / 1px 15px no-repeat,
+    linear-gradient(var(--ad-mark), var(--ad-mark)) right 13px bottom 20px / 15px 1px no-repeat;
+}
+
+/* Hairlines in the gaps between tiers. */
+.ad-sep {
+  position: absolute;
+  top: 48px;
+  bottom: 20px;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgb(237 237 240 / 6%) 18%,
+    rgb(237 237 240 / 6%) 82%,
+    transparent
+  );
 }
 
 /* ── tier labels ────────────────────────────────────────────────── */
@@ -42,6 +160,13 @@
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
   color: var(--color-dim);
+}
+
+.ad-tier i {
+  font-style: normal;
+  font-size: 9.5px;
+  color: var(--color-acid);
+  margin-right: 9px;
 }
 
 .ad-tier::after {
@@ -69,6 +194,15 @@
   overflow: visible;
   z-index: 1;
   pointer-events: none;
+}
+
+.ad-edge {
+  transition: opacity 0.25s;
+}
+
+/* During a walkthrough step, unrelated wires recede. */
+.ad-edge.faded {
+  opacity: 0.28;
 }
 
 .ad-edge-base {
@@ -125,11 +259,13 @@
   }
 }
 
-.ad-step-badge circle {
+.ad-step-badge rect {
   fill: var(--color-ink);
   stroke: var(--ad-wire);
   stroke-width: 1.5;
-  transition: stroke 0.25s;
+  transition:
+    stroke 0.25s,
+    fill 0.25s;
 }
 
 .ad-step-badge text {
@@ -138,14 +274,16 @@
   font-weight: 700;
   font-size: 11px;
   text-anchor: middle;
+  transition: fill 0.25s;
 }
 
-.ad-edge.on .ad-step-badge circle {
+.ad-edge.on .ad-step-badge rect {
+  fill: var(--color-acid);
   stroke: var(--color-acid);
 }
 
 .ad-edge.on .ad-step-badge text {
-  fill: var(--color-acid);
+  fill: var(--color-ink);
 }
 
 .ad-edge-label text {
@@ -177,13 +315,14 @@
   overflow: hidden;
   color: inherit;
   font: inherit;
-  background: var(--ad-card);
+  background: linear-gradient(180deg, rgb(237 237 240 / 4.5%), rgb(237 237 240 / 1.5%));
   border: 1px solid var(--color-line);
   border-radius: 4px;
   transition:
     transform 0.2s ease,
     border-color 0.2s ease,
     background 0.2s ease,
+    box-shadow 0.25s ease,
     opacity 0.25s ease;
 }
 
@@ -191,11 +330,30 @@
 .ad-node:focus-visible {
   transform: translateY(-3px);
   border-color: var(--ad-acid-dim);
-  background: var(--ad-card-hi);
+  background: linear-gradient(180deg, rgb(237 237 240 / 7%), rgb(237 237 240 / 3%));
+  box-shadow:
+    0 14px 36px -14px rgb(0 0 0 / 60%),
+    0 0 26px -8px rgb(215 255 63 / 16%);
 }
 
 .ad-node.dim {
   opacity: 0.25;
+}
+
+/* Node on the active walkthrough edge. */
+.ad-node.lit {
+  border-color: var(--ad-acid-dim);
+  background: linear-gradient(180deg, rgb(215 255 63 / 5%), rgb(237 237 240 / 2%));
+  box-shadow: 0 0 30px -10px rgb(215 255 63 / 22%);
+}
+
+.ad-node.lit .ad-node-bar {
+  opacity: 1;
+}
+
+.ad-node.lit .ad-node-ico {
+  color: var(--color-acid);
+  border-color: var(--ad-acid-dim);
 }
 
 .ad-node-bar {
@@ -349,6 +507,64 @@
   }
 }
 
+/* ── entrance choreography: nodes cascade, wires draw themselves ── */
+.archdiagram:not(.is-in) .ad-node,
+.archdiagram:not(.is-in) .ad-wires {
+  opacity: 0;
+}
+
+@keyframes ad-node-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+@keyframes ad-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes ad-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.archdiagram.is-in .ad-node {
+  animation: ad-node-in 0.65s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  animation-delay: calc(var(--d) * 70ms);
+}
+
+.archdiagram.is-in .ad-edge {
+  animation: ad-fade-in 0.5s ease backwards;
+  animation-delay: calc(0.35s + var(--d) * 70ms);
+}
+
+/* Solid wires have pathLength=1, so dasharray 1 + offset 1→0 draws them in. */
+.archdiagram.is-in .ad-edge-base:not(.is-dashed) {
+  stroke-dasharray: 1;
+  animation: ad-draw 0.8s ease backwards;
+  animation-delay: calc(0.4s + var(--d) * 70ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .archdiagram:not(.is-in) .ad-node,
+  .archdiagram:not(.is-in) .ad-wires {
+    opacity: 1;
+  }
+
+  .archdiagram.is-in .ad-node,
+  .archdiagram.is-in .ad-edge,
+  .archdiagram.is-in .ad-edge-base:not(.is-dashed) {
+    animation: none;
+  }
+}
+
 /* ── walkthrough controls ───────────────────────────────────────── */
 .ad-controls {
   display: flex;
@@ -413,6 +629,42 @@
   color: var(--color-acid);
 }
 
+/* step ticks: 4px bars with a padded hit area, clickable to jump */
+.ad-dots {
+  display: flex;
+  align-items: center;
+}
+
+.ad-dot {
+  box-sizing: content-box;
+  width: 18px;
+  height: 4px;
+  padding: 8px 3px;
+  border: none;
+  cursor: pointer;
+  background-color: rgb(237 237 240 / 14%);
+  background-clip: content-box;
+  transition: background-color 0.2s;
+}
+
+.ad-dot:hover {
+  background-color: rgb(237 237 240 / 38%);
+}
+
+.ad-dot.done {
+  background-color: var(--ad-acid-dim);
+}
+
+.ad-dot.now {
+  background-color: var(--color-acid);
+}
+
+.ad-cap-area {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+}
+
 .ad-caption {
   display: flex;
   align-items: center;
@@ -464,6 +716,7 @@
   border-left: 1px solid var(--color-line);
   padding: 30px 32px 44px;
   color: var(--color-fg);
+  box-shadow: -28px 0 70px rgb(0 0 0 / 45%);
   animation: ad-drawer-in 0.26s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 

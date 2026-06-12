@@ -50,14 +50,15 @@ export default function Nav() {
   }, [])
 
   return (
-    // mix-blend-difference keeps the nav legible over the hero and content alike.
+    // Translucent ink bar + hairline: keeps the nav legible without
+    // backdrop-filter (known GPU compositing bug on this machine).
     <header
-      className={`fixed inset-x-0 top-0 z-50 mix-blend-difference transition-transform duration-300 focus-within:translate-y-0 ${
+      className={`fixed inset-x-0 top-0 z-50 border-b border-line bg-ink/75 transition-transform duration-300 focus-within:translate-y-0 ${
         hidden ? '-translate-y-full' : ''
       }`}
     >
       <nav className="shell flex items-center justify-between py-5" aria-label="Primary">
-        <a href="#top" className="t-label !text-white">
+        <a href="#top" className="t-label !text-fg">
           Mark Blaha
         </a>
         <ul className="flex items-center gap-6 sm:gap-8">
@@ -71,7 +72,7 @@ export default function Nav() {
                   className={`t-label transition-colors ${underline} ${
                     current
                       ? '!text-acid after:scale-x-100'
-                      : '!text-white/70 hover:!text-white'
+                      : '!text-muted hover:!text-fg'
                   }`}
                 >
                   {link.label}
