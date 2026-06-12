@@ -1,5 +1,6 @@
 import { Suspense, lazy, useEffect, useMemo, useState } from 'react'
 import { useInViewOnce, usePrefersReducedMotion, useReveal } from '../hooks'
+import PipelineLog from './PipelineLog'
 import SectionHead from './SectionHead'
 
 const ArchitectureDiagram = lazy(() => import('./architecture/ArchitectureDiagram'))
@@ -66,7 +67,9 @@ export default function Capstone() {
   const titleRef = useReveal()
   const bodyRef = useReveal()
   const diagramRef = useReveal()
+  const logRef = useReveal()
   const statsRef = useReveal()
+  const ctaRef = useReveal()
 
   return (
     <section id="work" className="section">
@@ -97,6 +100,9 @@ export default function Capstone() {
             <ArchitectureDiagram />
           </Suspense>
         </div>
+        <div ref={logRef} className="reveal mt-12">
+          <PipelineLog />
+        </div>
         <div ref={statsRef} className="reveal mt-16 grid gap-10 sm:grid-cols-3">
           {stats.map((stat) => (
             <div key={stat.value} className="border-t border-line pt-6">
@@ -107,7 +113,19 @@ export default function Capstone() {
             </div>
           ))}
         </div>
-        <ul className="mt-14 flex flex-wrap gap-3" aria-label="Technologies">
+        <div ref={ctaRef} className="reveal mt-14">
+          <a
+            href="/capstone.pdf"
+            download
+            className="t-label group inline-flex items-center gap-3 border border-line px-6 py-4 !text-fg transition-colors hover:border-acid/40 hover:!text-acid"
+          >
+            Download the capstone paper
+            <span className="text-acid transition-transform group-hover:translate-y-0.5" aria-hidden>
+              ↓
+            </span>
+          </a>
+        </div>
+        <ul className="mt-10 flex flex-wrap gap-3" aria-label="Technologies">
           {tags.map((tag) => (
             <li
               key={tag}

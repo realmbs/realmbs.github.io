@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://realmbs.github.io/sitemap.xml

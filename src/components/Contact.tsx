@@ -1,6 +1,24 @@
-import { useState, type FormEvent } from 'react'
+import { useEffect, useState, type FormEvent } from 'react'
 import { useReveal } from '../hooks'
 import SectionHead from './SectionHead'
+
+const formatCT = () =>
+  new Date().toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: '2-digit',
+    timeZone: 'America/Chicago',
+    timeZoneName: 'short',
+  })
+
+/** Live local time for the footer availability line. */
+function LocalTime() {
+  const [time, setTime] = useState(formatCT)
+  useEffect(() => {
+    const id = setInterval(() => setTime(formatCT()), 30_000)
+    return () => clearInterval(id)
+  }, [])
+  return <>{time}</>
+}
 
 const FORM_ENDPOINT = 'https://formspree.io/f/mkgrlgvr'
 
@@ -162,6 +180,9 @@ export default function Contact() {
       <footer className="mt-28 border-t border-line">
         <div className="shell flex flex-col gap-2 py-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="t-label">© 2026 Mark Blaha</p>
+          <p className="t-label">
+            DFW, TX — open to graduate programs &amp; security roles · <LocalTime />
+          </p>
           <a href="#top" className="t-label transition-colors hover:!text-acid">
             Back to top ↑
           </a>

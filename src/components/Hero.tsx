@@ -9,6 +9,7 @@ import {
   type ReactNode,
 } from 'react'
 import { usePrefersReducedMotion } from '../hooks'
+import { INTRO_MS, introWillPlay } from '../introState'
 import Scramble from './Scramble'
 
 const HeroScene = lazy(() => import('./hero/HeroScene'))
@@ -50,6 +51,11 @@ export default function Hero() {
   const [entered, setEntered] = useState(false)
 
   useEffect(() => {
+    // When the intro curtain plays, hold the cascade until it starts lifting.
+    if (introWillPlay()) {
+      const t = setTimeout(() => setEntered(true), INTRO_MS - 150)
+      return () => clearTimeout(t)
+    }
     const id = requestAnimationFrame(() => setEntered(true))
     return () => cancelAnimationFrame(id)
   }, [])
