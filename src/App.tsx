@@ -1,5 +1,8 @@
+import Cursor from './components/Cursor'
+import ScrollProgress from './components/ScrollProgress'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
+import Marquee from './components/Marquee'
 import Bio from './components/Bio'
 import Capstone from './components/Capstone'
 import Resume from './components/Resume'
@@ -14,9 +17,12 @@ export default function App() {
       >
         Skip to content
       </a>
+      <Cursor />
+      <ScrollProgress />
       <Nav />
       <main>
         <Hero />
+        <Marquee />
         <Bio />
         <Capstone />
         <Resume />

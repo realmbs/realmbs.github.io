@@ -1,5 +1,14 @@
+import { useEffect, useRef } from 'react'
 import { useReveal } from '../hooks'
 import SectionHead from './SectionHead'
+
+const LEDE: { w: string; acid?: boolean }[] = [
+  ...'A builder-operator at the seam of'.split(' ').map((w) => ({ w })),
+  { w: 'cybersecurity', acid: true },
+  ...'and business development - I make secure systems, and the case that ships them.'
+    .split(' ')
+    .map((w) => ({ w })),
+]
 
 const facts = [
   {
@@ -16,21 +25,60 @@ const facts = [
   },
 ]
 
+/** Lede that lights up word by word as it scrolls through the viewport. */
+function Lede() {
+  const ref = useRef<HTMLParagraphElement>(null)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const words = el.querySelectorAll<HTMLElement>('.word')
+    let raf = 0
+    const update = () => {
+      raf = 0
+      const rect = el.getBoundingClientRect()
+      const vh = window.innerHeight
+      const p = Math.min(Math.max((vh * 0.88 - rect.top) / (vh * 0.5), 0), 1)
+      const lit = Math.round(p * words.length)
+      words.forEach((w, i) => w.classList.toggle('on', i < lit))
+    }
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update)
+    }
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll, { passive: true })
+    return () => {
+      cancelAnimationFrame(raf)
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+  }, [])
+
+  return (
+    <p
+      ref={ref}
+      className="max-w-3xl text-[clamp(1.65rem,3.6vw,2.7rem)] leading-[1.18] font-medium tracking-[-0.015em] text-balance"
+    >
+      {LEDE.map((part, i) => (
+        <span key={i} className={part.acid ? 'word text-acid' : 'word'}>
+          {part.w}
+          {i < LEDE.length - 1 ? ' ' : ''}
+        </span>
+      ))}
+    </p>
+  )
+}
+
 export default function Bio() {
-  const ledeRef = useReveal()
   const gridRef = useReveal()
 
   return (
     <section id="about" className="section">
       <div className="shell">
         <SectionHead index="01" title="About" />
-        <p
-          ref={ledeRef}
-          className="reveal max-w-3xl text-[clamp(1.65rem,3.6vw,2.7rem)] leading-[1.18] font-medium tracking-[-0.015em] text-balance"
-        >
-          A builder-operator at the seam of <span className="text-acid">cybersecurity</span> and
-          business development - I make secure systems, and the case that ships them.
-        </p>
+        <Lede />
         <div ref={gridRef} className="reveal mt-16 grid gap-10 border-t border-line pt-10 sm:grid-cols-3">
           {facts.map((fact) => (
             <div key={fact.label}>

@@ -46,6 +46,9 @@ export default function Contact() {
       <footer className="mt-28 border-t border-line">
         <div className="shell flex flex-col gap-2 py-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="t-label">© 2026 Mark Blaha</p>
+          <a href="#top" className="t-label transition-colors hover:!text-acid">
+            Back to top ↑
+          </a>
         </div>
       </footer>
     </section>

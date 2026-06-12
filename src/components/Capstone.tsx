@@ -1,5 +1,5 @@
-import { Suspense, lazy } from 'react'
-import { useReveal } from '../hooks'
+import { Suspense, lazy, useEffect, useMemo, useState } from 'react'
+import { useInViewOnce, usePrefersReducedMotion, useReveal } from '../hooks'
 import SectionHead from './SectionHead'
 
 const ArchitectureDiagram = lazy(() => import('./architecture/ArchitectureDiagram'))
@@ -11,6 +11,56 @@ const stats = [
 ]
 
 const tags = ['AWS', 'Serverless', 'Python', 'Threat Intelligence']
+
+/** Stat figure that counts up from zero the first time it scrolls into view. */
+function StatValue({ value }: { value: string }) {
+  const reduced = usePrefersReducedMotion()
+  const [ref, inView] = useInViewOnce<HTMLParagraphElement>(0.6)
+
+  const parsed = useMemo(() => {
+    const m = value.match(/^(\D*?)([\d,]+(?:\.\d+)?)(.*)$/)
+    if (!m) return null
+    const decimals = (m[2].split('.')[1] ?? '').length
+    return { prefix: m[1], target: parseFloat(m[2].replace(/,/g, '')), suffix: m[3], decimals }
+  }, [value])
+
+  const format = (n: number) =>
+    parsed
+      ? parsed.prefix +
+        n.toLocaleString('en-US', {
+          minimumFractionDigits: parsed.decimals,
+          maximumFractionDigits: parsed.decimals,
+        }) +
+        parsed.suffix
+      : value
+
+  const [display, setDisplay] = useState(() => (reduced || !parsed ? value : format(0)))
+
+  useEffect(() => {
+    if (!inView || reduced || !parsed) return
+    let start = 0
+    let raf = 0
+    const tick = (t: number) => {
+      if (!start) start = t
+      const p = Math.min((t - start) / 1500, 1)
+      const eased = 1 - Math.pow(1 - p, 4)
+      setDisplay(format(parsed.target * eased))
+      if (p < 1) raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inView, reduced, parsed])
+
+  return (
+    <p
+      ref={ref}
+      className="font-display text-[clamp(2.4rem,4.5vw,3.6rem)] font-semibold tracking-[-0.02em] text-acid tabular-nums"
+    >
+      {display}
+    </p>
+  )
+}
 
 export default function Capstone() {
   const titleRef = useReveal()
@@ -50,9 +100,7 @@ export default function Capstone() {
         <div ref={statsRef} className="reveal mt-16 grid gap-10 sm:grid-cols-3">
           {stats.map((stat) => (
             <div key={stat.value} className="border-t border-line pt-6">
-              <p className="font-display text-[clamp(2.4rem,4.5vw,3.6rem)] font-semibold tracking-[-0.02em] text-acid">
-                {stat.value}
-              </p>
+              <StatValue value={stat.value} />
               <p className="mt-2 font-mono text-xs leading-relaxed text-dim uppercase tracking-wider">
                 {stat.label}
               </p>
@@ -63,7 +111,7 @@ export default function Capstone() {
           {tags.map((tag) => (
             <li
               key={tag}
-              className="t-label rounded-full border border-line px-4 py-2 !text-muted"
+              className="t-label rounded-full border border-line px-4 py-2 !text-muted transition-colors duration-300 hover:border-acid/40 hover:!text-acid"
             >
               {tag}
             </li>

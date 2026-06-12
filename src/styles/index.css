@@ -96,6 +96,141 @@
     -webkit-text-stroke: 1.5px var(--color-fg);
   }
 
+  /* Hero headline: each letter rises out of an overflow mask. */
+  .hl-mask {
+    display: inline-block;
+    overflow: hidden;
+  }
+
+  .hl {
+    display: inline-block;
+    transform: translateY(115%) rotate(3deg);
+    transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--hl-delay, 0s);
+    will-change: transform;
+  }
+
+  .is-entered .hl {
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hl {
+      transform: none;
+      transition: none;
+    }
+  }
+
+  /* Scroll-linked word illumination (Bio lede). */
+  .word {
+    opacity: 0.16;
+    transition: opacity 0.45s ease;
+  }
+
+  .word.on {
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .word {
+      opacity: 1;
+      transition: none;
+    }
+  }
+
+  /* Skills marquee: outline display type drifting behind hairlines. */
+  .marquee {
+    overflow: hidden;
+    padding-block: 1.5rem;
+  }
+
+  .marquee-inner {
+    display: flex;
+    width: max-content;
+    animation: marquee 36s linear infinite;
+    will-change: transform;
+  }
+
+  .marquee:hover .marquee-inner {
+    animation-play-state: paused;
+  }
+
+  .marquee-track {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  .marquee-track > span {
+    display: flex;
+    align-items: center;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(1.6rem, 3.4vw, 2.6rem);
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 1px rgb(237 237 240 / 45%);
+  }
+
+  .marquee-track i {
+    font-style: normal;
+    font-size: 0.85rem;
+    margin-inline: 1.7rem;
+    color: var(--color-acid);
+    -webkit-text-stroke: 0;
+  }
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-inner {
+      animation: none;
+    }
+  }
+
+  /* Custom cursor: dot + trailing ring, difference-blended like the nav. */
+  html.has-cursor * {
+    cursor: none !important;
+  }
+
+  .cursor-dot,
+  .cursor-ring {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 80;
+    border-radius: 50%;
+    pointer-events: none;
+    mix-blend-mode: difference;
+    opacity: 0;
+    will-change: transform;
+  }
+
+  .cursor-dot {
+    width: 6px;
+    height: 6px;
+    margin: -3px 0 0 -3px;
+    background: #fff;
+  }
+
+  .cursor-ring {
+    width: 36px;
+    height: 36px;
+    margin: -18px 0 0 -18px;
+    border: 1px solid rgb(255 255 255 / 60%);
+    transition: opacity 0.3s ease;
+  }
+
+  .cursor-dot.shown,
+  .cursor-ring.shown {
+    opacity: 1;
+  }
+
   .hero-poster {
     position: absolute;
     inset: 0;
