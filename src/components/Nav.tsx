@@ -12,6 +12,8 @@ const underline =
 export default function Nav() {
   // Slide away on scroll-down, return on scroll-up (focus-within overrides).
   const [hidden, setHidden] = useState(false)
+  // Transparent while at the top of the hero; translucent bar once scrolled.
+  const [scrolled, setScrolled] = useState(false)
   const [section, setSection] = useState('')
 
   useEffect(() => {
@@ -21,8 +23,10 @@ export default function Nav() {
       raf = 0
       const y = window.scrollY
       setHidden(y > 160 && y > lastY)
+      setScrolled(y > 32)
       lastY = y
     }
+    update()
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update)
     }
@@ -53,9 +57,9 @@ export default function Nav() {
     // Translucent ink bar + hairline: keeps the nav legible without
     // backdrop-filter (known GPU compositing bug on this machine).
     <header
-      className={`fixed inset-x-0 top-0 z-50 border-b border-line bg-ink/75 transition-transform duration-300 focus-within:translate-y-0 ${
-        hidden ? '-translate-y-full' : ''
-      }`}
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-[transform,background-color,border-color] duration-300 focus-within:translate-y-0 ${
+        scrolled ? 'border-line bg-ink/75' : 'border-transparent bg-transparent'
+      } ${hidden ? '-translate-y-full' : ''}`}
     >
       <nav className="shell flex items-center justify-between py-5" aria-label="Primary">
         <a href="#top" className="t-label !text-fg">
