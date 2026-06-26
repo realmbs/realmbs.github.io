@@ -1,10 +1,14 @@
 const ITEMS = [
   'Offensive Security',
+  'Cloud Security',
   'AWS Serverless',
+  'Terraform',
   'Python',
+  'STIX 2.1',
   'Threat Intelligence',
+  'Workflow Automation',
   'Business Development',
-  'Cloud Architecture',
+  'Cloud Architecture'
 ]
 
 /** Decorative skills ticker — outline display type drifting between hairlines. */

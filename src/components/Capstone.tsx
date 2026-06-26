@@ -6,11 +6,11 @@ const ArchitectureDiagram = lazy(() => import('./architecture/ArchitectureDiagra
 
 const stats = [
   { value: '32,000+', label: 'indicators of compromise ingested and normalized' },
-  { value: '$0.82', label: 'total monthly AWS cost in steady-state operation' },
-  { value: '0', label: 'servers to patch, manage, or pay for while idle' },
+  { value: '$0.82', label: 'total monthly AWS cost in steady state operation' },
+  { value: '30+', label: 'days of continuous uptime' },
 ]
 
-const tags = ['AWS', 'Serverless', 'Python', 'Threat Intelligence']
+const tags = ['AWS', 'Serverless', 'Python', 'STIX 2.1', 'Terraform', 'Threat Intelligence']
 
 /** Stat figure that counts up from zero the first time it scrolls into view. */
 function StatValue({ value }: { value: string }) {
@@ -27,11 +27,11 @@ function StatValue({ value }: { value: string }) {
   const format = (n: number) =>
     parsed
       ? parsed.prefix +
-        n.toLocaleString('en-US', {
-          minimumFractionDigits: parsed.decimals,
-          maximumFractionDigits: parsed.decimals,
-        }) +
-        parsed.suffix
+      n.toLocaleString('en-US', {
+        minimumFractionDigits: parsed.decimals,
+        maximumFractionDigits: parsed.decimals,
+      }) +
+      parsed.suffix
       : value
 
   const [display, setDisplay] = useState(() => (reduced || !parsed ? value : format(0)))
@@ -80,9 +80,7 @@ export default function Capstone() {
           Serverless Threat Intelligence Platform
         </h3>
         <p ref={bodyRef} className="reveal mt-7 max-w-2xl leading-relaxed text-muted">
-          An event-driven AWS pipeline that ingests open source threat feeds and normalizes them
-          into a queryable indicator store - engineered to run on pocket change instead of a server
-          bill. Built as the capstone for a BAT in Cybersecurity at Collin College.
+          An event-driven AWS pipeline that ingests open source threat intelligence feeds and normalizes 32,000+ indicators of compromise into a queryable STIX 2.1 DB. Built as an independent research capstone: framed against two ransomware case studies and a 5 Whys root cause analysis, grounded in a literature and market review, and documented in a ~7,500 word technical report with 20+ sources.
         </p>
         <div ref={diagramRef} className="reveal mt-14">
           <p className="t-label mb-4">System architecture</p>
@@ -114,7 +112,7 @@ export default function Capstone() {
             download
             className="t-label group inline-flex items-center gap-3 border border-line px-6 py-4 !text-fg transition-colors hover:border-acid/40 hover:!text-acid"
           >
-            Download the capstone paper
+            Download paper
             <span className="text-acid transition-transform group-hover:translate-y-0.5" aria-hidden>
               ↓
             </span>

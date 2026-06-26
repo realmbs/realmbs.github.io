@@ -13,15 +13,15 @@ const LEDE: { w: string; acid?: boolean }[] = [
 const facts = [
   {
     label: 'Focus',
-    body: 'Offensive security, cloud-native architecture, and full-cycle business development.',
+    body: 'Offensive security, cloud-native architecture, and the automation that runs full cycle business development.',
   },
   {
     label: 'Toolkit',
-    body: 'AWS · Serverless · Python',
+    body: 'AWS · Serverless · Terraform · Python · STIX 2.1 · Zoho CRM & Microsoft 365 automation'
   },
   {
     label: 'Education',
-    body: 'BAT in Cybersecurity, Collin College - NSA CAE-CD program. December 2025, 4.0 GPA.',
+    body: 'BAT in Cybersecurity, Collin College - NSA CAE-CD program. December 2025 · 4.0 GPA, summa cum laude.'
   },
 ]
 
