@@ -60,3 +60,63 @@ export function useInViewOnce<T extends Element>(threshold = 0.4): [RefObject<T 
 
   return [ref, inView]
 }
+
+/**
+ * Continuous in-view flag for an existing ref — unlike `useInViewOnce`, it
+ * flips back off when the element leaves the viewport.
+ */
+export function useInView(
+  ref: RefObject<Element | null>,
+  threshold = 0.05,
+  initialInView = false,
+): boolean {
+  const [inView, setInView] = useState(initialInView)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [ref, threshold])
+
+  return inView
+}
+
+/**
+ * rAF-throttled passive window scroll listener. Calls `update` once on attach,
+ * then at most once per frame on scroll (and resize when enabled). Reads the
+ * latest callback through a ref, so `update` may close over fresh state.
+ */
+export function useRafScroll(
+  update: () => void,
+  { resize = false, enabled = true }: { resize?: boolean; enabled?: boolean } = {},
+): void {
+  const cb = useRef(update)
+  useEffect(() => {
+    cb.current = update
+  })
+
+  useEffect(() => {
+    if (!enabled) return
+    let raf = 0
+    const run = () => {
+      raf = 0
+      cb.current()
+    }
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(run)
+    }
+    run()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    if (resize) window.addEventListener('resize', onScroll, { passive: true })
+    return () => {
+      cancelAnimationFrame(raf)
+      window.removeEventListener('scroll', onScroll)
+      if (resize) window.removeEventListener('resize', onScroll)
+    }
+  }, [resize, enabled])
+}
