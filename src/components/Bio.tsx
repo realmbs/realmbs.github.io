@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react'
-import { useReveal } from '../hooks'
+import { useRef } from 'react'
+import { usePrefersReducedMotion, useRafScroll, useReveal } from '../hooks'
 import SectionHead from './SectionHead'
 
 const LEDE: { w: string; acid?: boolean }[] = [
@@ -28,33 +28,21 @@ const facts = [
 /** Lede that lights up word by word as it scrolls through the viewport. */
 function Lede() {
   const ref = useRef<HTMLParagraphElement>(null)
+  const reduced = usePrefersReducedMotion()
 
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    const words = el.querySelectorAll<HTMLElement>('.word')
-    let raf = 0
-    const update = () => {
-      raf = 0
+  useRafScroll(
+    () => {
+      const el = ref.current
+      if (!el) return
+      const words = el.querySelectorAll<HTMLElement>('.word')
       const rect = el.getBoundingClientRect()
       const vh = window.innerHeight
       const p = Math.min(Math.max((vh * 0.88 - rect.top) / (vh * 0.5), 0), 1)
       const lit = Math.round(p * words.length)
       words.forEach((w, i) => w.classList.toggle('on', i < lit))
-    }
-    const onScroll = () => {
-      if (!raf) raf = requestAnimationFrame(update)
-    }
-    update()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('resize', onScroll, { passive: true })
-    return () => {
-      cancelAnimationFrame(raf)
-      window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('resize', onScroll)
-    }
-  }, [])
+    },
+    { resize: true, enabled: !reduced },
+  )
 
   return (
     <p
