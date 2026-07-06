@@ -6,7 +6,7 @@ const FORM_ENDPOINT = 'https://formspree.io/f/mkgrlgvr'
 
 const socials = [
   { label: 'GitHub', href: 'https://github.com/realmbs' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/mark-blaha-314982334/' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/markblaha/' },
 ]
 
 const inputCls =
