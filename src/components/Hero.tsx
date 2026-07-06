@@ -8,7 +8,7 @@ import {
   type CSSProperties,
   type ReactNode,
 } from 'react'
-import { usePrefersReducedMotion } from '../hooks'
+import { useInView, usePrefersReducedMotion, useRafScroll } from '../hooks'
 import { introWillPlay } from '../introState'
 import Scramble from './Scramble'
 
@@ -46,7 +46,7 @@ export default function Hero() {
   const sceneRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
   // Drive the canvas only while the hero is on screen.
-  const [active, setActive] = useState(true)
+  const active = useInView(sectionRef, 0.05, true)
   // Entrance animation. The hero renders fully composed when the intro
   // curtain plays (the wipe is the entrance) and on phones (which paint a
   // static hero shell from index.html for instant LCP - the React render
@@ -60,42 +60,32 @@ export default function Hero() {
     return () => cancelAnimationFrame(id)
   }, [])
 
-  useEffect(() => {
-    const node = sectionRef.current
-    if (!node) return
-    const observer = new IntersectionObserver(([entry]) => setActive(entry.isIntersecting), {
-      threshold: 0.05,
-    })
-    observer.observe(node)
-    return () => observer.disconnect()
-  }, [])
-
   // Parallax exit: content drifts down-screen and fades as the hero scrolls out.
-  useEffect(() => {
-    if (reducedMotion) return
-    const content = contentRef.current
-    const scene = sceneRef.current
-    if (!content || !scene) return
-    let raf = 0
-    const update = () => {
-      raf = 0
+  useRafScroll(
+    () => {
+      const content = contentRef.current
+      const scene = sceneRef.current
+      if (!content || !scene) return
       const y = window.scrollY
       const p = Math.min(y / window.innerHeight, 1)
       content.style.transform = `translate3d(0, ${y * 0.3}px, 0)`
       content.style.opacity = String(Math.max(1 - p * 1.3, 0))
       scene.style.opacity = String(Math.max(1 - p * 0.75, 0))
-    }
-    const onScroll = () => {
-      if (!raf) raf = requestAnimationFrame(update)
-    }
-    update()
-    window.addEventListener('scroll', onScroll, { passive: true })
+    },
+    { enabled: !reducedMotion },
+  )
+
+  // Clear the parallax inline styles if reduced motion turns on mid-session.
+  useEffect(() => {
+    if (reducedMotion) return
+    const content = contentRef.current
+    const scene = sceneRef.current
     return () => {
-      cancelAnimationFrame(raf)
-      window.removeEventListener('scroll', onScroll)
-      content.style.transform = ''
-      content.style.opacity = ''
-      scene.style.opacity = ''
+      if (content) {
+        content.style.transform = ''
+        content.style.opacity = ''
+      }
+      if (scene) scene.style.opacity = ''
     }
   }, [reducedMotion])
 
