@@ -95,7 +95,8 @@
   <!-- Static hero shell: paints the headline/tagline straight from HTML
        (classes ship in the CSS bundle) so first paint is the composed hero,
        long before React mounts. React's first render replaces it in place
-       with identical geometry. -->
+       with identical geometry. Copy must stay byte-identical to Hero.tsx -
+       update both together or phones see a text swap on the LCP element. -->
   <div id="root">
     <main aria-hidden="true" id="hero-ghost">
       <section class="relative flex min-h-svh flex-col justify-end overflow-hidden">
@@ -111,12 +112,12 @@
               <span class="stroke-text block">Blaha</span>
             </h1>
             <p class="mt-7 max-w-md font-mono text-sm leading-relaxed text-muted">
-              I build secure, serverless systems on AWS - and the business case that ships them.
+              I build secure, serverless systems on AWS - and make the business case that ships them.
             </p>
           </div>
-          <div class="shell relative flex items-center justify-between pb-7">
+          <div class="shell flex items-center justify-between pb-7">
             <p class="t-label">Scroll ↓</p>
-            <p class="t-label hidden sm:block">BAT Cybersecurity - NSA CAE-CD</p>
+            <p class="t-label hidden sm:block">BAT CYBERSECURITY · SUMMA CUM LAUDE · NSA CAE-CD</p>
           </div>
         </div>
       </section>

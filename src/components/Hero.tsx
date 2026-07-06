@@ -118,6 +118,8 @@ export default function Hero() {
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-ink" />
       </div>
 
+      {/* Copy below must stay byte-identical to the static hero ghost in
+          index.html - update both together or phones see an LCP text swap. */}
       <div ref={contentRef} className="relative will-change-transform">
         <div className="shell pb-24 sm:pb-28">
           <p className={`t-label mb-5 !text-acid ${enter}`} style={delay('0.1s')}>
