@@ -8,6 +8,7 @@ import {
   type RefObject,
 } from 'react'
 import { createPortal } from 'react-dom'
+import { useInView } from '../../hooks'
 import Icon from './Icon'
 import './architecture.css'
 import {
@@ -73,21 +74,6 @@ function useFit(ref: RefObject<HTMLElement | null>) {
     return () => ro.disconnect()
   }, [ref])
   return scale
-}
-
-function useInView(ref: RefObject<Element | null>, threshold = 0.05) {
-  const [inView, setInView] = useState(false)
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const io = new IntersectionObserver(
-      ([entry]) => setInView(entry.isIntersecting),
-      { threshold },
-    )
-    io.observe(el)
-    return () => io.disconnect()
-  }, [ref, threshold])
-  return inView
 }
 
 // ── connectors ─────────────────────────────────────────────────────
