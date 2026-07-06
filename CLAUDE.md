@@ -15,18 +15,18 @@ dark editorial look: near-black ink background, Space Grotesk display type at ov
 JetBrains Mono uppercase labels, a single acid-lime accent (`#d7ff3f`), hairline rules, film-grain
 overlay, and scroll reveals. The hero is a full-viewport three.js particle-terrain (custom shader
 points, fbm displacement, mouse parallax). The fixed nav uses `mix-blend-difference` for
-legibility — do not reintroduce `backdrop-filter` (known GPU compositing bug on this machine).
+legibility - do not reintroduce `backdrop-filter` (known GPU compositing bug on this machine).
 Do not improvise a different aesthetic; if something is ambiguous, ask before guessing.
 
 ## Stack
 
 - Vite + React + TypeScript (the `react-ts` template).
-- Tailwind CSS v4 via `@tailwindcss/vite`, with a custom token theme pulled from the mockup —
+- Tailwind CSS v4 via `@tailwindcss/vite`, with a custom token theme pulled from the mockup -
   define real colors, type scale, and spacing. Do not ship the default palette.
 - The hero is a single React component, lazy-loaded. WebGL via `@react-three/fiber` + `three`
   (plus `@react-three/drei` as needed), or `cobe` for the lightweight globe path. Pick per the
   locked concept and keep it in one component.
-- This is a client-rendered SPA — React runs the whole page. Keep the dependency surface minimal.
+- This is a client-rendered SPA - React runs the whole page. Keep the dependency surface minimal.
 - No analytics, no trackers, no third-party beacons. Self-host fonts (no Google Fonts CDN).
 
 ## Structure
@@ -59,15 +59,15 @@ Do not improvise a different aesthetic; if something is ambiguous, ask before gu
 
 ## Content map
 
-1. Hero — full viewport, the visual centerpiece, with name + one-line tagline over it.
-2. Bio — 2-4 sentences. "Builder-operator at the business/tech seam": cybersecurity background
+1. Hero - full viewport, the visual centerpiece, with name + one-line tagline over it.
+2. Bio - 2-4 sentences. "Builder-operator at the business/tech seam": cybersecurity background
    (offensive security, AWS/serverless, Python) plus full-cycle business development.
-3. Capstone — brief, one project. Serverless AWS threat-intelligence platform that ingested and
+3. Capstone - brief, one project. Serverless AWS threat-intelligence platform that ingested and
    normalized 32,000+ indicators of compromise while running at roughly $0.82/month. Built for a
    BAT in Cybersecurity at Collin College (NSA CAE-CD program), completed Dec 2025, 4.0 GPA.
    Treat exact wording as placeholder for Mark to confirm.
-4. Resume — link to `/resume.pdf` (placeholder filename; Mark supplies the file).
-5. Contact — email + GitHub + LinkedIn (placeholders).
+4. Resume - link to `/resume.pdf` (placeholder filename; Mark supplies the file).
+5. Contact - email + GitHub + LinkedIn (placeholders).
 
 ## Performance + accessibility budget
 
@@ -87,10 +87,10 @@ Do not improvise a different aesthetic; if something is ambiguous, ask before gu
   upload-pages-artifact (path `./dist`) -> deploy-pages.
 - Set the repo Pages source to "GitHub Actions" (not a branch).
 - Permissions block: `contents: read`, `pages: write`, `id-token: write`. Concurrency group `pages`.
-- Verify current action major versions at scaffold time — they bump. As of last check:
+- Verify current action major versions at scaffold time - they bump. As of last check:
   `actions/checkout@v6`, `actions/setup-node@v6`, plus current `actions/configure-pages`,
   `actions/upload-pages-artifact`, `actions/deploy-pages`.
-- `base` in `vite.config.ts` depends on repo type — confirm before setting:
+- `base` in `vite.config.ts` depends on repo type - confirm before setting:
   - User site (`yourname.github.io`): `base: '/'` (default).
   - Project repo: `base: '/repo-name/'`.
 - Single page, no client router, so no 404 fallback is needed. If routing is added later, copy

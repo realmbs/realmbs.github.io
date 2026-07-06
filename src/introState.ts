@@ -16,7 +16,7 @@ export const introElapsed = () =>
     : 0
 
 // Decided once at module load, before any component effects can write the
-// flag — Intro and Hero read the same value so their timing stays in sync.
+// flag - Intro and Hero read the same value so their timing stays in sync.
 // Phones skip the curtain entirely: straight to the hero (and a faster LCP).
 const willPlay =
   typeof window !== 'undefined' &&

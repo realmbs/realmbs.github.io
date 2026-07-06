@@ -20,7 +20,7 @@ export default defineConfig([
     },
   },
   {
-    // The WebGL hero is imperative by design — it mutates three.js objects,
+    // The WebGL hero is imperative by design - it mutates three.js objects,
     // shader uniforms, and the canvas element each frame. The React-Compiler
     // immutability rule assumes pure-render semantics that don't apply here.
     files: ['src/components/hero/**/*.{ts,tsx}'],

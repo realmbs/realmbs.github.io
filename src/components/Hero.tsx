@@ -49,7 +49,7 @@ export default function Hero() {
   const [active, setActive] = useState(true)
   // Entrance animation. The hero renders fully composed when the intro
   // curtain plays (the wipe is the entrance) and on phones (which paint a
-  // static hero shell from index.html for instant LCP — the React render
+  // static hero shell from index.html for instant LCP - the React render
   // must match it). The letter cascade runs on wide curtain-less visits.
   const [entered, setEntered] = useState(
     () => introWillPlay() || !window.matchMedia('(min-width: 768px)').matches,

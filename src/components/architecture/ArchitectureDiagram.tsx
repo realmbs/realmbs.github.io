@@ -195,7 +195,7 @@ function NodeCard({
       onMouseLeave={() => onHover(null)}
       onFocus={() => onHover(n.id)}
       onBlur={() => onHover(null)}
-      aria-label={`${n.label} — ${n.sub}. Open details.`}
+      aria-label={`${n.label}: ${n.sub}. Open details.`}
     >
       <span className="ad-node-bar" />
       <span className="ad-node-row">
@@ -335,10 +335,10 @@ export default function ArchitectureDiagram() {
   const [hover, setHover] = useState<string | null>(null)
   const [step, setStep] = useState(0) // 0 = off
   // Entrance choreography runs once, the first time the figure is seen.
-  // Latched during render (not an effect) — inView already triggers this render.
+  // Latched during render (not an effect) - inView already triggers this render.
   const [seen, setSeen] = useState(false)
   if (inView && !seen) setSeen(true)
-  // Stable identity — the Drawer effect depends on it.
+  // Stable identity - the Drawer effect depends on it.
   const closeDrawer = useCallback(() => setOpen(null), [])
 
   const byId: Record<string, ArchNode> = {}
@@ -467,7 +467,7 @@ export default function ArchitectureDiagram() {
                 key={s}
                 className={`ad-dot${s === step ? ' now' : ''}${s < step ? ' done' : ''}`}
                 onClick={() => setStep(s === step ? 0 : s)}
-                aria-label={`Step ${s}${s === step ? ' (active — click to turn off)' : ''}`}
+                aria-label={`Step ${s}${s === step ? ' (active - click to turn off)' : ''}`}
               />
             ))}
           </div>

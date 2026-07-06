@@ -11,7 +11,7 @@ const ITEMS = [
   'Cloud Architecture'
 ]
 
-/** Decorative skills ticker — outline display type drifting between hairlines. */
+/** Decorative skills ticker - outline display type drifting between hairlines. */
 export default function Marquee() {
   return (
     <div className="marquee border-y border-line" aria-hidden>

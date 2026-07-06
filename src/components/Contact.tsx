@@ -42,7 +42,7 @@ function ContactForm() {
           Message sent<span className="text-acid">.</span>
         </p>
         <p className="mt-3 font-mono text-sm leading-relaxed text-muted">
-          Thanks for reaching out — I'll get back to you soon.
+          Thanks for reaching out. I'll get back to you soon.
         </p>
       </div>
     )
@@ -93,7 +93,7 @@ function ContactForm() {
           className={`${inputCls} resize-y`}
         />
       </div>
-      {/* Formspree spam honeypot — invisible to humans. */}
+      {/* Formspree spam honeypot - invisible to humans. */}
       <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
       <input type="hidden" name="_subject" value="New message from markblaha.dev contact form" />
       <div className="mt-10 flex flex-wrap items-center gap-6">
@@ -106,7 +106,7 @@ function ContactForm() {
         </button>
         <p role="status" aria-live="polite" className="font-mono text-xs text-muted">
           {status === 'error' &&
-            'Something went wrong — please try again, or email me directly.'}
+            'Something went wrong. Please try again, or email me directly.'}
         </p>
       </div>
     </form>

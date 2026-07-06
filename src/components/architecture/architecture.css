@@ -1,6 +1,6 @@
-/* Architecture diagram — the Claude Design handoff restyled to the site
+/* Architecture diagram - the Claude Design handoff restyled to the site
    system: ink ground, hairline rules, mono labels, a single acid accent.
-   No backdrop-filter anywhere (GPU compositing bug — see git history). */
+   No backdrop-filter anywhere (GPU compositing bug - see git history). */
 
 .archdiagram {
   --ad-card: rgb(237 237 240 / 2.5%);

@@ -2,8 +2,8 @@
 // Ported from the Claude Design handoff (data.jsx + app.jsx captions), final
 // audited state: no foundation rail, no eyebrow, Shodan routed through the
 // gateway, step 7 = processor → dashboard.
-// Coordinate space: 1480 x 616 canvas (the design's header band is dropped —
-// the surrounding Capstone section already carries the title + metrics — so
+// Coordinate space: 1480 x 616 canvas (the design's header band is dropped -
+// the surrounding Capstone section already carries the title + metrics - so
 // every node y is shifted up 104px from the original 1480 x 720 canvas).
 
 export const CANVAS_W = 1480

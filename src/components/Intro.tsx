@@ -19,7 +19,7 @@ export default function Intro() {
     try {
       sessionStorage.setItem(INTRO_KEY, '1')
     } catch {
-      // private mode — intro simply plays again next load
+      // private mode - intro simply plays again next load
     }
     const t = setTimeout(() => setLeaving(true), Math.max(INTRO_MS - introElapsed(), 400))
     return () => clearTimeout(t)
@@ -34,7 +34,7 @@ export default function Intro() {
       onTransitionEnd={() => setGone(true)}
     >
       <div className="intro-inner">
-        <Scramble text="MB — PORTFOLIO / 2026" className="t-label !text-fg" />
+        <Scramble text="MB - PORTFOLIO / 2026" className="t-label !text-fg" />
         <span className="intro-rule" />
       </div>
     </div>

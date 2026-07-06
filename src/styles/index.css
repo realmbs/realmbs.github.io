@@ -28,7 +28,7 @@
   --color-ink: #0a0a0c;
   --color-fg: #ededf0;
   --color-muted: #a3a3ae;
-  --color-dim: #82828c; /* ≥4.5:1 on ink — the floor for the 11px mono labels */
+  --color-dim: #82828c; /* ≥4.5:1 on ink - the floor for the 11px mono labels */
   --color-acid: #d7ff3f;
   --color-line: rgb(237 237 240 / 12%);
 
