@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { useRafScroll } from '../hooks'
 
 const links = [
   { href: '#about', label: 'About', desktopOnly: true },
@@ -15,27 +16,16 @@ export default function Nav() {
   // Transparent while at the top of the hero; translucent bar once scrolled.
   const [scrolled, setScrolled] = useState(false)
   const [section, setSection] = useState('')
+  // Starts at the current position (not 0) so a mid-page reload doesn't
+  // read as a scroll-down and hide the nav on the first frame.
+  const lastY = useRef(window.scrollY)
 
-  useEffect(() => {
-    let lastY = window.scrollY
-    let raf = 0
-    const update = () => {
-      raf = 0
-      const y = window.scrollY
-      setHidden(y > 160 && y > lastY)
-      setScrolled(y > 32)
-      lastY = y
-    }
-    update()
-    const onScroll = () => {
-      if (!raf) raf = requestAnimationFrame(update)
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => {
-      cancelAnimationFrame(raf)
-      window.removeEventListener('scroll', onScroll)
-    }
-  }, [])
+  useRafScroll(() => {
+    const y = window.scrollY
+    setHidden(y > 160 && y > lastY.current)
+    setScrolled(y > 32)
+    lastY.current = y
+  })
 
   useEffect(() => {
     const sections = links
